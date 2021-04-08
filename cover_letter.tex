@@ -1,0 +1,97 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Long Lined Cover Letter
+% LaTeX Template
+% Version 1.0 (1/6/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Matthew J. Miller
+% http://www.matthewjmiller.net/howtos/customized-cover-letter-scripts/
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt,stdletter,dateno,sigleft]{newlfm} % Extra options: 'sigleft' for a left-aligned signature, 'stdletternofrom' to remove the from address, 'letterpaper' for US letter paper - consult the newlfm class manual for more options
+
+%\usepackage{charter} % Use the Charter font for the document text
+
+\newsavebox{\Luiuc}\sbox{\Luiuc}{\parbox[b]{1.75in}{\vspace{0.5in}
+\includegraphics[width=1\linewidth]{penn_state_logo_2.png}}} % Company/institution logo at the top left of the page
+\makeletterhead{Uiuc}{\Lheader{\usebox{\Luiuc}}}
+
+%\newlfmP{sigsize=50pt} % Slightly decrease the height of the signature field
+%\newlfmP{addrfromphone} % Print a phone number under the sender's address
+%\newlfmP{addrfromemail} % Print an email address under the sender's address
+%\newlfmP{noLines}
+%\PhrPhone{Phone} % Customize the "Telephone" text
+%\PhrEmail{Email} % Customize the "E-mail" text
+
+\lthUiuc % Print the company/institution logo
+
+%----------------------------------------------------------------------------------------
+%	YOUR NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\namefrom{Chun-Ting Chen} % Name
+%
+\addrfrom{
+\today\\[12pt] % Date
+%123 Broadway \\ % Address
+%City, State 12345
+}
+
+\phonefrom{(814) 753-0168} % Phone number
+
+\emailfrom{cuc230@psu.edu} % Email address
+
+%----------------------------------------------------------------------------------------
+%	ADDRESSEE AND GREETING/CLOSING
+%----------------------------------------------------------------------------------------
+
+\greetto{Dear [],} % Greeting text
+\closeline{Sincerely yours,} % Closing text
+
+\nameto{[name]} % Addressee of the letter above the to address
+
+\addrto{
+add \\ % To address
+add \\
+add \\
+add
+}
+
+%----------------------------------------------------------------------------------------
+
+\linespread{1.2}
+
+\begin{document}
+\begin{newlfm}
+
+%----------------------------------------------------------------------------------------
+%	LETTER CONTENT
+%----------------------------------------------------------------------------------------
+
+I am writing to apply for the position of assistant professor as advertised on the AEA's Job Openings for Economists. I expect to receive my Ph.D. degree from the Pennsylvania State University in the summer of 2015.  My advisor is Prof. Kalyan Chatterjee, and my research interests broadly cover microeconomic theory, game theory, political economy, and experimental economics.
+
+My job market research investigates communication in social networks. Each player has only part of the information relevant to him. I model communication as repeated collective action, and design a communication protocol leading to the ex-post efficient outcome. By indexing each node's information as a distinct prime number, my communication protocol coordinates players' actions in finite time in finite-tree networks, while the protocol itself constitutes an equilibrium strategy. My results provide a game-theoretic approach to studying dynamic collective action and gives a partial folk theorem for repeated incomplete information games played in networks.
+
+My current research concerns unmediated pre-play communication. I have partially solved the difficulties in implementing correlated equilibria in a class of three-player games by proposing a new condition on the communication protocol. My current work agenda is to explore the features of information diffusion on a network, such as complexity. I also plan to extend my research into modeling further aspects of communication like strategic diffusion in a network.
+
+[some words to school].  
+
+I have attached my job market paper and CV. My references are Kalyan Chatterjee, James Jordan, and Edward Green.  Reference contact details can be found in my CV.  Please let me know if you need anything else.
+
+Thank you for your consideration.  I look forward to hearing from you.
+
+%----------------------------------------------------------------------------------------
+
+\end{newlfm}
+\end{document}

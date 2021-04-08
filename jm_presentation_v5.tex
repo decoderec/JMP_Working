@@ -1,0 +1,1825 @@
+
+
+\documentclass[9pt]{beamer}
+\mode<presentation>
+\linespread{1.5}
+
+\usetheme{Madrid}
+%\usetheme {CambridgeUS}%{Goettingen}%{Berkeley}%{Montpellier}%{Antibes}%{Dresden}%{Madrid}%{Dresden}%{Darmstadt}%{Warsaw}%{Pittsburgh}
+\usefonttheme{{structuresmallcapsserif}}%{structureitalicserif}%{structurebold}%{structuresmallcapsserif}%{professionalfonts}
+%\useoutertheme[subsection=false]{smoothbars}
+\usepackage[english]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage{hyperref}
+%\usecolortheme{beaver}
+%\usecolortheme{crane}
+
+%\setbeamercovered{transparent}
+%\newcommand{\semitransp}[2][35]{\color{fg!#1}#2}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{times}
+%\usepackage{MinionPro}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{natbib}
+\usepackage{color, colortbl}
+\usepackage{appendix}
+\usepackage{ulem}
+\usepackage{amsmath,amsthm}
+
+\usetikzlibrary{arrows,shapes}
+
+
+\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem*{observation}{Observation}
+
+
+\definecolor{Gray}{gray}{0.9}
+
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzstyle{vertex}=[circle,fill=black!25,minimum size=12pt,inner sep=0pt]
+\tikzstyle{selected vertex} = [vertex, fill=red!24]
+\tikzstyle{unknown vertex} = [vertex, fill=black]
+\tikzstyle{edge} = [draw,thick,-]
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
+\tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
+
+
+
+
+
+
+
+\title{Coordination in Social Networks}
+\author{Chun-ting Chen}
+
+
+\begin{document}
+
+\maketitle
+
+
+\section{Introduction}
+\subsection{Motivation}
+
+
+\frame{
+  \frametitle{Motivation}
+  
+\begin{itemize}
+\item Collective action may fail in the presence of incomplete information.
+\begin{itemize}
+\item Example of collective action
+\begin{itemize}
+\item Pro-democracy revolution
+\item Raising fund for start-ups
+\end{itemize}
+\item<2-> This presentation will be in terms of Revolution.
+\end{itemize}
+\item<3> How to make collective action successful if people can act repeatedly?
+
+\end{itemize}  
+  
+}
+
+
+\frame{
+  \frametitle{Background}
+
+East Germany 1989-1990.
+\begin{itemize}
+
+\item \textbf{Collective action is not static}
+\begin{itemize}
+\item Protest leads revolution. 
+\end{itemize}
+\item \textbf{Public Information is noisy}
+\begin{itemize}
+\item Mass media is controlled by government. 
+\end{itemize}
+\item \textbf{Information is transmitted within social networks}:
+\begin{itemize}
+\item Church networks 
+\end{itemize}
+
+
+
+\end{itemize}  
+  
+}
+
+
+
+\frame{
+  \frametitle{What this paper does?}
+
+
+\begin{itemize}
+\item \textbf{Dynamics of collective action on networks.} \pause
+\end{itemize}
+
+
+\begin{itemize}
+\item \textbf{How people obtain sufficient information over time to coordinate their actions.}
+\end{itemize}
+
+
+}
+
+
+\frame{
+  \frametitle{What this paper does?}
+
+\begin{itemize}[<+->]
+\item Players linked in a fixed and exogenous network.
+\item Players of two types (\textbf{Rebel},\textbf{Inert}). They can \textbf{observe own/neighbor's type}. 
+\item Type-contingent action.
+\item Pay-off contingent on global type distribution.
+\item Players choose simultaneously and repeatedly. They can \textbf{observe own/neighbor's actions}. 
+
+\end{itemize}
+
+
+
+}
+
+
+
+\frame{
+  \frametitle{What this paper does?}
+
+
+Look for
+\begin{itemize}
+\item An equilibrium, in which the global type distribution becomes commonly known in finite time.\pause
+\end{itemize}
+
+
+Result
+\begin{itemize}
+\item Such equilibrium can be constructed under some assumptions.
+\end{itemize}
+}
+
+
+
+
+\subsection{Literature Review}
+\frame{
+  \frametitle{Related Literature}
+
+  \begin{itemize}[<+->]
+  \item Public good provision.
+  \begin{itemize}
+  \item One strand: [Chwe 2000], [Lohmann, 1993,1994], etc
+  \item \textbf{This paper adds network-monitoring}
+  \end{itemize}
+
+  \item Repeated game in networks.
+  \begin{itemize}
+  \item \textbf{This paper consider incomplete information and imperfect monitoring }
+  \end{itemize}
+ 
+\end{itemize}
+
+}
+
+
+
+\section{Model}
+\subsection{Static Game}
+\frame{
+  \frametitle{Model}
+
+Network
+  \begin{itemize}
+  \item Let $N=\{1,...,n\}$ be the set of players. 
+  \item $G_i$ is $i$'s neighborhood; $G_i$ is a subset of $N$ such that $i\in G_i$.
+  
+  \item $G=\{G_i\}_i$ is the network.
+ 
+  \end{itemize}
+
+
+
+\begin{assumption}
+$G$ is fixed (not random), finite, connected, commonly known, and undirected.
+\end{assumption}
+
+}
+
+
+
+\frame{
+  \frametitle{Model}
+
+Static $k$-threshold game [Chwe 2000]
+  \begin{itemize}
+    \item $1\leq k \leq n$
+ \item $\theta_i\in \Theta_i=\{Rebel,Inert\}$: $i$'s type 
+  \item $\theta\in \Theta=\times_{i\in N}\Theta_i$: type profile 
+  \item $\pi\in \Delta \Theta$: the prior  \pause
+  \item $A_{Rebel}=\{\textbf{revolt},\textbf{stay}\}$; $A_{Inert}=\{\textbf{stay}\}$
+
+ 
+
+  \end{itemize}
+
+
+}
+
+
+
+\begin{frame}[label=static_game]
+  \frametitle{Model}
+Static $k$-threshold game [Chwe 2000], {\textbf{In this presentation,}} \hyperlink{alt_static_game}{\beamergotobutton{Or}}
+
+  \begin{itemize}
+ 
+  \item Static game payoff for Rebel $i$: $u_{Rebel_i}(a_{Rebel_i},a_{-\theta_i})$
+
+\end{itemize}
+  \begin{table}[h]
+\begin{tabular}{llll}
+$u_{Rebel_i}(a_{Rebel_i},a_{-\theta_i})$ & $=$ & 1 & if $a_{Rebel_i}=\textbf{revolt}$ and $\#\{j:a_{\theta_j}=\textbf{revolt}\}\geq k$ \\
+$u_{Rebel_i}(a_{Rebel_i},a_{-\theta_i})$ & $=$ & -1 & if $a_{Rebel_i}=\textbf{revolt}$ and $\#\{j:a_{\theta_j}=\textbf{revolt}\}< k$ \pause \\
+\\
+$u_{Rebel_i}(a_{Rebel_i},a_{-\theta_i})$ & $=$ & 0 & if $a_{Rebel_i}=\textbf{stay}$ \pause \\
+\end{tabular}
+
+\end{table}
+
+  \begin{itemize}
+\item \textbf{stay} is a safe arm; \textbf{revolt} is a risky arm. \pause
+\item Ex-post (Pareto) efficient outcome:
+\begin{itemize}
+\item If there are at least $k$ Rebels, all Rebels play \textbf{revolt}.
+\item Otherwise, all Rebels play \textbf{stay}.
+\end{itemize}
+
+\pause
+\item Relevant information: Whether or not at least $k$ Rebels exist.
+
+
+  \end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+\subsection{Repeated Game}
+\begin{frame}
+  \frametitle{Model}
+Time line (Time is infinite, discrete)
+  \begin{itemize}
+
+  \item Nature choose $\theta$ initially according to $\pi$.
+  \item Players play the static $k$-threshold game infinitely repeatedly.
+
+
+  \end{itemize}
+
+\begin{assumption}
+\begin{itemize}
+\item Players know their neighbors' types.
+\item Players perfectly observe their neighbors' actions. 
+  \item $\pi$ has full support
+
+\item Common $\delta$. 
+\item Pay-off is hidden (in this presentation)
+\end{itemize}
+
+\end{assumption}
+\begin{itemize}
+\item Pay-off could also be noisy or perfectly observable.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Model}
+
+Notations:
+\begin{itemize}
+\item $[Rebels](\theta)=\{j:\theta_j=Rebel\}$ for all $\theta\in \Theta$. 
+\item $\# [Rebels](\theta)$: number of Rebels given $\theta$ \pause
+\item $\theta_{G_i}$: $i$'s private information about the state. ($\theta_{G_i}\in \Theta_{G_i}=\prod_{j\in G_i}\Theta_j$)
+\item $h^{m}_{G_i}$: the history observed by $i$ up to period $m$. ($h^{m}_{G_i}\in H^{m}_{G_i}=\prod^m_{s=1}\prod_{j\in G_i}A_{\theta_j}$)
+\item $h$: an infinite sequence of players' actions. ($h\in H=\prod^{\infty}_{s=1}\prod_{j\in N}A_{\theta_j}$) \pause 
+\item $\tau_i:\Theta_{G_i}\times \bigcup^{\infty}_{0} H^{m}_{G_i} \rightarrow A_{\theta_i}$, $i$'s strategy.
+\item $\tau=(\tau_1,...,\tau_i,...,\tau_n)$: a strategy profile. \pause
+\item $\beta^{\pi,\tau}_i(\theta|h^{m}_{G_i})$: $i$'s belief for a $\theta$ at period $m$ given $\tau$.
+
+ 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{APEX}
+Notations:
+\begin{itemize}
+\item $h^{\tau}_{\theta}$ : a history generated by $\tau$ given $\theta$.
+\item Call $h^{\tau}_{\theta}$ a $\tau_{\theta}$-path.
+\item Call $\{h^{\tau}_{\theta}\}_{\theta\in \Theta}$ the $\tau$-path
+\end{itemize}
+
+
+\begin{definition}
+The $\tau$-path is \textbf{approaching ex-post efficient} (\textit{APEX}) $\Leftrightarrow$ 
+\[\text{$\forall\theta$,  there is a finite time $T^{\theta}$}\] 
+such that the actions after $T^{\theta}$ in $\tau_{\theta}$ repeats the static ex-post efficient outcome.
+\end{definition}
+ 
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{APEX}
+
+
+\begin{definition}
+$h^{m}_{G_i}$ is \textbf{reached by $\tau$-path} \[\Leftrightarrow\] $\exists \theta$ such that $h^{m}_{G_i}$ is in $\tau_{\theta}$-path.
+\end{definition}
+ 
+\begin{lemma}\label{lemma_learn}
+If the $\tau$-path is APEX $\Rightarrow$
+\text{$\forall\theta$ $\forall i$, there is a finite time $T^{\theta}_i$}
+such that 
+\[\sum_{\theta:\#[Rebels](\theta)\geq k}\beta^{\pi,\tau}_{i}(\theta|h^{s}_{G_i})=1 \text{ or } =0, \text{ if } s\geq T^{\theta}_i\]\\
+whenever $h^{s}_{G_i}$ is reached by $\tau$-path.
+\end{lemma}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{APEX}
+
+
+\begin{definition}[weak APEX equilibrium]
+A weak sequential equilibrium $(\tau^{*},\beta^{*})$ is APEX $\Leftrightarrow$ $\tau^{*}$-path is APEX, and $\beta^{*}$ is the belief system consistent with $\tau^{*}$.
+\end{definition}
+\pause
+\begin{definition}[APEX equilibrium]
+A sequential equilibrium $(\tau^{*},\beta^{*})$ is APEX $\Leftrightarrow$ $(\tau^{*},\beta^{*})$ is a weak APEX equilibrium and $\beta^{*}$ is fully consistent with $\tau^{*}$[Krep and Wilson 1982].
+\end{definition}
+
+\end{frame}
+
+
+
+
+\frame{
+  \frametitle{APEX}
+
+\begin{itemize}
+\item $k=n$: For all networks, an APEX equilibrium can be found.
+
+\end{itemize}
+
+}
+
+
+\frame{
+  \frametitle{Case of $k=n$}
+
+\begin{theorem}[$k=n$]
+
+In any network, if  the prior has full support, then for repeated $k=n$ Threshold game, an APEX equilibrium exists whenever $\delta$ is sufficiently high.
+\end{theorem}
+
+Sketch of proof:
+  \begin{enumerate}
+  
+
+  \item Some Inerts neighbors $\Rightarrow$ play \textbf{stay} forever.
+  \item No Inert neighbor $\Rightarrow$ play \textbf{revolt} until \textbf{stay} is observed, and then play \textbf{stay} forever.
+  
+  \item There is a finite time $T^{\theta}$ such that ex-post efficient outcome repeats afterwards.
+  \item Any deviation $\Rightarrow$ play \textbf{stay} forever.
+   \end{enumerate}
+
+}
+
+
+
+\frame{
+  \frametitle{APEX}
+
+\begin{itemize}
+\item $k<n$: with additional assumptions,
+\begin{itemize}
+\item acyclic networks (tree networks): a weak APEX equilibrium can be found.
+\item cyclic networks: open question.
+\end{itemize}
+\end{itemize}
+
+}
+
+\begin{frame}
+  \frametitle{Case of $k<n$}
+
+
+\begin{definition}[Path in a network]
+A \textbf{path} from node $i$ to node $j$ is a sequence of nodes \[\{i,m_1,m_2,...,m_n,j\} \text{ without repetition }\] such that $i\in G_{m_1},m_1\in G_{m_2},...,m_n\in G_j$. 
+\end{definition}  
+
+\begin{definition}[Acyclic network (Tree)]
+A network is \textbf{acyclic} $\Leftrightarrow$ the path from node $i$ to node $j$ is unique for all nodes $i,j$. 
+\end{definition}  
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Case of $k<n$}
+
+
+\begin{definition}
+$\theta$ has \textbf{Strong connectedness}$\Leftrightarrow$ for every pair of Rebels, there is a path consisting of Rebels to connect them.
+\end{definition}  
+
+\begin{definition}
+$\pi$ has \textbf{full support on strong connectedness}$\Leftrightarrow$ 
+\[\text{$\pi(\theta)>0$ if and only if $\theta$ has strong connectedness.}\]
+\end{definition}  
+\begin{itemize}
+\item I.e. Commonly certainty of strong connectedness.
+\end{itemize}
+\pause
+\begin{assumption}
+$\pi$ has \textbf{full support on strong connectedness}.
+\end{assumption}
+\begin{itemize}
+\item Without this assumption, the game is reduced to incomplete information game without communication. 
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+  \frametitle{Case of $k<n$}
+
+
+
+\begin{theorem}[$k\leq n$]
+\label{thm_main_result}
+In any \alert{acyclic} network, if $\pi$ has full support  {on strong connectedness}, then for repeated $1\leq k \leq n$ Threshold game, a {weak} APEX equilibrium {exists} whenever $\delta$ is sufficiently high.
+\end{theorem}
+
+
+\end{frame}
+
+\section{Equilibrium construction}
+\subsection{Equilibrium construction}
+
+\frame{
+  \frametitle{Case of $k<n$}
+\framesubtitle{Equilibrium construction}
+
+
+Outline: 
+
+\begin{enumerate}
+\item Communication by actions \pause
+\item Communication in the equilibrium
+\begin{enumerate}
+\item Communication protocol
+\item In-the-path belief 
+\item Off-path belief
+\item Sketch of proof
+\end{enumerate}
+
+\end{enumerate}
+
+}
+
+
+
+
+
+
+\begin{frame}
+  \frametitle{Communication by actions}
+\framesubtitle{Communication by binary actions}
+
+\begin{enumerate}
+
+
+\item Indexing each node $i$ as a distinct prime number $x_i$. For instance,
+\begin{center} 
+  \begin{tikzpicture}[scale=0.7]
+    % First we draw the vertices
+    \foreach \pos/\name in {{(2,1)/x_1}, {(4,1)/x_2}, {(1,2)/x_3}, {(5,2)/x_5}, {(3,3)/x_7}, {(3,2)/x_4}, {(1,3)/x_6}, {(5,3)/x_8}, {(6,2)/x_9}, {(0,2)/x_{10}}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+%        \foreach \pos/\name in {{(3,2)/4_L}, {(1,3)/6_L}, {(5,3)/8_L}, {(6,2)/9_L}, {(0,2)/10_L}}
+%   \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {x_1/x_2, x_1/x_3, x_2/x_5, x_3/x_4, x_3/x_6, x_3/x_7, x_4/x_5, x_5/x_7, x_5/x_8, x_5/x_9,x_6/x_7, x_7/x_8, x_3/x_{10}}
+        \path[edge] (\source) -- (\dest) ;
+\end{tikzpicture}
+\end{center} 
+\pause
+
+\item Then, in the case of
+\begin{center} 
+  \begin{tikzpicture}[scale=0.7]
+    % First we draw the vertices
+    \foreach \pos/\name in {{(2,1)/RB_1}, {(4,1)/RB_2}, {(1,2)/RB_3}, {(5,2)/RB_5}, {(3,3)/RB_7}, {(3,2)/4}, {(1,3)/6}, {(5,3)/8}, {(6,2)/9}, {(0,2)/10}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+%        \foreach \pos/\name in {{(3,2)/4_L}, {(1,3)/6_L}, {(5,3)/8_L}, {(6,2)/9_L}, {(0,2)/10_L}}
+%   \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {RB_1/RB_2, RB_1/RB_3, RB_2/RB_5, RB_3/4, RB_3/6, RB_3/RB_7, 4/RB_5, RB_5/RB_7, RB_5/8, RB_5/9,6/RB_7, RB_7/8, RB_3/10}
+        \path[edge] (\source) -- (\dest) ;
+\end{tikzpicture}
+\end{center} 
+
+Rebel 3 report $x_1\times x_7 \times x_3$ to Rebel 1 by sending a finite sequence 
+\[\textbf{stay},...,\textbf{stay},\underbrace{\textbf{revolt},\textbf{stay},...,\textbf{stay}}_{x_1\times x_7 \times x_3}\]
+
+\end{enumerate}
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+  \frametitle{Communication Phases}
+
+\pause
+Phases 
+\begin{enumerate}
+\item<1-> \textbf{RP} (Reporting period): revealing the information about $\theta$. 
+\item<1-> \textbf{CD} (Coordination period): coordinating the future actions.
+\item<2-> RP and CD alternate finitely.
+\[\underbrace{\langle RP \rangle \langle CD \rangle}_{\onslide<3>{\textbf{{block}}}}...\]
+\item<3> Call a complete two phases, $\langle RP \rangle \langle CD \rangle$, a \textbf{block}. 
+\end{enumerate}
+
+
+
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}
+
+
+\frametitle{Coordination period and messages}
+
+\pause
+In coordination period, 
+\begin{itemize}
+\item ``three'' messages coordinate actions
+\begin{enumerate}
+\item to \textbf{revolt}
+\item to \textbf{stay}
+\item to continue to next block 
+\end{enumerate}
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Coordination period and messages}
+
+
+
+\begin{itemize}
+\item $CD^t$: the $CD$ in $t$-block
+
+\[\overbrace{\langle\underbrace{\langle \cdot \rangle \cdot \cdot \cdot \langle \cdot \rangle}_{\text{1st division}}\rangle \langle\underbrace{\langle \cdot \rangle \cdot \cdot \cdot \langle \cdot \rangle}_{\text{2nd division}} \rangle }^{CD^t}\] 
+
+
+\item 1st division: sending \textbf{message to stay}; otherwise \textbf{continue}
+\item 2nd division: sending \textbf{message to revolt}; otherwise \textbf{continue}
+
+\pause
+
+\item $CD^t_{p,q}$: the $p$ sub-block in $q$ division.
+\item $\langle CD^t_{p,q} \rangle$: the messages in $CD^t_{p,q}$ are 
+\begin{table}[h]
+\begin{tabular}{l l}
+$\langle \textbf{stay} \rangle$ & $\textbf{s},...,\textbf{s},\textbf{s},\textbf{s},...,\textbf{s}$  \\
+$\langle x_i\rangle$ & $\textbf{s},...,\textbf{s},\underbrace{\textbf{r},\textbf{s},...,\textbf{s}}_{x_i}$ \\
+\end{tabular}
+\end{table}
+
+\end{itemize}
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Coordination period and messages}
+
+
+\framesubtitle{1st division in CD}
+
+
+
+\begin{itemize}
+\item Whenever a Rebel $i$ knows \alert{$\#[Rebels](\theta)<k$}, he plays \textbf{stay} afterward.
+
+\[\overbrace{\langle\underbrace{\alert{\langle \textbf{stay} \rangle}  \alert{...} }_{\text{1st division}}\rangle \langle\underbrace{\alert{\langle ... \rangle}}_{\text{2nd division}} \rangle }^{CD^t}\] 
+
+\pause
+
+\item ... then nearby Rebel $j$ {plays \textbf{stay} afterward}
+
+\pause
+
+\item Otherwise, \[\overbrace{\langle\underbrace{\alert{\langle x_i \rangle} \alert{\langle x_i \rangle} ... \langle \cdot \rangle}_{\text{1st division}}\rangle \langle\underbrace{\langle \cdot \rangle \cdot \cdot \cdot \langle \cdot \rangle}_{\text{2nd division}} \rangle }^{CD^t}\] 
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Coordination period and messages}
+
+
+\framesubtitle{2nd division in CD}
+
+\begin{itemize}
+\item Whenever a Rebel $i$ know \alert{$\#[Rebels](\theta)\geq k$}, he plays
+
+\[\overbrace{\langle\underbrace{\langle \cdot \rangle \cdot \cdot \cdot \langle \cdot \rangle}_{\text{1st division}}\rangle \langle\underbrace{\alert{\langle \textbf{stay} \rangle} \langle \cdot \rangle \cdot \cdot \langle \cdot \rangle}_{\text{2nd division}} \rangle }^{CD^t}\] 
+
+\pause
+
+\item ... then nearby Rebel $j$ \alert{play $\langle x_j \rangle$} to inform nearby Rebels, and so on.
+
+\[\overbrace{\langle\underbrace{\langle \cdot \rangle \cdot \cdot \cdot \langle \cdot \rangle}_{\text{1st division}}\rangle \langle\underbrace{{\langle \cdot \rangle} \alert{\langle x_j \rangle} \cdot \cdot \langle \cdot \rangle}_{\text{2nd division}} \rangle }^{CD^t}\] 
+
+\pause
+
+\item {Otherwise} ,
+\[\overbrace{\langle\underbrace{\langle \cdot \rangle \cdot \cdot \cdot \langle \cdot \rangle}_{\text{1st division}}\rangle \langle\underbrace{\alert{\langle x_i \rangle} \alert{\langle \textbf{stay} \rangle} \alert{ \cdot \cdot }\alert{\langle \textbf{stay} \rangle} }_{\text{2nd division}} \rangle }^{CD^t}\]
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[label=protocol_grim_trigger]
+\frametitle{Coordination period and messages}
+
+
+
+\begin{itemize}
+\item Communication either stops or continues after a CD.
+\begin{enumerate}
+\item {Stopping}: If some Rebels learn the relevant information $\Rightarrow$ all Rebels coordinate to play same actions. 
+\item {Continuing}: Otherwise, go to the next block.
+\end{enumerate}
+
+\end{itemize}
+
+\pause
+\begin{lemma}
+Before a Rebel knows $\#[Rebels](\theta)< k$ or $\#[Rebels](\theta)\geq k$ , he will not send \textbf{Message to stay} or \textbf{Message to revolt} if $\delta$ is high enough.
+\end{lemma}
+\begin{itemize}
+\item a ``grim trigger''.
+\end{itemize}
+\hyperlink{CD_to_RP}{\beamergotobutton{Comment}}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Reporting period and messages}
+
+
+\pause
+\begin{itemize}
+\item $RP^t$: the reporting period at $t$ block
+
+\item $\langle RP^t \rangle$: the reporting message
+\begin{table}[h]
+\begin{tabular}{l l l}
+\alert{Burning money} & $\neg\langle \textbf{stay} \rangle$ & $\textbf{s},...,\textbf{s},{\textbf{r},\textbf{s},...,\textbf{s}}$ \\
+\hline
+\alert{Not burning money} & $\langle \textbf{stay} \rangle$ & $\textbf{s},...,\textbf{s},\textbf{s},\textbf{s},...,\textbf{s}$  \\
+
+\end{tabular}
+\end{table}
+
+\pause
+\item Gives incentive to burn money between.
+\begin{enumerate}
+\item {Burning moneys}+\textbf{message to revolt}: coordination to \textbf{revolt}
+
+\item Otherwise, no coordination to \textbf{revolt}
+
+
+\end{enumerate}
+
+\pause
+
+\item How much money should a Rebel burn? --- Characterization in the next slides.
+
+\end{itemize}
+
+
+
+
+
+
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+   \frametitle{Information Hierarchy}
+
+
+\textbf{Information Hierarchy}
+\begin{itemize}
+\item {Characterizing Rebels' incentives in money burning.}\hyperlink{alt_IH}{\beamergotobutton{other reason}}
+\end{itemize}
+
+Ex: 
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(0,1)/1},{(6,1)/7},{(-1,1)/0}, {(3,1)/RB_4}, {(4,1)/RB_5}, {(5,1)/RB_6}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    \foreach \pos/\name in {{(1,1)/RB_2}, {(2,1)/RB_3}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/RB_2,RB_2/RB_3, RB_3/RB_4, RB_4/RB_5, RB_5/RB_6,RB_6/7,0/1}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+
+\pause
+\begin{itemize}
+\item \textbf{Rebel 2 has less incentive}: Rebel 2's information can be reported by Rebel 3 to Rebel 4.
+\end{itemize}
+
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}[label=IH]
+  \frametitle{Information Hierarchy}
+
+\textbf{Information Hierarchy}  
+
+\onslide<1->{  
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(0,1)/1},{(6,1)/7},{(-1,1)/0}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    \foreach \pos/\name in {{(1,1)/RB_2}, {(2,1)/RB_3}, {(3,1)/RB_4}, {(4,1)/RB_5}, {(5,1)/RB_6}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/RB_2,RB_2/RB_3, RB_3/RB_4, RB_4/RB_5, RB_5/RB_6,RB_6/7,0/1}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+}
+
+\onslide<2->{
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(0,1)/1},{(6,1)/7},{(1,1)/RB_2},{(5,1)/RB_6},{(-1,1)/0}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    \foreach \pos/\name in {{(2,1)/RB_3}, {(3,1)/RB_4}, {(4,1)/RB_5}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/RB_2,RB_2/RB_3, RB_3/RB_4, RB_4/RB_5, RB_5/RB_6,RB_6/7,0/1}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+}
+
+\onslide<3>{
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(0,1)/1},{(6,1)/7},{(1,1)/RB_2},{(5,1)/RB_6},{(2,1)/RB_3}, {(4,1)/RB_5},{(-1,1)/0}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    \foreach \pos/\name in { {(3,1)/RB_4}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/RB_2,RB_2/RB_3, RB_3/RB_4, RB_4/RB_5, RB_5/RB_6,RB_6/7,0/1}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+}
+
+
+
+\begin{enumerate}
+\item \onslide<1-> At $\alert{0}$-block, let $\alert{R^0}=\{2,3,4,5,6\}$
+\item \onslide<2-> At $\alert{1}$-block, let $\alert{R^1}=\{\invisible{2,}3,4,5\invisible{,6}\}$
+\item \onslide<3> At $\alert{2}$-block, let $\alert{R^2}=\{\invisible{2,}\invisible{3,}4\invisible{,5}\invisible{,6}\}$
+\end{enumerate}
+
+\hyperlink{IH_details}{\beamergotobutton{details}}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+  \frametitle{Information Hierarchy}
+
+The Rebels known by $i$ after $t$-block: $I^t_i$.
+\begin{theorem}
+\label{lemma_empty}
+Given $\theta$, if
+\begin{enumerate}
+\item the network is acyclic
+\item the state has strong connectedness
+\end{enumerate}
+$\Rightarrow$ $\exists t^{\theta}$ and $\exists i\in R^{t^{\theta}}$ such that $I^{t^{\theta}}_i \supset [Rebels](\theta) $.
+\end{theorem} 
+
+\bigskip
+
+Thus, ideally, APEX can be attained by
+\begin{itemize}
+\item At $t$ block
+
+\begin{table}[h]
+\begin{tabular}{l l l l}
+$R^t$ Rebels & play & $\langle I^{t-1}_i\rangle$ & $\textbf{s},...,\textbf{s},\overbrace{\textbf{r},\textbf{s},...,\textbf{s}}^{\prod_{j\in I^{t-1}_i}x_j}$ \\
+\hline
+non-$R^t$ Rebels & play & $\langle \textbf{stay} \rangle$ & $\textbf{s},...,\textbf{s},\textbf{s},\textbf{s},...,\textbf{s}$  \\
+
+\end{tabular}
+\end{table}
+\pause
+\item \alert{However, ``Pivotal Rebels'' will deviate}.
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Information Hierarchy}
+
+\framesubtitle{Pivotal players}
+
+Relevant information: $\#[Rebels](\theta)\geq k$ or $\#[Rebels](\theta)<k$.
+
+\begin{definition}[Pivotal player in $RP^t$]
+$i$ is \textbf{pivotal} in $RP^t$
+\[ \Leftrightarrow \]
+$i\in R^t$ and $i$ {will} learn the relevant info {before} $I^{t-1}_i$ is reported {given} others' truthful reporting.
+\end{definition}
+
+
+\end{frame}
+
+\begin{frame}[label=acyclic_diss]
+  \frametitle{Information Hierarchy}
+\framesubtitle{Pivotal players}
+
+
+
+Ex. $k=5$,
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(1,2)/RB_1}, {(2,1)/RB_2}, {(2,3)/3}, {(5,1)/RB_6}, {(5,3)/7}, {(6,2)/RB_8}}
+        \node[vertex] (\name) at \pos {$\name$};
+    
+    \foreach \pos/\name in {{(3,2)/RB_4}, {(4,2)/RB_5}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {RB_1/RB_4, RB_2/RB_4,3/RB_4,RB_4/RB_5, RB_5/RB_6, RB_5/7, RB_5/RB_8}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+\begin{enumerate}
+\item Rebel 4 and Rebel 5 are pivotal (\textbf{Free Rider problem})
+\item They can manipulate their reporting to save costs.
+
+\end{enumerate}
+
+
+\hyperlink{cyclic_diss}{\beamergotobutton{Go to discussion}}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Information Hierarchy}
+
+\framesubtitle{Pivotal players}
+
+
+Ex. $k=6$, 
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(2,2)/RB_1}, {(2,1)/RB_2}, {(2,3)/RB_3}, {(3,2)/RB_4}, {(4,2)/RB_5}, {(5,2)/6}, {(6,2)/7}, {(7,2)/8}}
+        \node[vertex] (\name) at \pos {$\name$};
+    
+    \foreach \pos/\name in { {(3,2)/RB_4}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {RB_1/RB_4, RB_2/RB_4,RB_3/RB_4,RB_4/RB_5, RB_5/6, 6/7, 7/8}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+\begin{enumerate}
+
+\item Rebel 4 is pivotal (given Rebel 5's reporting)
+\item He can manipulate his reporting to save costs.
+
+\end{enumerate}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Solving pivotal-player problem}
+\framesubtitle{Step 1.}
+\begin{definition}[Free rider in $RP^t$]
+$i$ is a \textbf{free rider} in $RP^t$ $\Leftrightarrow$
+\begin{enumerate}
+
+\item $i$ is pivotal in $RP^t$
+\item $i$ {will} learn $\#[Rebels](\theta)$ {before} $I^{t-1}_i$ is reported.
+\end{enumerate}
+
+\end{definition}
+
+\begin{definition}[Free Rider Problem in $RP^t$]
+A \textbf{free rider problem} occurs in $RP^t$ $\Leftrightarrow$
+There are more than 2 free riders in $RP^t$.
+\end{definition}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Solving pivotal-player problem}
+\framesubtitle{Step 1.}
+
+
+
+\begin{lemma}
+If networks are acyclic, then
+\begin{itemize}
+\item there is a \alert{unique} $PR^t$ where Free Rider Problem may occur. 
+\item there are \alert{only two} free riders $i,j$ are involved. Moreover $i\in G_j$.
+\item Moreover, \alert{before} $PR^t$ and \alert{after} $CD^{t-1}$, $i,j$ both certain that they will be involved in free rider problem.
+\end{itemize}
+
+
+\end{lemma}
+
+\bigskip
+Thus, {before} $RP^t$ and {after} $CD^{t-1}$, pick one of them as a free rider.
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Solving pivotal-player problem}
+\framesubtitle{Step 2.}
+
+\begin{table}[h]
+\begin{tabular}{l l l l}
+Non-pivotal $R^t$ Rebels & play & $\langle I^{t-1}_i\rangle$ & $\textbf{s},...,\textbf{s},\overbrace{\textbf{r},\textbf{s},...,\textbf{s}}^{\prod_{j\in I^{t-1}_i}x_j}$ \\
+Pivotal $R^t$ Rebels & \alert{may} play & \alert{$\langle 1\rangle$} & $\textbf{s},...,\textbf{s},\textbf{s},\textbf{s},...,\alert{\textbf{r}}$ \\
+\hline
+non-$R^t$ Rebels & play & $\langle \textbf{stay} \rangle$ & $\textbf{s},...,\textbf{s},\textbf{s},\textbf{s},...,\textbf{s}$  \\
+
+\end{tabular}
+\end{table}
+
+I.e. Add \alert{$\langle 1\rangle$} into the equilibrium path.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Solving pivotal-player problem}
+\framesubtitle{Step 3.}
+
+In the equilibrium path,  
+\begin{lemma}
+If networks are acyclic, 
+\[\text{$i$ is pivotal but $i$ is not free rider in $RP^t$}\] $\Rightarrow$  \[ \text{$i$ has learned that $\#[Rebels](\theta)\geq k-1$ in $RP^t$}\] 
+\end{lemma}
+
+\begin{lemma}
+If networks are acyclic, 
+\[\text{$i$ play $\langle 1 \rangle$ in $RP^t$}\] $\Leftrightarrow$  \[ \text{$i$ has learned that $\#[Rebels](\theta)\geq k-1$ in $RP^t$}\] 
+\end{lemma}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Solving pivotal-player problem}
+\framesubtitle{Step 3.}
+
+Consequently, if $i$ play $\langle 1 \rangle$ in the path
+
+\begin{table}[h]
+\begin{tabular}{l l l l}
+In $RP^t$, $i$ plays  & is $i$ a free rider?  & In $RP^t$, $j\in G_i$ plays & After $RP^t$, $i$ knows \\
+\hline
+\hline
+$\langle 1 \rangle$ & yes  & $\langle \cdot \rangle$ & $\#[Rebels](\theta)\geq k$ \\ \pause
+$\langle 1 \rangle$&   no  & $\langle 1 \rangle$ & $\#[Rebels](\theta)\geq k$ \\ \pause
+$\langle 1 \rangle$&   no  & $\langle \textbf{stay} \rangle$ & $\#[Rebels](\theta)< k$ \\
+
+\end{tabular}
+\end{table}
+
+$\Rightarrow$ $i$ can tell the relevant info. after $RP^t$.
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Solving pivotal-player problem}
+\framesubtitle{Step 3.}
+
+Consequently, pivotal $i$ \alert{has to} play \textbf{message to stay} or \textbf{message to revolt}
+
+\begin{table}[ht]
+\caption{Equilibrium path if $i$ played $\langle 1 \rangle$}
+\label{Table_blf_up_cdt12}
+\begin{center}
+\begin{tabular}{l c c l}
+In $RP^t$ 	 	&  	In $CD^t_{1,1}$		&  In $CD^t_{1,2}$	 & After $CD^t$\\
+\hline
+\hline
+$i$ plays 		                             &  	$i$ plays		&				$i$ plays			& \\
+\hline
+$\langle 1 \rangle$ 		             &  \alert{$\langle \textbf{stay} \rangle$}	&	$\langle \textbf{stay} \rangle$ & \textbf{stay}\\
+$\langle 1 \rangle$ 		             &  $\langle \mathbf{x}_i \rangle$	&	\alert{${\langle \textbf{stay} \rangle}$} & \textbf{revolt}\\
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Belief updating in equilibrium path}
+
+
+
+
+
+\begin{table}[ht]
+\caption{Belief updating after $CD^t$, $t>0$}
+\label{Table_blf_up_cdt12}
+\begin{center}
+\begin{tabular}{l c c c}
+In $RP^t$ 	 	&  	In $CD^t_{1,1}$		&  In $CD^t_{1,2}$	  &\\
+\hline
+\hline
+$i$ plays 		                             &  	$i$ plays		&				$i$ plays			& The events $j\in G_i$ believes with probability one  \\
+\hline
+\onslide<2,3>{$\langle  \textbf{stay} \rangle$ 	& 	$\langle \mathbf{x}_i \rangle$	&  $\langle \textbf{stay} \rangle$ &  $i\notin R^t$} \\
+\onslide<1,3>{$\langle  {I^{t-1}_i} \rangle$ 		&  $\langle \textbf{stay} \rangle$	&	$\langle \textbf{stay} \rangle$ &  $\#[Rebels](\theta)< k$}   \\
+\onslide<1,3>{$\langle  {I^{t-1}_i} \rangle$ 		&  $\langle \mathbf{x}_i \rangle$	&	$\langle \textbf{stay} \rangle$ &  $\#[Rebels](\theta)\geq k$ }   \\
+\onslide<2,3>{$\langle  {I^{t-1}_i} \rangle$ 		&  $\langle \mathbf{x}_i \rangle$	&	$\langle \mathbf{x}_i \rangle$ &  $i\in R^t$}  \\
+\onslide<1,3>{$\langle 1 \rangle$ 		             &  $\langle \textbf{stay} \rangle$	&	$\langle \textbf{stay} \rangle$ &  $\#[Rebels](\theta)< k$}\\
+\onslide<1,3>{$\langle 1 \rangle$ 		             &  $\langle \mathbf{x}_i \rangle$	&	$\langle \textbf{stay} \rangle$ & $\#[Rebels](\theta)\geq k$}
+\end{tabular}
+\end{center}
+\end{table}
+
+ 
+\end{frame}
+
+
+
+
+\begin{frame}[label=belief_grim_trigger]
+\frametitle{Off-path Belief}
+
+\begin{block}{Off-path Belief}
+Whenever $i$ detects a deviation, he believes that
+\[\text{for all $j\notin G_i$, $\theta_j\neq Rebel$  }\]
+\end{block}
+
+
+\begin{enumerate}
+\item If he has less than $k$ Rebel-neighbors, he will play \textbf{stay} forever. \pause
+\item This off-path belief then also serve as another ``grim trigger'' (belief-grim-trigger).
+\end{enumerate}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Sketch of proof}
+
+\begin{enumerate}
+\item The equilibrium path is APEX.
+\item APEX outcome gives maximum ex-post continuation pay-off after some $T$.
+\item Detectable deviation $\Rightarrow$ belief-grim-trigger. \hyperlink{belief_grim_trigger}{\beamergotobutton{belief-grim-trigger}}
+\item Undetectable deviation $\Rightarrow$ protocol-grim-trigger. \hyperlink{protocol_grim_trigger}{\beamergotobutton{protocol-grim-trigger}}
+\item Any deviation will let APEX fail in a positive probability.
+\item Sufficiently high $\delta$ will impede deviation.
+\end{enumerate}
+
+
+
+\end{frame}
+
+
+\section{Discussion}
+\subsection{Discussion}
+
+\begin{frame}[label=cyclic_diss]
+\frametitle{Discussion}
+\framesubtitle{Cyclic network}
+\begin{enumerate}
+
+
+\item From the above steps, an APEX equilibrium for \textbf{acyclic} networks is constructed.
+\begin{itemize}
+\item At most \textbf{2} free riders will occur. \hyperlink{acyclic_diss}{\beamergotobutton{example}}
+\end{itemize}
+\item Solving Pivotal-player problem for \textbf{cyclic} networks need more elaboration.
+\begin{itemize}
+\item More than \textbf{3} free riders will occur. \hyperlink{ex_cyclic}{\beamergotobutton{example}}
+\end{itemize}
+
+\end{enumerate}
+
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Discussion}
+\framesubtitle{Pay-off as a signal}
+\begin{enumerate}
+
+\item payoff is perfectly observed
+\begin{itemize}
+\item Play \textbf{revolt} in the first period, then the relevant information revealed.
+
+\end{itemize}
+\item payoff is noisy
+\begin{itemize}
+\item With full support assumption, the existing equilibrium is APEX.
+\item Ex. 
+\begin{eqnarray*}
+p_{1s} &=& \mathrm {Pr}(y=y_1|\#\textbf{revolt}\geq k) \\
+p_{1f} &=& \mathrm {Pr}(y=y_1|\#\textbf{revolt}< k) \\
+p_{2s} &=& \mathrm {Pr}(y=y_2|\#\textbf{revolt}\geq k) \\
+p_{2f} &=& \mathrm {Pr}(y=y_2|\#\textbf{revolt}< k) 
+\end{eqnarray*}
+
+\begin{equation}
+1>p_{1s}>0,1>p_{2s}>0,p_{1f}=1-p_{1s},p_{2f}=1-p_{2s}
+\end{equation}
+\end{itemize}
+
+
+\end{enumerate}
+
+
+\end{frame}
+
+
+\section{Future Works}
+\subsection{Future Works}
+
+
+\begin{frame}
+
+\frametitle{Further works}
+
+
+\begin{enumerate}
+\item Cyclic networks.
+\item A general model in which players can communicate only by their actions to learn the relevant information in finite time when $\delta<1$, while the communication protocol itself is an equilibrium.
+\item Equilibrium selection.  
+
+\end{enumerate}
+\end{frame}
+
+
+
+
+\section{Appendix}
+
+\subsection{Alt of static game}
+
+\begin{frame}[label=alt_static_game]
+  \frametitle{Appendix-alt. Model}
+\alert{\textbf{OR,}}
+Static $k$-threshold game [Chwe 2000]
+  \begin{itemize}
+ 
+  \item Static game payoff for Rebel $i$: $u_{Rebel_i}(a_{Rebel_i},a_{-\theta_i})$
+\end{itemize}
+  \begin{table}[h]
+\begin{tabular}{llll}
+$u_{Rebel_i}(a_{Rebel_i},a_{-\theta_i})$ & $=$ & 1 & if $a_{Rebel_i}=\textbf{revolt}$ and $\#\{j:a_{\theta_j}=\textbf{revolt}\}\geq k$ \\
+$u_{Rebel_i}(a_{Rebel_i},a_{-\theta_i})$ & $=$ & -1 & if $a_{Rebel_i}=\textbf{revolt}$ and $\#\{j:a_{\theta_j}=\textbf{revolt}\}< k$  \\
+\\
+$u_{Rebel_i}(a_{Rebel_i},a_{-\theta_i})$ & $=$ & 1 & if $a_{Rebel_i}=\textbf{stay}$ and $\#\{j:a_{\theta_j}=\textbf{revolt}\}\geq k$ \\
+$u_{Rebel_i}(a_{Rebel_i},a_{-\theta_i})$ & $=$ & 0 & if $a_{Rebel_i}=\textbf{stay}$ and $\#\{j:a_{\theta_j}=\textbf{revolt}\}< k$ \\
+
+\end{tabular}
+
+\end{table}
+
+\begin{itemize}
+
+\invisible{
+\item \textbf{stay} is a safe arm; \textbf{revolt} is a risky arm; 
+\item Ex-post (Pareto) efficient outcome:
+\begin{itemize}
+\item Inerts play \textbf{stay}. 
+\item If there are more than $k$ Rebels, \alert{at least some} $k$ Rebels play \textbf{revolt}.
+\item Otherwise, all Rebels play \textbf{stay}.
+\end{itemize}
+}
+\end{itemize}
+
+\end{frame}
+
+
+\subsection{Examples for APEX}
+
+\begin{frame}[label=ex_observable]
+  \frametitle{Example: pay-off is observable}
+
+\alert{\textbf{If pay-off is observable}}, an Apex Equilibrium for $k=n=3$ in
+  \begin{center}
+\begin{tikzpicture}[scale=1.5]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(1,0)/1}, {(2,0)/2}, {(3,0)/3}}
+        \node[vertex] (\name) at \pos {$\name$};
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/2, 2/3}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}[<+->]
+\item At 1st period
+\begin{itemize}
+\item All Rebels choose \textbf{revolt}.
+\end{itemize}
+
+\item After 1st period
+\begin{itemize}
+\item If the pay-off is observed as $1$, choose \textbf{revolt} afterwards.
+\item Otherwise, choose \textbf{stay} afterwards.
+\end{itemize}
+ 
+ \item Any deviation $\Rightarrow$
+ \begin{itemize}
+ \item Choosing \textbf{stay} forever.
+ \end{itemize}
+\end{itemize}
+
+  
+\end{frame}
+
+
+\begin{frame}[label=ex_hidden]
+  \frametitle{Example: pay-off is hidden}
+
+\alert{\textbf{If pay-off is hidden}}, an Apex Equilibrium for $k=n=3$ in
+  \begin{center}
+\begin{tikzpicture}[scale=1.5]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(1,0)/1}, {(2,0)/2}, {(3,0)/3}}
+        \node[vertex] (\name) at \pos {$\name$};
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/2, 2/3}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+
+\begin{itemize}[<+->]
+\item At 1st period
+\begin{itemize}
+\item Rebel 2 chooses $\textbf{revolt}$ if he observes $\theta=(Rebel,Rebel,Rebel)$; Otherwise, chooses $\textbf{stay}$ forever.
+\item Rebel 1 (or Rebel 3) choose \textbf{stay}.
+\end{itemize}
+
+\item After 1st period
+\begin{itemize}
+\item If Rebel 2 chooses \textbf{revolt} in the last period, then Rebel 1 (or Rebel 3) chooses \textbf{revolt} forever; 
+\item If Rebel 2 chooses \textbf{stay} in the last period, then Rebel 1 (or Rebel 3) chooses \textbf{stay} forever.
+\end{itemize}
+ 
+ \item Any deviation $\Rightarrow$
+ \begin{itemize}
+ \item Choosing \textbf{stay} forever.
+ \end{itemize}
+\end{itemize}
+
+  
+\end{frame}
+
+
+
+
+\subsection{CD to PR}
+\begin{frame}[label=CD_to_RP]
+\frametitle{Appendix: From CD to PR}
+
+\begin{itemize}
+\item \alert{No expected cost} to send \textbf{Message to stay}  or \textbf{Message to revolt} 
+\item The player who knows the relevant info. is willing to send messages.
+
+\end{itemize}
+\bigskip
+\pause
+\begin{itemize}
+\item However, sending message to reveal information in RP is costly. 
+\item A free rider problem in PR may occur.
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Appendix: From CD to PR}
+
+
+\begin{enumerate}
+\item $k=5$
+\item Only one block (RP and then CD).
+\item No expected cost in CD.
+\pause
+\item \alert{Free riders}:
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(1,2)/RB_1}, {(2,1)/RB_2}, {(2,3)/3}, {(5,1)/6}, {(5,3)/7}, {(6,2)/RB_8}}
+        \node[vertex] (\name) at \pos {$\name$};
+    
+    \foreach \pos/\name in {{(3,2)/RB_4}, {(4,2)/RB_5}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {RB_1/RB_4, RB_2/RB_4,3/RB_4,RB_4/RB_5, RB_5/6, RB_5/7, RB_5/RB_8}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+
+\end{enumerate}
+
+\pause
+Why? By backward induction,
+\begin{enumerate}
+\item {No expected cost} to send \textbf{Message to stay}  or \textbf{Message to revolt} in CD. 
+\item If $RB_5$ report truthfully, $RB_4$ can wait for that.
+\item If $RB_4$ report truthfully, $RB_5$ can wait for that.
+\end{enumerate}
+
+\hyperlink{protocol_grim_trigger}{\beamergotobutton{Go back to CD}}
+\end{frame}
+
+
+\subsection{Goals of Information Hierarchy}
+\begin{frame}[label=alt_IH]
+   \frametitle{Appendix-Goal of Information Hierarchy}
+
+
+Main goal of \textbf{Information Hierarchy}
+\begin{itemize}
+\item Easing the punishment scheme when monitoring is imperfect.
+\end{itemize}
+
+Ex: $k=4$,
+\begin{center}
+\begin{tikzpicture}[scale=1]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(1,1)/RB_1}, {(2,1)/RB_2}, {(3,1)/RB_3}, {(2,2)/RB_4}, {(2,0)/RB_5}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    \foreach \pos/\name in {{(1,1)/RB_1}, {(2,1)/RB_2}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {RB_1/RB_2, RB_2/RB_3, RB_4/RB_2, RB_2/RB_5}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+
+\begin{enumerate}
+\item \textbf{Rebel 1 can only be monitored by Rebel 2.}
+\item Suppose Rebel 2,3,4,5 can coordinate at period $T$ and play \textbf{revolt} forever.
+\item If Rebel 1 did not burn money at period $T-1$, Rebel 2 has no incentive to punish him.
+\end{enumerate}
+
+\end{frame}
+
+
+\subsection{Information Hierarchy}
+
+\begin{frame}[label=IH_details]
+  \frametitle{Appendix-Information Hierarchy}
+ 
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(0,1)/1},{(6,1)/7},{(-1,1)/0}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    \foreach \pos/\name in {{(1,1)/RB_2}, {(2,1)/RB_3}, {(3,1)/RB_4}, {(4,1)/RB_5}, {(5,1)/RB_6}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/RB_2,RB_2/RB_3, RB_3/RB_4, RB_4/RB_5, RB_5/RB_6,RB_6/7,0/1}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+
+At $1$-block, first let
+\begin{eqnarray*}
+G^0_i & \equiv &  G_i\\
+I^0_i & \equiv & G_i\cap R^0\\
+\end{eqnarray*}
+
+For instance,
+\begin{table}[h]
+\begin{tabular}{l l}
+$I^0_2=\{2,3\} $ &  $G^0_2=\{1,2,3\}$  \\
+$I^0_3=\{2,3,4\}$ & $G^0_3=\{2,3,4\} $  
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Appendix-Information Hierarchy}
+
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(0,1)/1},{(6,1)/7},{(-1,1)/0}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    \foreach \pos/\name in {{(1,1)/RB_2}, {(2,1)/RB_3}, {(3,1)/RB_4}, {(4,1)/RB_5}, {(5,1)/RB_6}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/RB_2,RB_2/RB_3, RB_3/RB_4, RB_4/RB_5, RB_5/RB_6,RB_6/7,0/1}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+
+Then define \[\leq^0\] by
+\[i\in \leq^0 \Leftrightarrow \exists  j\in \bar{G}_i (I^0_i\subseteq G^0_j\cap R^0)\] 
+
+\begin{itemize}
+\item For instance, \[2\in \leq^0, 3\notin \leq^0\]
+\item Since \begin{table}[h]
+\begin{tabular}{l l}
+$I^0_2=\{2,3\} $ &  {$G^0_2\cap R^0=\{2,3\}$}  \\
+{$I^0_3=\{2,3,4\}$} & $G^0_3\cap R^0=\{2,3,4\} $ 
+\end{tabular}
+\end{table}
+\end{itemize}
+
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Appendix-Information Hierarchy}
+
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(0,1)/1},{(6,1)/7},{(1,1)/RB_2},{(5,1)/RB_6},{(-1,1)/0}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    \foreach \pos/\name in {{(2,1)/RB_3}, {(3,1)/RB_4}, {(4,1)/RB_5}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/RB_2,RB_2/RB_3, RB_3/RB_4, RB_4/RB_5, RB_5/RB_6,RB_6/7,0/1}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+
+At $\alert{1}$-block, let
+
+\[
+\alert{R^{1}} \equiv \{i\in R^0|i\notin \leq^0\}=\{\invisible{2,}3,4,5\invisible{,6}\}
+\]
+
+
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Appendix-Information Hierarchy}
+
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(0,1)/1},{(6,1)/7},{(1,1)/RB_2},{(5,1)/RB_6},{(-1,1)/0}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    \foreach \pos/\name in {{(2,1)/RB_3}, {(3,1)/RB_4}, {(4,1)/RB_5}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/RB_2,RB_2/RB_3, RB_3/RB_4, RB_4/RB_5, RB_5/RB_6,RB_6/7,0/1}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+
+At $2$-block, let
+\begin{eqnarray*}
+G^1_i & \equiv & \bigcup_{k\in I^{0}_i}G_k \\
+I^1_i & \equiv & \bigcup_{k\in G_i\cap R^1}I^{0}_k
+\end{eqnarray*}
+
+For instance,
+\begin{table}[h]
+\begin{tabular}{l l}
+$I^1_3=\{2,3,4,5\}$ & $G^1_3=\{1,2,3,4,5\} $  \\
+$I^1_4=\{2,3,4,5,6\}$ & $G^1_4=\{2,3,4,5,6\} $
+\end{tabular}
+\end{table}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Appendix-Information Hierarchy}
+
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(0,1)/1},{(6,1)/7},{(1,1)/RB_2},{(5,1)/RB_6},{(-1,1)/0}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    \foreach \pos/\name in {{(2,1)/RB_3}, {(3,1)/RB_4}, {(4,1)/RB_5}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/RB_2,RB_2/RB_3, RB_3/RB_4, RB_4/RB_5, RB_5/RB_6,RB_6/7,0/1}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+
+Then define \[\leq^1\] by
+\[i\in \leq^1 \Leftrightarrow \exists  j\in \bar{G}_i (I^1_i\subseteq G^1_j\cap R^0)\] 
+
+\begin{itemize}
+\item For instance, \[3\in \leq^1, 4\notin \leq^0\]
+\item Since 
+\begin{table}[h]
+\begin{tabular}{l l}
+$I^1_3=\{2,3,4,5\}$ & $G^1_3\cap R^0=\{2,3,4,5\} $  \\
+$I^1_4=\{2,3,4,5,6\}$ & $G^1_4\cap R^0=\{2,3,4,5,6\} $  \\
+\end{tabular}
+\end{table}
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Appendix-Information Hierarchy}
+
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(0,1)/1},{(6,1)/7},{(1,1)/RB_2},{(5,1)/RB_6},{(2,1)/RB_3}, {(4,1)/RB_5},{(-1,1)/0}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    \foreach \pos/\name in { {(3,1)/RB_4}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in {1/RB_2,RB_2/RB_3, RB_3/RB_4, RB_4/RB_5, RB_5/RB_6,RB_6/7,0/1}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+
+At $\alert{2}$-block, let
+
+\[
+\alert{R^{2}} \equiv \{i\in R^1|i\notin \leq^1\}=\{\invisible{2,3,}4\invisible{,5,6}\}
+\]
+
+
+\hyperlink{IH}{\beamergotobutton{Go back to IH}}
+\end{frame}
+
+
+
+\subsection{Cycles}
+\begin{frame}[label=ex_cyclic]
+\frametitle{Appendix-$\geq 3$ Free Riders}
+
+
+More than 3 free riders will occur \textbf{at} a block in cyclic network.
+
+\alt<1>{
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(1,3)/1}, {(2,3)/RB_2}, {(4,3)/3}, {(6,3)/RB_4}, {(7,3)/5}, {(3,2)/RB_6}, {(5,2)/RB_7}, {(3,4)/RB_8}, {(5,4)/RB_9}}
+        \node[vertex] (\name) at \pos {$\name$};
+    
+    \foreach \pos/\name in {{(2,3)/RB_2},{(6,3)/RB_4},{(3,2)/RB_6}, {(5,2)/RB_7}, {(3,4)/RB_8}, {(5,4)/RB_9}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in { 1/RB_6, 1/RB_8, RB_2/3, RB_2/RB_8, 3/RB_4, RB_2/RB_6, RB_6/RB_7, RB_8/RB_9, RB_9/RB_4, RB_7/RB_4, RB_9/5, RB_7/5}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+}
+{
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+    % Draw a 7,11 network
+    % First we draw the vertices
+    \foreach \pos/\name in {{(1,3)/1}, {(2,3)/RB_2}, {(4,3)/3}, {(6,3)/4}, {(7,3)/RB_5}, {(3,2)/RB_6}, {(5,2)/RB_7}, {(3,4)/RB_8}, {(5,4)/RB_9}}
+        \node[vertex] (\name) at \pos {$\name$};
+    
+    \foreach \pos/\name in {{(2,3)/RB_2},{(7,3)/RB_5},{(3,2)/RB_6}, {(5,2)/RB_7}, {(3,4)/RB_8}, {(5,4)/RB_9}}
+    \node[selected vertex] (\name) at \pos {$\name$};
+    
+    % Connect vertices with edges 
+    \foreach \source/ \dest in { 1/RB_6, 1/RB_8, RB_2/3, RB_2/RB_8, 3/4, RB_2/RB_6, RB_6/RB_7, RB_8/RB_9, RB_9/4, RB_7/4, RB_9/RB_5, RB_7/RB_5}
+        \path[edge] (\source) -- (\dest) ;
+        
+\end{tikzpicture}
+\end{center}
+}
+
+We may pick one of free riders. \onslide<2>{How to pick?}
+
+\hyperlink{cyclic_diss}{\beamergotobutton{Go to discussion}}
+\end{frame}
+
+
+
+\end{document}

@@ -1,0 +1,199 @@
+\begin{thebibliography}{33}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Acemoglu et~al.(2011)Acemoglu, Dahleh, Lobel, and
+  Ozdaglar]{Acemoglu2011}
+D.~Acemoglu, M.~A. Dahleh, I.~Lobel, and A.~Ozdaglar.
+\newblock {Bayesian Learning in Social Networks}.
+\newblock \emph{The Review of Economic Studies}, 78\penalty0 (4):\penalty0
+  1201--1236, 2011.
+
+\bibitem[Amitai()]{Amitai}
+M.~Amitai.
+\newblock {Cheap-Talk with Incomplete Information on Both Sides}.
+
+\bibitem[Bikhchandani et~al.(1998)Bikhchandani, Hirshleifer, and
+  Welch]{Bikhchandani1998}
+S.~Bikhchandani, D.~Hirshleifer, and I.~Welch.
+\newblock {Learning from the Behavior of Others: Conformity, Fads, and
+  Informational Cascades}, 1998.
+
+\bibitem[Bolton and Harris(1999)]{Bolton1999}
+P.~Bolton and C.~Harris.
+\newblock {Strategic Experimentation}, 1999.
+
+\bibitem[Bramoull\'{e} and Kranton(2007)]{Bramoulle2007}
+Y.~Bramoull\'{e} and R.~Kranton.
+\newblock {Public goods in networks}.
+\newblock \emph{Journal of Economic Theory}, 135\penalty0 (1):\penalty0
+  478--494, 2007.
+
+\bibitem[Cao and Hirshleifer(2001)]{Cao2001}
+H.~H. Cao and D.~A. Hirshleifer.
+\newblock {Conversation, Observational Learning, and Informational Cascades}.
+\newblock \emph{SSRN Electronic Journal}, Nov. 2001.
+
+\bibitem[Chatterjee and Dutta(2011)]{Chatterjee2011}
+K.~Chatterjee and B.~Dutta.
+\newblock {Credibility and strategic learning in networks}, Jan. 2011.
+
+\bibitem[Chwe(2000)]{chwe2000}
+M.~S.-Y. Chwe.
+\newblock {Communication and Coordination in Social Networks}.
+\newblock \emph{Review of Economic Studies}, 67\penalty0 (1):\penalty0 1--16,
+  2000.
+
+\bibitem[Ellison(1994)]{Ellison1994}
+G.~Ellison.
+\newblock {Cooperation in the prisoner's dilemma with anonymous random
+  matching}.
+\newblock \emph{Review of Economic Studies}, 61\penalty0 (3):\penalty0
+  567--588, 1994.
+
+\bibitem[Fudenberg and Yamamoto(2010)]{Fudenberg2010}
+D.~Fudenberg and Y.~Yamamoto.
+\newblock {Repeated Games Where the Payoffs and MonitoringStructure Are
+  Unknown}.
+\newblock \emph{Econometrica}, 78\penalty0 (5):\penalty0 1673--1710, 2010.
+
+\bibitem[Fudenberg and Yamamoto(2011)]{Fudenberg2011}
+D.~Fudenberg and Y.~Yamamoto.
+\newblock {Learning from private information in noisy repeated games}.
+\newblock \emph{Journal of Economic Theory}, 146\penalty0 (5):\penalty0
+  1733--1769, 2011.
+
+\bibitem[Gale and Kariv(2003)]{RePEc:eee:gamebe:v:45:y:2003:i:2:p:329-346}
+D.~Gale and S.~Kariv.
+\newblock {Bayesian learning in social networks}.
+\newblock \emph{Games and Economic Behavior}, 45\penalty0 (2):\penalty0
+  329--346, 2003.
+
+\bibitem[Galeotti et~al.(2010)Galeotti, Goyal, Jackson, Vega-Redondo, and
+  Yariv]{Galeotti2010}
+A.~Galeotti, S.~Goyal, M.~O. Jackson, F.~Vega-Redondo, and L.~Yariv.
+\newblock {Network games}.
+\newblock \emph{Review of Economic Studies}, 77\penalty0 (1):\penalty0
+  218--244, 2010.
+
+\bibitem[Golub and Jackson(2010)]{Golub2010}
+B.~Golub and M.~O. Jackson.
+\newblock {Na\"{\i}ve Learning in Social Networks and the Wisdom of Crowds},
+  2010.
+
+\bibitem[Goyal(2012)]{Goyal2012}
+S.~Goyal.
+\newblock \emph{{Connections: An Introduction to the Economics of Networks}}.
+\newblock Princeton University Press, 2012.
+\newblock ISBN 140082916X.
+
+\bibitem[Granovetter(1978)]{Granovetter1978}
+M.~Granovetter.
+\newblock {Threshold Models of Collective Behavior}, 1978.
+
+\bibitem[Jackson(2008)]{Jackson2008}
+M.~O. Jackson.
+\newblock {Social and Economic Networks}.
+\newblock Aug. 2008.
+
+\bibitem[Karl-Dieter and Christiane(1993)]{Karl-Dieter1993}
+O.~Karl-Dieter and G.~Christiane.
+\newblock {Dissident groups, personal networks, and spontaneous cooperation:
+  The East German revolution of 1989.}
+\newblock \emph{American Sociological Review}, 58\penalty0 (5):\penalty0
+  659--680, 1993.
+
+\bibitem[Laclau(2012)]{Laclau2012}
+M.~Laclau.
+\newblock {A folk theorem for repeated games played on a network}.
+\newblock \emph{Games and Economic Behavior}, 76\penalty0 (2):\penalty0
+  711--737, 2012.
+
+\bibitem[Lohmann(1993)]{Lohmann1993}
+S.~Lohmann.
+\newblock {A Signaling Model of Informative and Manipulative Political Action}.
+\newblock \emph{American Political Science Review}, 87\penalty0 (2):\penalty0
+  319--333, 1993.
+
+\bibitem[Lohmann(1994)]{Lohmann1994}
+S.~Lohmann.
+\newblock {Information Aggregation Through Costly Political Action}.
+\newblock \emph{The American Economic Review}, 84\penalty0 (3):\penalty0
+  518--530, 1994.
+
+\bibitem[Lohmann(2011)]{Lohmann2011}
+S.~Lohmann.
+\newblock {The Dynamics of Informational Cascades: The Monday Demonstrations in
+  Leipzig, East Germany, 1989–91}.
+\newblock \emph{World Politics}, 47\penalty0 (01):\penalty0 42--101, June 2011.
+
+\bibitem[McAdam(2003)]{McAdam2003}
+D.~McAdam.
+\newblock {Beyond Structural Analysis: Toward a More Dynamic Understanding of
+  Social Movements}.
+\newblock In \emph{Social Movements and Networks}. Oxford University Press,
+  Oxford, 2003.
+
+\bibitem[{McAdam, Doung; Tarrow,
+  Sidney;Tilly}(2001)]{McAdamDoung;TarrowSidney;Tilly2001}
+C.~{McAdam, Doung; Tarrow, Sidney;Tilly}.
+\newblock \emph{{Dynamics of Contention}}.
+\newblock Cambridge University Press, 2001.
+\newblock ISBN 0521011876.
+
+\bibitem[OLSON(1965)]{OLSON1965}
+M.~OLSON.
+\newblock \emph{{THE LOGIC OF COLLECTIVE ACTION}}.
+\newblock Harvard University Press, 1965.
+\newblock ISBN 0674537513.
+
+\bibitem[Passy(2003)]{Passy2003}
+F.~Passy.
+\newblock {Social Networks Matter. But How?}
+\newblock In \emph{SOCIAL MOVEMENTS AND NETWORKS}, pages 21--48. Oxford U
+  Press, 2003.
+
+\bibitem[Renault and Tomala(1998)]{Renault1998}
+J.~m. Renault and T.~Tomala.
+\newblock {Repeated proximity games}.
+\newblock \emph{International Journal of Game Theory}, 27\penalty0
+  (4):\penalty0 539--559, 1998.
+
+\bibitem[SHADMEHR and BERNHARDT(2011)]{SHADMEHR2011}
+M.~SHADMEHR and D.~BERNHARDT.
+\newblock {Collective Action with Uncertain Payoffs: Coordination, Public
+  Signals, and Punishment Dilemmas}.
+\newblock \emph{American Political Science Review}, 105\penalty0 (04):\penalty0
+  829--851, Nov. 2011.
+
+\bibitem[Siegel(2009)]{Siegel2009}
+D.~A. Siegel.
+\newblock {Social networks and collective action}.
+\newblock \emph{American Journal of Political Science}, 53\penalty0
+  (1):\penalty0 122--138, 2009.
+
+\bibitem[Wiseman(2012)]{Wiseman2012}
+T.~Wiseman.
+\newblock {A partial folk theorem for games with private learning}, 2012.
+
+\bibitem[Wolitzky(2013)]{Wolitzky2013}
+A.~Wolitzky.
+\newblock {Cooperation with network monitoring}.
+\newblock \emph{Review of Economic Studies}, 80\penalty0 (1):\penalty0
+  395--427, 2013.
+
+\bibitem[Wolitzky(2014)]{Wolitzky2014}
+A.~Wolitzky.
+\newblock {Communication with tokens in repeated games on networks}.
+\newblock \emph{Theoretical Economics}, Jan. 2014.
+
+\bibitem[Yamamoto(2014)]{Yamamoto2014}
+Y.~Yamamoto.
+\newblock {Individual learning and cooperation in noisy repeated games}.
+\newblock \emph{Review of Economic Studies}, 81\penalty0 (1):\penalty0
+  473--500, 2014.
+
+\end{thebibliography}

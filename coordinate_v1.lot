@@ -1,0 +1,147 @@
+\begin{table}
+
+\caption{The analogue between indeterministic $T$-round writing game and repeated $k$-threshold game}
+\label{table:analogue}
+\begin{center}
+\begin{tabular}{ll }
+Indeterministic $T$-round writing game & Repeated $k$-threshold game \\
+\hline
+\hline
+A round & A range of periods\\
+A sentence & A sequence of actions \\
+The length of a sentence in a round & The length of a part of periods\\
+A chosen digit in a sentence & A chosen action\\
+The cost of writing a sentence & The expected payoff in a part of periods\\
+The fixed grammar & The equilibrium path\\
+\hline
+\end{tabular}
+\end{center}
+
+
+\end{table}
+\begin{table}
+
+\caption{The notations for the sequences of actions in $RP^t$ on the path}
+\label{Table_msg_form}
+\begin{center}
+\begin{tabular}{l c c}
+Notations && The sequence of actions\\
+\hline
+\hline
+$\langle  I \rangle$  & $\equiv$  & $\langle \textbf{s},...,\textbf{s},\underbrace{\textbf{r},\textbf{s},...,\textbf{s}}_{X_{I}} \rangle$  \\
+$\langle 1 \rangle$   & $\equiv$  & $\langle \textbf{s},...,\textbf{s},{\textbf{r}}\rangle$  \\
+$\langle \textbf{all stay} \rangle$   & $\equiv$  & $\langle \textbf{s},...,\textbf{s},{\textbf{s}}\rangle$  \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{table}
+\begin{table}
+
+\caption{The sequences of actions played in $RP^t$ on the path}
+\label{Table_msg_RP_path}
+\begin{center}
+\begin{tabular}{l c}
+Rebel $i$ & $i$ plays\\
+\hline
+\hline
+$i\notin R^t$ & $\langle \textbf{all stay} \rangle$  \\
+$i\in R^t$ but $i$ is not pivotal     & $\langle I^t_i \rangle$  \\
+$i$ is $k-1$-pivotal     & $\langle 1 \rangle$  \\
+$i$ is $\theta$-pivotal but not in the free-rider problem     & $\langle 1 \rangle$  \\
+$i$ is in the free-rider problem with the lowest index     & $\langle 1 \rangle$  \\
+$i$ is in the free-rider problem without the lowest index     & $\langle I^t_i \rangle$  \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{table}
+\begin{table}
+
+\caption{The notations for the sequences of actions in $CD^t_{u,v}$ for $u=1,2$, on the path}
+\label{Table_msg_coordination}
+\begin{center}
+\begin{tabular}{l c c}
+Notations & &The sequence of actions \\
+\hline
+\hline
+$\langle i \rangle$  & $\equiv$  & $\langle \textbf{s},...,\textbf{s},\underbrace{\textbf{r},\textbf{s},...,\textbf{s}}_{i} \rangle$  \\
+$\langle \textbf{all stay} \rangle$   & $\equiv$  & $\langle \textbf{s},...,\textbf{s},{\textbf{s}}\rangle$  \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{table}
+\begin{table}
+
+\caption{The sequences of actions played in $CD^0_{1,1}$ on the path}
+\label{Table_cd011}
+\begin{center}
+\begin{tabular}{l c}
+Rebel $i$    &   $i$ plays  \\
+\hline
+\hline
+$i$ is certain that $\#[R](\theta)<k$  &  $\langle \textbf{all stay} \rangle$ \\
+$i\notin R^{1}$ and is uncertain $\#[R](\theta)\geq k$ &  $\langle \textbf{all stay} \rangle$ \\
+$i\in R^{1}$ and is uncertain $\#[R](\theta)\geq k$ &  $\langle i \rangle$  \\
+$i$ is certain that $\#[R](\theta)\geq k$ &  $\langle i \rangle$  \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{table}
+\begin{table}
+
+\caption{The sequences of actions played in $CD^0_{2,1}$ on the path}
+\label{Table_cd021}
+\begin{center}
+\begin{tabular}{l c}
+Rebel $i$    &   $i$ plays  \\
+\hline
+\hline
+$i$ is certain that $\#[R](\theta)<k$  &  $\langle \textbf{all stay} \rangle$ \\
+$i\notin R^{1}$ and is uncertain $\#[R](\theta)\geq k$ &  $\langle \textbf{all stay} \rangle$ \\
+$i\in R^{1}$ and is uncertain $\#[R](\theta)\geq k$ &  $\langle i \rangle$  \\
+$i$ is certain that $\#[R](\theta)\geq k$ &  $\langle \textbf{all stay} \rangle$  \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{table}
+\begin{table}
+
+\caption{The sequences of actions played in $CD^0_{3}$ on the path}
+\label{Table_cd03v}
+\begin{center}
+\begin{tabular}{l c}
+Rebel $i$    &   $i$ plays  \\
+\hline
+\hline
+$i$ is certain that $\#[R](\theta)<k$  &  $\langle \textbf{s} \rangle$ \\
+$i\notin R^{1}$ and is uncertain $\#[R](\theta)\geq k$ &  $\langle \textbf{s} \rangle$ \\
+$i\in R^{1}$ and is uncertain $\#[R](\theta)\geq k$ &  $\langle \textbf{s} \rangle$  \\
+$i$ is certain that $\#[R](\theta)\geq k$ &  $\langle \textbf{r} \rangle$  \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{table}
+\begin{table}
+
+\caption{The belief of $j\in G_i$ after observing $i$'s previous actions immediately after $CD^0_{2}$}
+\label{Table_blf_up_cd02}
+\begin{center}
+\begin{tabular}{l  c c}
+   In $CD^0_{1,1}$ &  In $CD^0_{2,1}$   &\\
+\hline
+\hline
+  $i$ plays & $i$ plays & The event $j\in G_i$ assigns with probability one  \\
+\hline
+  $\langle \textbf{all stay} \rangle$ &  $\langle \textbf{all stay} \rangle$ &  $i\notin R^1$ or $\#[Rebels](\theta)< k$ \\
+  $\langle i \rangle$ & $\langle \textbf{all stay} \rangle$ &  $\#[Rebels](\theta)\geq k$    \\
+  $\langle i \rangle$ & $\langle i \rangle$ &  $i\in R^1$  \\
+  \hline
+\end{tabular}
+\end{center}
+
+\end{table}

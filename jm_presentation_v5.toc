@@ -1,0 +1,21 @@
+\beamer@endinputifotherversion {3.26pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Motivation}{2}{0}{1}
+\beamer@subsectionintoc {1}{2}{Literature Review}{15}{0}{1}
+\beamer@sectionintoc {2}{Model}{20}{0}{2}
+\beamer@subsectionintoc {2}{1}{Static Game}{20}{0}{2}
+\beamer@subsectionintoc {2}{2}{Repeated Game}{28}{0}{2}
+\beamer@sectionintoc {3}{Equilibrium construction}{44}{0}{3}
+\beamer@subsectionintoc {3}{1}{Equilibrium construction}{44}{0}{3}
+\beamer@sectionintoc {4}{Discussion}{91}{0}{4}
+\beamer@subsectionintoc {4}{1}{Discussion}{91}{0}{4}
+\beamer@sectionintoc {5}{Future Works}{93}{0}{5}
+\beamer@subsectionintoc {5}{1}{Future Works}{93}{0}{5}
+\beamer@sectionintoc {6}{Appendix}{94}{0}{6}
+\beamer@subsectionintoc {6}{1}{Alt of static game}{94}{0}{6}
+\beamer@subsectionintoc {6}{2}{Examples for APEX}{95}{0}{6}
+\beamer@subsectionintoc {6}{3}{CD to PR}{110}{0}{6}
+\beamer@subsectionintoc {6}{4}{Goals of Information Hierarchy}{115}{0}{6}
+\beamer@subsectionintoc {6}{5}{Information Hierarchy}{116}{0}{6}
+\beamer@subsectionintoc {6}{6}{Cycles}{122}{0}{6}

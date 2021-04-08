@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+\usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
+%\renewcommand{\baselinestretch}{1.5} 
+\usepackage[affil-it]{authblk}
+%\usepackage[utf8]{inputenc}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{MinionPro}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{natbib}
+\usepackage{color, colortbl}
+\usepackage{appendix}
+\usepackage{amsmath,amsthm}
+
+
+%\usepackage{wasysym}
+%\usepackage{amssymb}
+
+\usetikzlibrary{arrows,shapes}
+
+\definecolor{Gray}{gray}{0.9}
+
+\newtheorem{result}{Result}
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}{Assumption}[section]
+
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzstyle{vertex}=[circle,fill=black!25,minimum size=12pt,inner sep=0pt]
+\tikzstyle{selected vertex} = [vertex, fill=red!24]
+\tikzstyle{edge} = [draw,thick,-]
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
+\tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
+
+
+\linespread{1.2}
+
+\begin{document}
+%\fontsize{12}{20pt}\selectfont
+
+\title {Research Statement}
+\author{Chun-Ting Chen%
+  \thanks{\texttt{cuc230@psu.edu}}}
+%\affil{The Pennsylvania State University}
+
+\date{}
+
+%\maketitle
+
+\section*{Research Statement}
+
+The information pertinent to make joint decision is dispersed in the society. Communication is an important object in creating mechanisms to entice information provision and to coordinate actions. My current research interest centers on creating communication protocol to implement desirable outcome in various frameworks, while the communication protocol itself has to be an equilibrium strategy.
+
+This research statement is organized as follows. The first section describes my research on communication in social networks. The second section summarizes my study regarding pre-play communication in implementing correlated equilibrium. Finally, I briefly describe my future work agenda in section three.
+
+
+
+\subsection*{Communication in Social Networks}
+
+How collective action emerges from a society is a classical question in political economy. Among modelings of social structure, network models restrict communication and observation. \citep{Chwe2000} models an one-shot coordination problem in networks. In his framework, two types of players, Rebel and Inert, who have different opinions about revolutions, are present. When players can only observe their neighbors' types, \citep{Chwe2000} investigates how social networks provide common knowledge about type distribution and asks what kind of networks guarantee the success of revolution.
+
+In my job market paper, ``Coordination in Social Networks'', I extend \citep{Chwe2000} by considering a repeated coordination problem. Here, players can observe their neighbors types as well as their actions. I ask how players communicate by actions to learn the type distribution and to coordinate their future actions to the ex-post efficient outcome.
+
+
+In the baseline model, nature chooses players' types initially and then players play a threshold game repeatedly infinitely  with a common discount factor. This threshold game is as follows.  A Rebel can take two kinds of actions: \textbf{revolt} and \textbf{stay}. An Inert can only \textbf{stay}. A Rebel will get pay-off as $1$ if he chooses \textbf{revolt} and more than $k$ players choose \textbf{revolt}; he will get pay-off as $-1$ if he chooses \textbf{revolt} and less than $k$ players choose \textbf{revolt}; he will get pay-off as $0$ if he chooses \textbf{stay}. An Inert will get pay-off as $1$ if he chooses \textbf{stay}. 
+
+
+The ex-post efficient outcome is that, if there are at least $k$ Rebels then all Rebels play \textbf{revolt}; otherwise, all Rebels play \textbf{stay}. In order to learn the type distribution, Rebels need to use binary $\{\textbf{stay},\textbf{revolt}\}$-sequences to report other Rebels' existence. However, \textbf{revolt} comes with risks. Due to being discounting, Rebels always seek the opportunity to manipulate their binary sequence to save the expected cost. A free rider problem may occur in a situation where two nearby Rebels exchange information. Let's suppose that these two Rebels can learn the true state after acquiring information from each other's truthful reporting. Let's further suppose that each of them can initiate coordination without expected cost after exchanging information. In this instance, truthful reporting is not a best response because a player can wait given that the other will report truthfully. The above scenario demonstrates future coordination as a public good. This public good can only be made by Rebels' truthful reporting, which incurs costs. 
+
+I construct a communication protocol and deal with the free rider problem through several steps. First, I index each player by a distinguishable prime number. Then I let Rebels use binary $\{\textbf{stay},\textbf{revolt}\}$-sequences to report the multiplication of Rebels' prime numbers, which is relevant information. Second, two kinds of communication phases alternate in the time horizon line. In one kind of phases, \textit{reporting phase}, Rebels report other Rebels' prime numbers. In the other kind of phases, \textit{coordination phase}, Rebels initiate coordination only if they have the relevant information. After the coordination phase, whenever Rebels know that the future actions can be coordinated to \textbf{stay} or \textbf{revolt}, these two phases end resulting in the Rebels coordination to \textbf{stay} or \textbf{revolt} respectively.
+
+I assume that the network is a tree (undirected and acyclic) and take the following steps to cope with the free rider problem. If the network is a tree, I can show that the free rider problem only occurs between two nearby Rebels in any reporting phase. In an equilibrium, one of these two Rebels will report prime numbers truthfully, while the other will play a special sequence to indicate himself as a ``pivotal Rebel''---a Rebel who can tell the relevant information before he reports the prime numbers, given that others will report truthfully. A pivotal Rebel has to initiate coordination in the coordination phase, although he does not need to report prime numbers in reporting phase. 
+
+By setting suitable off-path belief and managing incurring expected costs in-the-path, I prove that Rebels will not deviate from the communication protocol by finding out positive probability events in which they have no chance to coordinate to the ex-post efficient outcome. Since the communication protocol leads players to coordinate to ex-post efficient outcome for all events, the constructed communication protocol is indeed an sequential equilibrium strategy if the discount factor is sufficiently high. This result holds for the networks that are fixed, finite, connected, commonly known, and acyclic. Moreover, Rebels will learn the relevant information in finite time without outside mechanism for Rebels' information exchanging.
+
+
+
+
+
+
+
+
+
+
+\subsection*{Pre-play Communication}
+
+
+
+The pre-play communication\footnote{A review can be obtained in \citep{Forges2009}.} is a communication protocol to implement correlated equilibria (\citep{Aumann1974}) or communication equilibria (\citep{Forges1986}, \citep{Myerson2004} ). Without a mediator, two major difficulties occur in implementing correlated equilibria. The first is that players should not truthfully report their information that describes their future behavior during the communication protocol.  The second is that, it is hard to punish a unilateral deviation if the player who deviates can not be identified. In the games with five or more players, both difficulties can be solved (\citep{Gerardi2004}). In the games with less than five players,  additional assumptions seem indispensable (e.g., \citep{Barany1987},\citep{Ben-Porath1996}).
+
+Here, I assume that players endow with finite and distinguishable messages. In the beginning of communication, each player has a set of messages, and players' sets of messages are not identical. Messages can be transferred around but cannot be reproduced. I call this message system as \textit{unduplicable messages}. I use unduplicable messages to identify detectable deviation and use jointly controlled lottery (\citep{Aumann1995}) to create uncertainty about players' future actions. I implement rational correlated equilibria in two kinds of three-players games. In the first kind, the third player has only one action. In the second kind, each player has two actions (binary actions).
+
+
+Inspired by \citep{Ben-Porath1996}, for the first kind, I let player 1 and player 3 use their unduplicable messages to create some lottery machines (a set of messages) dependent on player 1's conditional probabilities according to the implementing correlated equilibrium distribution. Then I let player 2 and player 3 use jointly controlled lottery to choose a ball (a message) from the lottery machine. Finally, player 3 pass this ball to player 2, and the protocol ends then. As \citep{Ben-Porath1996} addresses, this protocol can constitute a Nash equilibrium in implementing rational correlated equilibrium distribution.
+
+For the second kind of games, the problem solving idea is to let each two players' actions be contingent on their jointly controlled lottery draws and on the messages they get from the third party. Since players cannot affect the jointly controlled lottery draws by unilateral deviations, while unduplicable messages ensure that each players' private messages coming from the third party are distinguishable and can be identified, the communication protocol can create uncertainty about players' future actions and implement the correlated equilibrium distribution.
+
+
+
+
+
+\subsection*{Future Research Agenda}
+
+I plan to utilize my current research as a starting point for my future research with three directions. First, I will extend my job market paper to empirical or experimental research along the topics on collective action in network-like communication structures. I also plan to model different aspects in information transmission, such as “diffusion of rumors” in social network. Second, in my research on communication by actions, the threshold model seems to be a general model in finding a communication protocol in which players can learn the relevant information in finite time. I conjecture that, if an equilibrium endows with a learn-in-finite-time process, this equilibrium might be constructed from a communication protocol with an implicit threshold property. I plan to investigate this close relationship between threshold property and learning process. Third, following my research on pre-play communication, I will investigate the assumptions on complexity. When complexity bounds players' ability in processing information, it helps to create uncertainty about players' future actions. I will also continue to exploit the assumption of unduplicable messages to implement the games with three or more players.  
+
+
+
+ 
+
+
+
+
+
+\bibliographystyle{abbrvnat}	% (uses file "plain.bst")
+\bibliography{jmp_ref}		% expects file "myrefs.bib"
+
+\end{document}

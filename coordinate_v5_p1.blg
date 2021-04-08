@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: coordinate_v5_p1.aux
+The style file: abbrvnat.bst
+Database file #1: bigref.bib
+Warning--empty year in Deb2019b
+Warning--empty year in Deb2019b
+Warning--empty booktitle in FORGES1992155
+Warning--empty journal in Sugaya2018
+Warning--empty year in Sugaya2018
+Warning--empty year in Sugaya2018
+You've used 48 entries,
+            2773 wiz_defined-function locations,
+            918 strings with 10908 characters,
+and the built_in function-call counts, 20221 in all, are:
+= -- 1875
+> -- 796
+< -- 47
++ -- 282
+- -- 234
+* -- 1555
+:= -- 3058
+add.period$ -- 148
+call.type$ -- 48
+change.case$ -- 220
+chr.to.int$ -- 48
+cite$ -- 102
+duplicate$ -- 990
+empty$ -- 1903
+format.name$ -- 320
+if$ -- 4298
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 50
+newline$ -- 249
+num.names$ -- 192
+pop$ -- 412
+preamble$ -- 1
+purify$ -- 174
+quote$ -- 0
+skip$ -- 699
+stack$ -- 0
+substring$ -- 1083
+swap$ -- 73
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 518
+warning$ -- 6
+while$ -- 206
+width$ -- 0
+write$ -- 629
+(There were 6 warnings)

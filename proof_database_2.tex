@@ -1,0 +1,680 @@
+%\documentclass[12pt,letter]{article}
+\documentclass[12pt]{article}
+\usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{MinionPro}
+\usepackage{mathptmx}
+
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{natbib}
+\usepackage{color, colortbl}
+\usepackage{appendix}
+\usepackage{etex,etoolbox}
+
+\usepackage{amsmath,amsthm}
+
+\usetikzlibrary{arrows,shapes}
+
+\definecolor{Gray}{gray}{0.9}
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[subsection]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{claim}{Claim}[subsubsection]
+
+\theoremstyle{remark}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%\theoremstyle{claim}
+%\newtheorem*{claim}{Claim}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzstyle{vertex}=[circle,fill=black!25,minimum size=12pt,inner sep=0pt]
+\tikzstyle{selected vertex} = [vertex, fill=red!24]
+\tikzstyle{edge} = [draw,thick,-]
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
+\tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
+
+
+
+%\linespread{1.5}
+
+\begin{document}
+%\fontsize{12}{18pt}\selectfont
+
+
+
+
+
+
+
+\subsection{Proof for equilibrium}
+
+\begin{claim}
+\label{claim_either_success_or_fail}
+For $|Ex_{I^{m,t}_i}\cup I^{m,t}_i|\geq s$, where $m$ is a period in reporting period. If $i$ report $\langle 2 \rangle$ or $\langle 1 \rangle$, then $i$ will know $|[H]|\geq s$ or $|[H]|<s$ after reporting period, and thus the coordination can be either initiated in $t$-block or be never initiated.
+\end{claim}
+\begin{proof}
+By directly checking the equilibrium path, we have
+\begin{enumerate}
+
+
+\item if $\# I^{|RP^t|,t}_i\geq s$, then the coordination can be initiated by such $i$.
+\item if $\# I^{|RP^t|,t}_i= s-1$, and if there is one more node who reported $\langle 1 \rangle$, then the coordination can be initiated by $i$.
+\item if $\# I^{|RP^t|,t}_i= s-1$, and if there are no nodes who reported in current period, then $\# I^{|RP^t|,t}_i=\# I^{t}_i= s-1$. We now check the conditions guiding $i$ to \textbf{POST-CHECK}.
+\begin{itemize}
+\item If $i$ is coming from the conditions in \textbf{MAIN}, it means that there is no further $H$-node outside $I^{t-1}_i$, and thus outside $\bigcup_{k\in I^{t-1}_i}N_k$.
+\item If $i$ is coming from the conditions in \textbf{CHECK.0}, it means that there is no further $H$-node outside $\bigcup_{k\in I^{t-1}_i}N_k\cap [H]$, and thus outside $\bigcup_{k\in I^{t-1}_i}N_k$. 
+\item If $i$ is coming from the conditions in \textbf{CHECK.m}, it means that there is no further $H$-node outside $\bigcup_{k\in I^{t-1}_i}N_k\cap [H]$, and thus outside $\bigcup_{k\in I^{t-1}_i}N_k$. 
+\end{itemize}
+Then $\# I^{t}_i< k$, but $I^t_i=\bigcup_{k\in I^{t-1}_i}N_k\cap R^0$, and hence $\# R^0<k$, and thus the coordination can never happen.
+
+\end{enumerate}
+
+
+\end{proof}
+
+
+
+\begin{lemma}
+If the state has strong connectivity, then for all $n$-person repeated $k$-Threshold game with parameter $1\leq k\leq n$ played in any finite connected undirected network without circle, the equilibrium path is approaching efficient.
+\end{lemma}
+
+\begin{proof}
+We want to show that when $\theta$ satisfying $\#[Rebels](\theta)\geq k$, all the Rebels play \textbf{revolt} eventually; when $\theta$ satisfying $\#[Rebels](\theta)< k$, all the Rebels play \textbf{stay} eventually.
+\begin{enumerate}
+\item If all the Rebels only play $\langle I^{t-1} \rangle$ or $\langle \textbf{stay} \rangle$ in reporting period for all $t\geq 1$ block, then by the equilibrium path, those nodes played $\langle I^{t-1} \rangle$ are $R^t$-node, and those nodes played $\langle \textbf{stay} \rangle$ are not-$R^t$ nodes. 
+
+If there are some Rebels play $\langle \textbf{stay} \rangle$ in the first division in $t$-block, then all the Rebels play \textbf{stay} eventually; If $R^t$ Rebels play $\langle \textbf{stay} \rangle$ in the first sub-block in second division in $t$-block, then all the Rebels will play \textbf{stay} after third division in this block. Otherwise, all the Rebels go to the next reporting period.
+
+By Theorem ~\ref{lemma_empty}, there is a $t^{*}$ such that there is a $R^{t^{*}}$ node knows $\theta$, and therefore he knows if $\theta$ satisfying $\#[Rebels](\theta)\geq k$ or $\#[Rebels](\theta)< k$. In equilibrium path, such node play $\langle \textbf{stay} \rangle$ either in the first sub-block in first division or in the first sub-block in second division in coordination period.Thus the equilibrium path is approaching efficient.
+
+\item If there are some Rebels play $\langle 1 \rangle$ in reporting period for a $t\geq 1$ block, then by Claim ~\ref{claim_either_success_or_fail}, such nodes will knows if $\theta$ satisfying $\#[Rebels](\theta)\geq k$ or $\#[Rebels](\theta)< k$ after reporting period in this $t$-block. $\langle \textbf{stay} \rangle$ either in the first sub-block in first division or in the first sub-block in second division in coordination period. Thus the equilibrium path is approaching efficient.
+
+ 
+\end{enumerate}
+
+\end{proof}
+
+
+
+\subsubsection{Main claims in reporting period}
+
+We show the main claims here. The details of the other claims in equilibrium path will be in appendix.
+
+
+\begin{claim} 
+\label{claim_detection_reporting_period}
+For $|Ex_{I^{m,t}_i}\cup I^{m,t}_i|\geq s$. Denote $D$ be the set of $H$-neighbours who detect $i$'s deviation. If $|I^{m,t}_i|<s$, and if $D\neq \emptyset$, then there is a $M<\infty$ and an event $E$ such that $i$'s expected continuation pay-off is less than that in equilibrium path by at least 
+\[\delta^{M}\frac{\beta_{i}(E|h^{m}_{N_i})}{1-\delta}\]
+, where $\beta_{i}(E|h^{m}_{N_i})>0$
+\end{claim}
+\begin{proof}
+
+Denote $D$ be the set of neighbours who detect $i$'s deviation. Let the events be
+\begin{eqnarray*}
+E_1 	&= &\{\theta: \#[Rebels](\theta)<k\}\\
+E_2 	&= &\{\theta: k\leq \#[Rebels](\theta)<k+\# D\}\\
+E_3 	&= &\{\theta: \#[Rebels](\theta)\geq k+\# D\}
+\end{eqnarray*}
+
+In equilibrium path, there are periods $t^{s}$ ($t^{f}$) such that if $\theta$ satisfying $\#[\text{Rebels}](\theta)\geq k$ ( $\#[\text{Rebels}](\theta)< k$) then Rebels play \textbf{revolt} (\textbf{stay}) forever. If $i$ follows the equilibrium path, the expected static pay-off after $\max\{t^s,t^f\}$\footnote{There is $t^{s}$ or $t^{f}$ for each $\theta$. The maximum is among those possible $\theta$.} is
+ \[\beta_{i}(E_2|h^{m}_{N_i})+\beta_{i}(E_3|h^{m}_{N_i})\]
+
+If $i$ deviate, the expected static pay-off after $\max\{t^s,t^f\}$ is
+ \[\beta_{i}(E_3|h^{m}_{N_i})\]
+ 
+Therefore there is a loss in expected static pay-off of
+\[\beta_{i}(E_2|h^{m}_{N_i})\]
+
+Thus, there is a loss in expected continuation pay-off contingent on $E$ by
+\[\delta^{\max\{t^s,t^f\}}\frac{\beta_{i}(E_2|h^{m}_{N_i})}{1-\delta}\]
+
+\end{proof}
+
+
+
+\begin{claim} 
+\label{claim_deviation_higher_reporting}
+For $|Ex_{I^{m,t}_i}\cup I^{m,t}_i|\geq s$. If $|I^{m,t}_i|<s$, and if $i$ deviate by reporting $\bar{I}^{t-1}_i\supset I^{t-1}_i$ and such deviation is not detected by $i$'s neighbour, then there is a loss compared to equilibrium in expected pay-off by
+\begin{enumerate}
+\item either $-\delta^{|RP^t|-|I^{t-1}_i|+1}+\delta^{|RP^t|-|\bar{I}^{t-1}_i|+1}$ in static pay-off
+\item or, there is a $M<\infty$ and events $E_1,E_2$ such that $i$'s expected continuation pay-off is less than that in equilibrium path by at least 
+\[\delta^{M}\frac{\min\{\beta_{i}(E_1|h^{m}_{N_i}),\beta_{i}(E_2|h^{m}_{N_i})\}}{1-\delta}\]
+, where $\beta_{i}(E_1|h^{m}_{N_i})>0$ and $\beta_{i}(E_2|h^{m}_{N_i})>0$
+\end{enumerate}
+
+
+
+\end{claim}
+
+
+
+
+\begin{claim} 
+\label{claim_can_not_pretend_almost_success}
+For $|Ex_{I^{m,t}_i}\cup I^{m,t}_i|\geq s$. If $|I^{m,t}_i|<s-1$, and if $i\notin C$, then if $i$ deviate by reporting \[\langle\textbf{runs [POST-CHECK,1 or 2]}\rangle\]
+, then there is a $M<\infty$ and an event $E$ such that $i$'s expected continuation pay-off is less than that in equilibrium path by at least 
+\[\delta^{M}\frac{\beta_{i}(E|h^{m}_{N_i})}{1-\delta}\]
+or
+\[\delta^{M}\frac{\min\{\beta_{i}(E|h^{m}_{N_i}),\beta_{i}(T\setminus E|h^{m}_{N_i})\}}{1-\delta}\]
+, where $\beta_{i}(E|h^{m}_{N_i})>0$ and $\beta_{i}(T\setminus E|h^{m}_{N_i})>0$
+\end{claim}
+
+
+
+
+\begin{claim}
+\label{claim_almost_sucess}
+For $|Ex_{I^{m,t}_i}\cup I^{m,t}_i|\geq s$, 
+\begin{enumerate}
+\item If $i$ can report $\langle 2 \rangle$, then $|I^{||RP^t-|2|+1|,t}_i|\geq s$, and thus $|[H]|\geq s$. 
+\item If $i$ can report $\langle 1 \rangle$, then either $|I^{||RP^t-|1|+1|,t}_i|= s-1$ or there is one of $i$'s neighbours has reported $\langle 2 \rangle$
+\end{enumerate}
+
+\end{claim}
+
+\begin{proof}
+By checking condition \textbf{POST-CHECK} directly.
+\end{proof}
+
+
+
+\begin{claim}
+\label{claim_must_report_2}
+For $|Ex_{I^{m,t}_i}\cup I^{m,t}_i|\geq k$. If $\beta_{i}(\#[Rebels](\theta)\geq s|h^{|RP^t|}_{G_i})>0$, then if $i$ can report $\langle 2 \rangle$, then $i$ will not report $\langle 1 \rangle$ or $\langle l \rangle$ when $\delta$ is high enough.
+\end{claim}
+
+\begin{proof}
+
+By Claim ~\ref{claim_almost_sucess}, We have $|I^{||RP^t-|2|+1|,t}_i|\geq s$.
+
+Now let the event $E$ be
+\[E=[[H]=|I^{||RP^t-|2|+1|,t}_i|]\]
+
+Note that, contingent on $E$, there is no more node can initiate the coordination. This is because for all $j\in O^{||RP^t-|2|+1|,t}_i$, $j$ is with $|I^{t-1}_j|< s$, and there is no more $H$-node outside $I^{||RP^t-|2|+1|,t}_i=\bigcup_{j\in O^{||RP^t-|2|+1|,t}_i} I^{t-1}_j$. Since $i$ can not initiate the coordination, compared to equilibrium, there is a loss in expected continuation pay-off as
+\[\delta^{t}\frac{\beta_{i}(E|h^{m^{'}}_{N_i})}{1-\delta}, \text{when } m^{'}> t\]
+
+
+
+
+
+\end{proof}
+
+\begin{claim}
+\label{claim_must_report_1}
+For $|Ex_{I^{m,t}_i}\cup I^{m,t}_i|\geq s$. If $\beta_{i}(|[H]|\geq s|h^{||RP^t-|1|+1|}_{N_i})>0$, then if $i$ can report $\langle 1 \rangle$, then $i$ will not report $\langle l \rangle$ when $\delta$ is high enough.
+\end{claim}
+
+\begin{proof}
+
+By Claim ~\ref{claim_almost_sucess}, We have $|I^{||RP^t-|1|+1|,t}_i|= s-1$.
+\begin{itemize}
+
+
+\item Case 2: If there is no $j\in N_i\setminus i$ has reported $\langle 2 \rangle$, since $\beta_{i}(|[H]|\geq s|h^{||RP^t-|1|+1|}_{N_i})>0$, the following event $E_1$ must have positive probability; otherwise, since no neighbours can report after current period, and thus $\beta_{i}(|[H]|\geq s|h^{||RP^t-|1|+1|}_{N_i})=0$.
+
+Let
+\[E_1=[\exists j\in N_i\setminus i, j\notin O^{||RP^t-|2|+1|,t}_i \text{ such that } |I^{||RP^t-|1|+1|,t}_j|= s-1]\]\footnote{More crucially, the following event $F$ has zero probability,
+\[F=[\exists j\in N_i\setminus i, j\notin O^{||RP^t-|2|+1|,t}_i \text{ such that } |I^{||RP^t-|1|+1|,t}_j|\geq s]\]. } 
+
+
+
+Now we can construct sub-events $E^{'}_1\subset E_1$ as
+
+\[E^{'}_1=[\text{there is only one } j\in N_i\setminus i, j\notin O^{||RP^t-|1|+1|,t}_i \text{ such that } |I^{||RP^t-|1|+1|,t}_j|= s-1]\] 
+
+Now, dependent on such $j$, let
+\[E=[[H]=I^{||RP^t-|1|+1|,t}_j\cup I^{||RP^t-|1|+1|,t}_i]\]
+
+If $i$ report $\langle l \rangle$, there are following consequences.
+
+\begin{itemize}
+\item $i$ will be consider as $\notin R^t$ by Claim ~\ref{claim_distinguish_R_t}, and thus $i$ can not initiate the coordination.
+\item Such $j$ will have $|I^{|RP^t|}_j|=|I^t_j|<s$. Since there is no more $H$-nodes outside $I^{||RP^t-|2|+1|,t}_j\cup I^{||RP^t-|2|+1|,t}_i$, contingent on $E$, such $j$ will not initiate the coordination.
+\item For other $k\in O^{||RP^t-|2|+1|,t}_i$, since $k$ is with $|I^{t-1}_k|< s$, they will not initiate the coordination either
+\end{itemize}
+
+However, if $i$ play $\langle 1 \rangle$, coordination can be initiated by himself in the following coordination period. Thus, there is a loss in expected continuation pay-off by
+\[\delta^{t}\frac{\beta_{i}(E|h^{m^{'}}_{N_i})}{1-\delta}, \text{when } m^{'}> t\]
+
+
+
+
+\end{itemize}
+
+
+
+
+\end{proof}
+
+
+\begin{claim}
+For $|Ex_{I^{m,t}_i}\cup I^{m,t}_i|\geq s$. If $i\notin R^{t}$, and if $i$ did not observed $\langle 2 \rangle$, then $i$ will not report $\langle 1 \rangle$.
+\end{claim}
+\begin{proof}
+
+Otherwise, there is a loss in static pay-off and the continuation pay-off is the same for all states.
+
+\end{proof}
+
+\subsubsection{Main claims in coordination period}
+
+We show the main claims here. The details of the other claims in equilibrium path will be in appendix.
+
+
+
+
+\begin{claim}
+\label{claim_must_success}
+In \textbf{COORDINATION}. If there is a $j\in N_i\setminus i$ has played $\langle 2 \rangle$ or $\langle 1 \rangle$ in reporting period, and $j$ did not play $\langle l \rangle$ in the \textbf{CHECK.f}, then either $|I^t_j|\geq s$ or $\exists k\in N_j\setminus j[|I^t_k|\geq s]$.
+\end{claim}
+\begin{proof}
+
+Due to the equilibrium strategy in reporting period and in \textbf{CHECK.f}. 
+
+\end{proof}
+
+
+
+
+\begin{claim} 
+\label{claim_report_with_no_message_coordination_period}
+In \textbf{COORDINATION}. If there is no $j\in N_i$ has played $\langle 2 \rangle$ or $\langle 1 \rangle$, if $|I^t_i|<s$, and if there is no $j\in N_i$ has played play $\langle l \rangle$ in \textbf{CHECK.f}, then if $i$ has not observed $\langle \text{coordination message} \rangle$ but $i$ play those messages, then there is a $M<\infty$ and event $E_1,E_2$ such that $i$'s expected continuation pay-off is less than that in equilibrium path by at least 
+\[\delta^{M}\frac{\min\{\beta_{i}(E_1|h^{m}_{N_i}),\beta_{i}(E_2|h^{m}_{N_i})\}}{1-\delta}\]
+, where $m$ is a period in pre- or post-coordination period, and $\beta_{i}(E_1|h^{m}_{N_i})>0,\beta_{i}(T\setminus E_2|h^{m}_{N_i})>0$
+\end{claim}
+
+
+\begin{claim} 
+\label{claim_detection_coordination_period}
+In \textbf{COORDINATION}. If there is no $j\in N_i$ has played $\langle 2 \rangle$ or $\langle 1 \rangle$, if $|I^t_i|<s$, and if there is no $j\in N_i$ has played play $\langle l \rangle$ in \textbf{CHECK.f}, then if $i$ deviate and such deviation is detected by some $j\in N_i\setminus i$, then there is a $M<\infty$ and event $E$ such that $i$'s expected continuation pay-off is less than that in equilibrium path by at least 
+\[\delta^{M}\frac{\beta_{i}(E|h^{m}_{N_i})}{1-\delta}\]
+, where $m$ is a period in pre- or post-coordination period, and $\beta_{i}(E_1|h^{m}_{N_i})>0$
+\end{claim}
+
+
+
+\appendix
+\section{Proof}
+
+\subsection{Proof for Lemma ~\ref{lemma1}}
+\begin{proof}
+The proof is by induction. We first show that the statement is true for $t=1$. 
+
+\begin{claim}
+\textbf{Base}: $i\in R^1\Leftrightarrow [i\in R^0] \wedge [\exists k_1,k_2\in (R^0\cap N_i\setminus i)]$. 
+\end{claim}
+\begin{proof}
+$\Rightarrow$: Since $i\in R^1$, then $i\in R^0$ and $\forall j\in N_i\setminus i [I^0_i\nsubseteq N^0_j]$ by definition. Since $I^0_i=N_i\cap R^0$ and $i\in N^0_j$, then  $\forall j\in N_i\setminus i [\exists k\in (R^0\cap N_i\setminus i) [k\notin N^0_j]]$. Since the $j\in N_i\setminus i$ is arbitrary,  we then have a pair of $k_1, k_2 \in (R^0\cap N_i\setminus i)$ such that both $k_1\notin N^0_{k_2}$ and $k_2\notin N^0_{k_1}$.
+
+\bigskip
+
+$\Leftarrow$: Pick $k\in \{k_1,k_2\}\subseteq N_i\cap R^0$, and pick an arbitrary $j\in (N_i\setminus \{i,k\})$. Note that $k\notin D^0_j$, otherwise there is a circle from $i$ to $i$ since $i\in N^0_j\subseteq D^0_j$. Hence $[k\in N_i\cap R^0] \wedge [k\notin D^0_j]$, and therefore $[k\in I^0_i] \wedge [k\notin N^0_j]$. Then we have $I^0_i\nsubseteq N^0_j$ for arbitrary $j\in N_i\setminus i$, and thus $i\in R^1$.
+\end{proof}
+
+\textbf{Induction hypothesis}: the statement is true up to $t$ and $t\geq 1$. 
+
+\begin{claim}
+If the hypothesis is true, then \[i\in R^{t+1}\Leftrightarrow [i\in R^{t}] \wedge [\exists k_1,k_2\in R^{t}\cap N_i\setminus i]\]
+\end{claim}
+\begin{proof}
+$\Rightarrow$: since $i\in R^{t+1}$, then $i\in R^t$ and $\forall j\in N_i\setminus i [I^t_i\nsubseteq N^t_j]$ by definition. Recall Equation (~\ref{eqn_info}) and Equation (~\ref{eqn_nbr}), then for every $m\in I^{t-1}_i$, we can find a path connecting $i$ to $m$ (the existence of such path is by the induction hypothesis). If $j\in N_i\setminus i$, then we can find a path connecting $j$ to $m$ by connecting $j$ to $i$, and then connecting $i$ to $m$. Thus, if $m\in I^{t-1}_i$ then $m\in N^t_J$, and hence $I^{t-1}_i\subseteq N^t_{j}$ if $j\in N_i\setminus i$.
+
+Further note that $I^t_i = \bigcup_{k\in N_i\cap R^t}I^{t-1}_k$, then we must have $\forall j\in N_i\setminus i [\exists k\in (R^t\cap N_i\setminus i)[ I^{t-1}_k\nsubseteq N^t_j]]$, since $I^{t-1}_i\subseteq N^t_{j}$. Since the $j\in N_i\setminus i$ is arbitrary,  we then have a pair of $k_1, k_2 \in (R^t\cap N_i\setminus i)$ such that both $k_1\notin N^t_{k_2}$ and $k_2\notin N^t_{k_1}$.
+\bigskip
+
+$\Leftarrow$:
+By the induction hypothesis, we have a chain $k_{1_0},...,k_1,i,k_2,...,k_{2_0}$ with $k_{1_0}\in R^0$,..., $k_1\in R^t$, $i\in R^t$, $k_2\in R^t$,...,and $k_{1_0}\in R^0$. Note that $k_{1_0}\notin D^t_j$ whenever $j\in N_i\setminus i$, otherwise there is a circle from $i$ to $i$ since $\{i,k_2,...,k_{2_0}\}\in N^t_j\subseteq D^t_j$. Hence $[k_{1_0}\in I^{t-1}_{k_1}] \wedge [k_{1_0}\notin D^t_j]$, and therefore $[I^{t-1}_{k_1}\in I^t_i] \wedge [I^{t-1}_{k_1}\notin N^t_j]$. Then we have $I^t_i=\bigcup_{k\in N_i\cap R^{t}}I^{t-1}_k\nsubseteq N^t_j$ for arbitrary $j\in N_i\setminus i$, and thus $i\in R^1$.
+
+\end{proof}
+
+We can then conclude that the statement is true by induction.
+
+\end{proof}
+
+\subsection{Proof for Lemma ~\ref{lemma_connected}}
+\begin{proof}
+\begin{enumerate}
+\item The proof is by induction, and by Lemma ~\ref{lemma1}. Since the state has strong connectivity, all the $R^0$ nodes are connected, and thus we have a $R^0$-path connecting each pair of $R^0$ nodes. Since all pairs of $R^0$ nodes are connected by a $R^0$-path, then for all pairs of $R^1$ nodes must be in some of such paths by Lemma ~\ref{lemma1}, and then connected by a $R^0$-path. But then all the $R^0$-nodes in such path are all $R^1$ nodes by Lemma ~\ref{lemma1} again and by $R^t\subseteq R^{t-1}$. Thus, for all pairs of $R^1$ nodes has a $R^1$-path connecting them. The similar argument holds for $t> 1$, we then get the result.
+\item The uniqueness is by the fact that the network is a tree, and therefore the path connecting all distinguish nodes is unique.   
+\end{enumerate}
+\end{proof}
+
+\subsection{Proof for Lemma ~\ref{lemma_notempty}}
+\begin{proof}
+We have to show that $R^{t-1}\supseteq \bigcup_{i\in R^t} N_i\cap [H]$ and $R^{t-1}\subseteq \bigcup_{i\in R^t} N_i\cap [H]$. 
+\begin{itemize}
+\item $\supseteq $: Since $R^t$ is not empty, we can pick a node $m\in \bigcup_{i\in R^t} N_i\cap [H]$. By Lemma ~\ref{lemma1}, $m\in R^t\cup R^{t-1}=R^{t-1}$, and therefore $m\in R^{t-1}$.
+\item $\subseteq$: Since both $R^{t-1}$ and $R^{t}$ are not empty, we can pick nodes $m_1\in R^{t-1}$ and $m_2\in R^{t}$. Since the state has strong connectivity, there is a $R^{t-1}$ path connecting them by Lemma ~\ref{lemma_connected}. But then the nodes (expect for $m_1,m_2$) in this path are all $R^{t}$ nodes by Lemma ~\ref{lemma1}, and then there is $m^{'}_1\in N_{m_1}\cap R^t$. Since the $m_1\in R^{t-1}$ we picked is arbitrary, therefore it means for all $m\in R^{t-1}$ there is a $m^{'}\in N_{m}\cap R^{t}$, and hence $m\in N_{m^{'}}\cap [H]$ while $m^{'}\in R^t$. We then get the result. 
+\end{itemize}
+
+\end{proof}
+
+\subsection{Proof for Lemma ~\ref{lemma_empty}}
+
+\begin{proof}
+\begin{enumerate}
+\item If $1\leq |R^t| \leq 2$, then by Lemma ~\ref{lemma1} and by Lemma ~\ref{lemma_connected}, we have a spanning tree consisting the nodes in $R^{t-1}$,...,$R^0$. Since the state has strong connectivity, all the $H$-nodes are in this tree. By Lemma ~\ref{lemma_notempty}, we have
+\[R^0=\bigcup_{k_1\in R^1} N_{k_1}\cap [H]=\bigcup_{k_1\in N_{k_2}\cap R^1} \bigcup_{k_2\in N_{k_3}\cap R^2}...\bigcup_{k_{t-1}\in N_{k_t}\cap R^t}N_{k_t}\cap [H]\]
+
+Then by Equation (14), if $i\in R^t$ we have 
+\[I^t_i=\bigcup_{k_0\in N_i\cap R^{t}}\bigcup_{k_1\in N_{k_0}\cap R^{t-1}}...\bigcup_{k_{t-1}\in N_{k_{t-2}}\cap R^{1}}N_{k_{t-1}}\cap R^0\]
+
+Now note that $R^0=[H]$, and compare the above two equations, we got $[H]= I^t_{i}$ if $i\in R^t$.
+
+\item For a given $t$-block, in the case when $R^t\neq \emptyset$ and $R^{t+1}\neq \emptyset$, the proof is a direct application of Lemma ~\ref{lemma_notempty}, and we continue taking the union of nodes' information set. Since the network is finite, the $[H]$ will be a subset of some nodes' information set eventually.
+
+We then only consider the case when $R^t\neq \emptyset$ and $R^{t+1}= \emptyset$. But in such case, it means that there is no $R^{t}$ node which has more than two distinguish $R^{t}$ neighbours by Lemma ~\ref{lemma1}, and then $1\leq |R^t| \leq 2$ since all pairs of $R^t$ nodes are connected by $R^t$-path by Lemma ~\ref{lemma_connected}. The first part of this Lemma ~\ref{lemma_empty} then shows the result. 
+\end{enumerate}
+
+\end{proof}
+
+
+
+\subsection{Proof for Lemma ~\ref{lemma_at_most_two_nodes}}
+\begin{proof}
+Suppose there are three or more $R^t$-nodes in $C$, then pick any three nodes of them, and denote them as $i_1,i_2,i_3$. Let's say $i_2$ is in the $(i_1i_3)$-path, and therefore $i_2\in Tr_{i_1i_2}$ and $i_3\in Tr_{i_2i_3}$. First we show that $i_1\in N_{i_2}$ (or $i_3\in N_{i_2}$). Suppose $i_1\notin N_{i_2}$, since $i_1,i_2\in R^t$, then the $(i_1i_2)$-path is a $R^t$-path by Lemma ~\ref{lemma1}. Let this $(i_1i_2)$-path be $(i_1,j_1,...,j_n,i_2)$. Since $i_1,j_1,...,j_n,i_2\in R^t$, we then have $I^{t-1}_{i_1}\nsubseteq N^{t-1}_{j_1},...,I^{t-1}_{j_n}\nsubseteq N^{t-1}_{i_2}$ and $I^{t-1}_{j_1}\nsubseteq N^{t-1}_{i_1},...,I^{t-1}_{i_2}\nsubseteq N^{t-1}_{j_n}$. Since $I^{t-1}_{i_1}\subseteq N^{t-1}_{i_1},...,I^{t-1}_{i_2}\subseteq N^{t-1}_{i_2}$ by Lemma ~\ref{lemma_I_subset_N}, we further have $\exists k_1\in [H][k_1\in N^{t-1}_{j_1}\setminus I^{t-1}_{i_1}]$,...,$\exists k_n\in [H][k_n\in N^{t-1}_{j_n}\setminus I^{t-1}_{i_2}]$. Since the state has Strong Connectivity, such $k_1,...,k_n$ are connected. But then we have already found $k_1,k_2$ such that $k_1\in N^{t-1}_{j_1}\setminus I^{t-1}_{i_1}$ and $k_2\in N_{k_1}\setminus k_1$. It is a contradiction that $i_1\in C$.
+
+Now, $i_1,i_2,i_3$ will form a $R^t$-path as $(i_1,i_2,i_3)$. With the same argument as the above, we then have $\exists k_1\in [H][k_1\in N^{t-1}_{i_2}\setminus I^{t-1}_{i_1}]$ and $\exists k_2\in [H][k_2\in N^{t-1}_{i_3}\setminus I^{t-1}_{i_2}]$, and thus $i_1$ is not in $C$.
+\end{proof}
+
+\subsection{Proof for Lemma ~\ref{lemma_no_node_outside}}
+\begin{proof}
+Since $i\in R^t$, there is a $j\in R^{t-1}$ and $j\in N_i\setminus i$ by Lemma ~\ref{lemma1}. Given any $j\in R^{t-1}\cap (N_i\setminus i)$, first note that $N^{t-1}_j\subseteq \bigcup_{k\in N^{t-1}_i}N_k$ by $N^{t-1}_j \equiv \bigcup_{k\in I^{t-2}_j}N_k$, and $I^{t-2}_j\subseteq I^{t-1}_i\subseteq N^{t-1}_i$. If there is another node outside $\bigcup_{k\in N^{t-1}_i}N_k$ in $Tr_{ij}$, then there must be another node connected to $N^{t-1}_j$ since the network is connected. It is a contradiction that $i\in C$.
+
+\end{proof}
+
+
+\subsection{Proof for equilibrium}
+
+\subsubsection{Proof for Claim ~\ref{claim_either_success_or_fail}}
+
+
+\subsection{Proof for reporting period}
+
+
+\subsubsection{Proof for Claim ~\ref{claim_detection_reporting_period}}
+
+
+\begin{proof}
+Assume $\bar{I}^{t-1}_i\neq I^{t-1}_i$. Since a detection of deviation has not occur, it must be the case that there is a non-empty set $F=\{j\in \bar{I}^{t-1}_i:\theta_j=Inerts\}$\footnote{Otherwise, there is a detection of deviation. Recall the definition in information hierarchy: $I^{-1}_i\subset I^{0}_i\subset...\subset I^{t-1}_i$}. 
+
+
+Let the set 
+\[E_1=\{\bar{\theta}: \bar{\theta}_j=Rebel \text{ if } j\in F \text { and }\bar{\theta}_j=\theta_j \text{ if } j\notin F\}\]
+be the set of pseudo events by changing $\theta_j$ where $j\in F$. And let
+\[E_2=\{\theta: \theta_j=Inert \text{ if }j\in F \text { and }\bar{\theta}_j=\theta_j \text{ if } j\notin F\}\]
+be the set of true event.
+
+Then consider the event
+\begin{eqnarray*}
+E 	&= &\{\bar{\theta}\in E_1: \#[Rebels](\bar{\theta})\geq k\}\\
+ 	&= &\{\theta\in E_2: \#[Rebels](\theta)\geq k-\#F\}
+\end{eqnarray*}
+
+Partition $E$ as sub events
+\begin{eqnarray*}
+E_3 	&= &\{\theta\in E_2: \#[Rebels](\theta)\geq k\}\\
+E_4 	&= &\{\theta\in E_2: k>\#[Rebels](\theta)\geq k-\#F\}
+\end{eqnarray*}
+
+By Lemma and following the strategies in equilibrium path (since $i$ have not been detected), there is a block $\bar{t}^{s}$ with respect to $\bar{\theta}$ such that if $\bar{\theta}\in E$ then there some $R^{\bar{t}^s}$ Rebel $j$s, says $J$, will initiate the coordination, and then Rebels play \textbf{revolt} forever after $\bar{t}^s$-block.
+
+If $i\in J$, his own initiation will only depends on $\# I^{\bar{t}^s}_i$ by Claim, which is the same as he has reported $\langle {I}^{t-1}_i\rangle$. It is strictly better by not deviating since playing $\langle\bar{I}^{t-1}_i\rangle$ is more costly than $\langle\bar{I}^{t-1}_i\rangle$ ($X_{\bar{I}^{t-1}_i}>X_{I^{t-1}_i}$).
+
+If there is another $j$ who $\bar{I}^{t-1}_i\not\subset I^{\bar{t}^{s}}_j$, then which is the same as he has reported $\langle {I}^{t-1}_i\rangle$. It is strictly better by not deviating since playing $\langle\bar{I}^{t-1}_i\rangle$ is more costly than $\langle\bar{I}^{t-1}_i\rangle$.
+
+If there is another $j$ who $\bar{I}^{t-1}_i\subset \bar{I}^{\bar{t}^{s}}_j$ and $\# I^{\bar{t}^s}_i\geq k$, take the event $E=\{\theta:\theta_j=Rebel\}$. In this event, no one will initiate. Note that this event is independent of $\bar{I}^{t-1}_i$. 
+
+
+
+
+If the event $\{\bar{\theta}: \#\bar{I}^{\bar{t}^{s}}_j\geq k\}$ $E_2$ and $E_3$ has positive probability. If each one has zero probability. same for not deviating.  
+
+After $\bar{t}^{s}$, $i$'s expected static pay-off at most 
+\[
+{\max\{\beta_{i}(E_3|h^{m}_{N_i})\times 1+\beta_{i}(E_4|h^{m}_{N_i})\times (-1), 0\}}
+\]
+
+
+If $i$ deviate, the expected static pay-off after $\max\{t^s,t^f\}$ is
+ \[\max\{\beta_{i}(E_3|h^{m^{'}}_{N_i}),0\}, \text{when } m^{'}> \max\{t^s,t^f\}\]
+
+\begin{equation}
+\max\{\beta_{i}(E_1|h^{m^{'}}_{N_i})(1),0\}, \text{when } m^{'}> \max\{t^s,t^f\}
+\end{equation}
+
+Then there is a loss compared with equilibrium path in expected static pay-off contingent on $E$ by
+\begin{equation}
+\min\{\beta_{i}(E_1|h^{m^{'}}_{N_i}),\beta_{i}(E_2|h^{m^{'}}_{N_i}), \text{when } m^{'}> \max\{t^s,t^f\}
+\end{equation}
+
+Thus, there is a loss in expected continuation pay-off contingent on $E$ by
+\[\delta^{\max\{t^s,t^f\}}\frac{\min\{\beta_{i}(E_1|h^{m^{'}}_{N_i}),\beta_{i}(E_2|h^{m^{'}}_{N_i})}{1-\delta}\]
+\end{proof}
+
+
+
+
+
+\subsubsection{Proof for Claim ~\ref{claim_deviation_higher_reporting}}
+
+\begin{proof}
+
+
+Since $\bar{I}^{t-1}_i\subset I^{t-1}_i$, and such deviation is not detected by $i$'s neighbour, then $i$ must report some $L$-nodes; otherwise, due to $I^{t-1}_i=\bigcup_{j\in N_i\cap R^{t-1}}I^{t-2}_j$, some neighbours has detected it.
+
+Denote $L_D$ be the set of $L$-nodes $i$ reported. Let the events be
+\begin{eqnarray*}
+E_1 &= & [|[H]|<s-|L_D|]\\
+E_2 &= & [s-|L_D|\leq |[H]| < s]\\
+E_3 &= & [|[H]| \geq s]
+\end{eqnarray*}
+
+Now contingent on the event $E_2\cup E_3$, and consider the following cases.
+\begin{itemize}
+\item If there is no positive probability such that there is a node who will initiate the coordination contingent on $E_2\cup E_3$, then there is a static pay-off loss as $-\delta^{|RP^t|-|I^{t-1}_i|+1}+\delta^{|RP^t|-|\bar{I}^{t-1}_i|+1}$.
+\item If there is a positive probability such that $i$ will initiate the coordination contingent on $E_2\cup E_3$, then there is a static pay-off loss as $-\delta^{|RP^t|-|I^{t-1}_i|+1}+\delta^{|RP^t|-|\bar{I}^{t-1}_i|+1}$.
+\item If there is a positive probability on $E$ such that $E=[$there is another node other than $i$ who will initiate the coordination contingent on $E_2\cup E_3$, but $i$ can not send the coordination messages.$]$, then, by similar argument as Claim ~\ref{claim_detection_coordination_period},  there is loss compared to equilibrium in expected continuation pay-off. Denote $t^s$ be the block when such coordination happen. The loss will be 
+\[\delta^{t^{s}}\frac{\min\{\beta_{i}(E\cap E_3|h^{m}_{N_i}),\beta_{i}(E\cap E_2|h^{m}_{N_i})\}}{1-\delta}\]
+
+
+
+\end{itemize}
+
+
+
+
+
+
+
+\end{proof}
+
+
+
+
+\subsubsection{Proof for Claim ~\ref{claim_can_not_pretend_almost_success}}
+
+\begin{proof}
+
+We first prepare some facts. Since $|Ex_{I^{m,t}_i}\cup I^{m,t}_i|\geq s$ and $|I^{m,t}_i|<s-1$, we have $|Ex_{I^{m,t}_i}|\geq 2$. Since $i\notin C$, then
+\[\exists j\in R^{t-1}\cap (N_i\setminus i)[\exists k_1,k_2\in Tr_{ij}[[k_1\in N^{t-1}_j\setminus I^{t-1}_i] \wedge [k_2\in N_{k_1}\setminus k_1]]]\]
+no matter such $j$ has reported or not.
+
+Now we argue that $i$ will not deviate.
+\begin{enumerate}
+\item Case $j\in O^{m,t}_i$: 
+
+\begin{itemize}
+\item We first argue that if $i$ deviated by reporting $\langle 1 \rangle$, then such deviation has been detected by $j$. Then we can follow the Claim ~\ref{claim_detection_reporting_period} to construct the event $E$. This is because $i$ can report $\langle 1 \rangle$ only if $|I^{m,t}|=s-1$ with the condition \textbf{CHECK.m.Case.2} or $|I^{t-1}_i|=s-1$ with the condition \textbf{MAIN.1}. Clearly, $i$ did not satisfy condition \textbf{CHECK.m.Case.2}, since $j$ has reported and there is a node outside $N^{t-1}_j$. If $i$ satisfies condition \textbf{MAIN.1}, then since $j$ has reported, $i$ should already have $|I^{m,t}_i|\geq s$, and then $i$ should have reported $\langle 2 \rangle$. 
+
+\item Next we argue $i$ will not deviate by reporting $\langle 2 \rangle$. Since there is a node outside $N^{t-1}_j$, such node is outside $I^{t-1}_j$, and therefore outside $I^{m,t}_i$ (since $j$ has reported). Then there is an event $E$ which has positive probability,
+\[E=[|I^{RP^t-|2|,t}_i|=s-1]\]
+
+Contingent on $E$, there is a sub-event $E^{'}\subset E$ which has positive probability, 
+\[E^{'}=[|I^{RP^t,t}_i|=s-1]\]
+
+Therefore, contingent on $E^{'}$, $i$ will be with $|I^{RP^t,t}_i|=|I^{t}_i|=s-1<s$. Moreover, the belief of $i$ after $|RP^t|$ is with $\beta_{i}(|[H]|\geq s|h^{|RP^t|}_{N_i})>0$ since $|Ex_{I^{m,t}_i}|\geq 1$ by the face that there is one more node outside $N^{t-1}_j$. 
+
+Now if $i$ report $\langle 2 \rangle$, in the equilibrium path, then $i$ should play $\mathbf{1}_i$ in \textbf{CHECK.f} and initiate the coordination in the coordination period in the current block, and then $i$ will initiate the coordination before observing coordination message with $|I^{t}_i|=s-1<s$ and $\beta_{i}(|[H]|\geq s|h^{|RP^t|}_{N_i})>0$. By Claim  ~\ref{claim_detection_coordination_period}, we can then find an event $E^{''}\subseteq E^{'}$ and $M<\infty$ such that there is a loss compared to equilibrium path in expected continuation pay-off by 
+\[\delta^{M}\frac{\min\{\beta_{i}(E^{''}|h^{m}_{N_i}),\beta_{i}(T\setminus E^{''}|h^{m}_{N_i})\}}{1-\delta}\]
+\end{itemize}
+
+\item Case $j\notin O^{m,t}_i$: Since $|Ex_{I^{m,t}_i}\cup I^{m,t}_i|\geq s$, $|I^{m,t}_i|<s-1$ and there is one more node outside $N^{t-1}_j$, then the following event $E$ has positive probability,
+\[E=[|I^{|RP^t|-|2|,t}_i|=s-1] \]
+
+Contingent on $E$, there is an event $E^{'}\subseteq E$,
+\[E^{'}=E \cap [  j \text{ will report at }m^{'}, \text{ where } m<m^{'}<|RP^t|-|2| ]\]
+. Note that $E^{'}$ has positive probability. This is because $|I^{t-1}_i|\leq |I^{m,t}_i|<s-1$ and $|I^{t-1}_j\cap I^{t-1}_j|\geq 2$, therefore the event $[|I^{t-1}_j|<s-1]$\footnote{More specifically, let $|I^{t-1}_j|=|I^{t-1}_j\cap I^{t-1}_j|+1$. Since $|I^{t-1}_i|=|I^{t-1}_j\cap I^{t-1}_j|+k<s-1$ for some $k\geq 0$, and since $i\in R^t$, therefore $k\geq 1$. Then when $k=1$, we have $|I^{t-1}_j|<s-1$} has positive probability, and therefore $j$ will report later in the equilibrium.
+
+Then, contingent on $E^{'}$, such $j$ will be in $O^{m^{'},t}_i$ at $m<m^{'}<|RP^t|-|2|$. We apply the argument in Case $j\in O^{m,t}_i$ again by replacing $m$ by $m^{'}$. We now conclude that the statement in this claim holds.
+
+
+\end{enumerate}
+
+
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Proof for Claim ~\ref{claim_must_report_2}}
+
+
+
+
+
+
+
+\subsubsection{Proof for Claim ~\ref{claim_must_report_1}}
+
+
+
+
+
+
+
+
+
+
+\subsection{Proof for coordination period}
+
+
+
+
+
+
+\subsubsection{Proof for Claim ~\ref{claim_report_with_no_message_coordination_period}}
+
+\begin{proof}
+
+
+
+
+If $i$ has not observed $\langle \text{coordination message} \rangle$ but $i$ play those messages: Since $|I^t_i|<s$ and since $i$ has not observed $\langle \text{coordination message} \rangle$, and due to the equilibrium strategies playing by neighbours, we have 
+\[0<\beta_{i}(|[H]|\geq s|h^{m}_{N_i})<1\]
+
+Since $i$ play coordination message, all $i$'s neighbour who did not detect the deviation will form their belief as Equation ~\ref{eq_belief_success_1} and Equation ~\ref{eq_belief_success_2}, and all his neighbour who detected this deviation will form the belief as Equation ~\ref{eq_ignore_past_history} and Equation ~\ref{eq_ignore_history}. But $i$'s neighbour will play $h$ or $l$ forever in all following reporting period and coordination period, and then 
+\[h^{m^{'}}_{N_i}=h^{m}_{N_i} \text{ whenever } m^{'}>m\]
+, hence 
+\[\beta_{i}(|[H]|\geq s|h^{m^{'}}_{N_i})=\beta_{i}(|[H]|\geq s|h^{m}_{N_i}) \text{ whenever } m^{'}>m\]
+
+Let $E_1=[|[H]|\geq s]$, and then $E_2=[|[H]|< s]$.
+
+
+
+Let $t^{s}$ be the block when coordination success, and let $t^{f}$ be the block when coordination fail. Since $i$ can not change his neighbours' beliefs after-ward by Equation ~\ref{eq_belief_success_2} and Equation ~\ref{eq_ignore_history}, the expected static pay-off for $i$ after $\max\{t^s,t^f\}$ contingent on $E$ is at most 
+\begin{equation}
+{\beta_{i}(E|h^{m^{'}}_{N_i})(1)+\beta_{i}(T\setminus E|h^{m^{'}}_{N_i})(-1),0\}, \text{when } m^{'}> \max\{t^s,t^f\}}
+\end{equation}
+, where $\beta_{i}(E_1|h^{m^{'}}_{N_i})(1)+\beta_{i}(E_2|h^{m^{'}}_{N_i})(-1)$ is the expected pay-off by playing $h$, and $0$ is the expected pay-off by playing $l$.
+
+However, if $i$ follow the equilibrium, $i$'s expected static pay-off contingent on $E$ is 
+\begin{equation}
+\max\{\beta_{i}(E_1|h^{m^{'}}_{N_i})(1),0\}, \text{when } m^{'}> \max\{t^s,t^f\}
+\end{equation}
+
+Then there is a loss compared with equilibrium path in expected static pay-off contingent on $E$ by
+\begin{equation}
+\min\{\beta_{i}(E_1|h^{m^{'}}_{N_i}),\beta_{i}(E_2|h^{m^{'}}_{N_i}), \text{when } m^{'}> \max\{t^s,t^f\}
+\end{equation}
+
+Thus, there is a loss in expected continuation pay-off contingent on $E$ by
+\[\delta^{\max\{t^s,t^f\}}\frac{\min\{\beta_{i}(E_1|h^{m^{'}}_{N_i}),\beta_{i}(E_2|h^{m^{'}}_{N_i})}{1-\delta}\]
+
+\end{proof}
+
+
+
+
+
+\subsubsection{Proof for Claim ~\ref{claim_detection_coordination_period}}
+
+\begin{proof}
+
+We will discuss two cases. Case 1 is that there is a neighbour has sent coordination messages, but $i$ did not follow to send messages. Case 2 is that no neighbours has sent coordination messages, but $i$ deviate and detected by some neighbours. Denote $D$ be the set of neighbours who detect this deviation. 
+
+\begin{enumerate}
+\item Case 1: Let $j\in N_i\setminus i$ be the neighbour who has sent the messages. When $t=0$, since there is only one sub-block in pre-coordination period, $i$ has no incentive to play $l$ in the following post-coordination period since the coordination has happened. When $t\geq 1$, note that $j\in D$. Now let the event $E$ be 
+\[E=[\text{there is no more $H$-node in $Tr_{ik}$ outside $I^t_i$, where $k\notin D$ }]\] 
+
+Those $j\in D$ will play $l$ forever since $|I^{0}_j|<s$; otherwise, $j$ has already initiated the coordination in $t=0$. Moreover, the nodes in $Tr_{ij}$ will play $l$ forever eventually since $j$ will play $\langle l \rangle$ in \textbf{CHECK.f}. Contingent on $E$, those $k\notin D$ has not played $\langle 2 \rangle$ or $\langle 1 \rangle$ by assumption, therefore the event of $[|I^{t}_k|<s]$ has positive probability, and thus $E$ has positive probability.
+
+\item Case 2: If what $i$ deviate is to send $\langle \text{coordination messages} \rangle$, then the argument is by Claim ~\ref{claim_report_with_no_message_coordination_period}. If not, we first denote the events 
+\begin{eqnarray*}
+E_1 &= & [|[H]|<s]\\
+E_2 &= & [s\leq |[H]| < s+|D|]\\
+E_3 &= & [|[H]| \geq s+|D|]
+\end{eqnarray*}
+, and let the event $E$ be
+\[E=E_2\] 
+\end{enumerate}
+
+In equilibrium path, let $t^{s}$ be the period when coordination success, and let $t^{f}$ be the period when coordination fail. Since $i$ deviate, contingent on $E$, the most expected static pay-off $i$ can get after $t^{s}$ is
+ \[0, \text{when } m^{'}> t^{s}\]
+
+If $i$ follows the equilibrium path, contingent on $E$, the expected static pay-off after $t^s$ is
+ \[\beta_{i}(E|h^{m^{'}}_{N_i})(1), \text{when } m^{'}> t^s\]
+
+For the other event in $T\setminus E$, after $\max\{t^s,t^f\}$, the expected static pay-off is at most the same as following equilibrium. Thus, there is a loss in expected continuation pay-off contingent on $E$ by
+\[\delta^{t^s}\frac{\beta_{i}(E|h^{m^{'}}_{N_i})}{1-\delta}, \text{when } m^{'}> t^s\]
+
+
+
+
+\end{proof}
+
+
+
+
+
+
+
+\end{document}

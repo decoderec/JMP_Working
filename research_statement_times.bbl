@@ -1,0 +1,60 @@
+\begin{thebibliography}{9}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Aumann(1974)]{Aumann1974}
+R.~J. Aumann.
+\newblock {Subjectivity and Correlation in Randomized Strategies}.
+\newblock \emph{Journal of Mathematical Economics}, 1\penalty0 (1):\penalty0
+  67--96, 1974.
+
+\bibitem[Aumann and Maschler(1995)]{Aumann1995}
+R.~J. Aumann and M.~Maschler.
+\newblock \emph{{Repeated Games with Incomplete Information}}.
+\newblock MIT Press, 1995.
+
+\bibitem[Barany(1987)]{Barany1987}
+I.~Barany.
+\newblock {Fair Distribution Protocols or How The Players Replace Fortune}.
+\newblock \emph{Mathematics of Operations Research}, 17:\penalty0 327--340,
+  Jan. 1987.
+
+\bibitem[Ben-Porath and Kahneman(1996)]{Ben-Porath1996}
+E.~Ben-Porath and M.~Kahneman.
+\newblock {Communication in Repeated Games with Private Monitoring}.
+\newblock \emph{Journal of Economic Theory}, 70\penalty0 (2):\penalty0
+  281--297, Aug. 1996.
+
+\bibitem[Chwe(2000)]{Chwe2000}
+M.~S.-Y. Chwe.
+\newblock {Communication and Coordination in Social Networks}.
+\newblock \emph{Review of Economic Studies}, 67\penalty0 (1):\penalty0 1--16,
+  2000.
+
+\bibitem[Forges(1986)]{Forges1986}
+F.~Forges.
+\newblock {An Approach to Communication Equilibria}.
+\newblock \emph{Econometrica}, 54\penalty0 (6):\penalty0 1375--85, 1986.
+
+\bibitem[Forges(2009)]{Forges2009}
+F.~Forges.
+\newblock {Correlated Equilibrium and Communication in Games}.
+\newblock \emph{Encyclopedia of Complexity and Systems Science}, pages
+  1587--1596, 2009.
+
+\bibitem[Gerardi(2004)]{Gerardi2004}
+D.~Gerardi.
+\newblock {Unmediated Communication in Games with Complete and Incomplete
+  Information}.
+\newblock \emph{Journal of Economic Theory}, 114\penalty0 (1):\penalty0
+  104--131, Jan. 2004.
+
+\bibitem[Myerson(2004)]{Myerson2004}
+R.~B. Myerson.
+\newblock \emph{{Game Theory}}.
+\newblock Harvard University Press, 2004.
+
+\end{thebibliography}

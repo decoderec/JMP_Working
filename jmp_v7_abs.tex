@@ -1,0 +1,77 @@
+\documentclass[12pt,letter]{article}
+\usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
+\renewcommand{\baselinestretch}{1.15} 
+\usepackage{latexsym}
+\usepackage{amsmath}
+%\usepackage{MinionPro}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{natbib}
+\usepackage{color, colortbl}
+\usepackage{appendix}
+\usepackage{amsmath,amsthm}
+
+
+\usepackage{wasysym}
+\usepackage{amssymb}
+
+\usetikzlibrary{arrows,shapes}
+
+\definecolor{Gray}{gray}{0.9}
+
+\newtheorem{result}{Result}
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}{Assumption}[section]
+
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzstyle{vertex}=[circle,fill=black!25,minimum size=12pt,inner sep=0pt]
+\tikzstyle{selected vertex} = [vertex, fill=red!24]
+\tikzstyle{edge} = [draw,thick,-]
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
+\tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
+
+
+%\linespread{1.5}
+
+\begin{document}
+%\fontsize{12}{20pt}\selectfont
+
+\title {Coordination in Social Networks}
+\author {by Chun-Ting Chen}
+
+\maketitle
+
+\begin{abstract}
+
+This paper studies a collective action problem in a setting of discounted repeated coordination games in which players know their neighbors'  inclination to participate as well as monitor their neighbors' past actions. I define \textit{strong connectedness} to characterize those states in which, for every two players who incline to participate, there is a path consisting of players with the same inclination to connect them.  Given that the networks are fixed, finite, connected, commonly known, undirected and without cycles, I show that if the priors have full support on the strong connectedness states, there is a (weak) sequential equilibrium in which the ex-post efficient outcome repeats after a finite time $T$ in the path when discount factor is sufficiently high. This equilibrium is constructive and does not depend on public or private signals other than players' actions.
+
+
+
+
+\end{abstract}
+
+
+
+
+
+\end{document}

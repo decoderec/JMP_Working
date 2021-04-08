@@ -1,0 +1,414 @@
+
+
+\documentclass[9pt]{beamer}
+\mode<presentation>
+\linespread{1.5}
+
+\usetheme{Madrid}
+%\usetheme {CambridgeUS}%{Goettingen}%{Berkeley}%{Montpellier}%{Antibes}%{Dresden}%{Madrid}%{Dresden}%{Darmstadt}%{Warsaw}%{Pittsburgh}
+\usefonttheme{{structuresmallcapsserif}}%{structureitalicserif}%{structurebold}%{structuresmallcapsserif}%{professionalfonts}
+%\useoutertheme[subsection=false]{smoothbars}
+\usepackage[english]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage{hyperref}
+%\usecolortheme{beaver}
+%\usecolortheme{crane}
+
+%\setbeamercovered{transparent}
+%\newcommand{\semitransp}[2][35]{\color{fg!#1}#2}
+
+\usecolortheme[RGB={0,23,105}]{structure}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{times}
+%\usepackage{MinionPro}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{natbib}
+\usepackage{color, colortbl}
+\usepackage{appendix}
+\usepackage{ulem}
+\usepackage{amsmath,amsthm}
+\usepackage{bbm}
+\usetikzlibrary{arrows,shapes}
+
+
+\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem*{observation}{Observation}
+
+
+\definecolor{Gray}{gray}{0.9}
+
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzstyle{vertex}=[circle, draw
+%,fill=black!25
+,minimum size=12pt
+,inner sep=0pt
+]
+\tikzstyle{selected vertex} = [vertex, fill=red!24]
+\tikzstyle{unknown vertex} = [vertex, fill=black!25]
+\tikzstyle{edge} = [draw,thick,-]
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
+\tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
+
+
+
+
+
+
+
+\title{Coordination in Social Networks}
+\subtitle{Communication by Actions}
+\author{Chun-Ting Chen}
+
+
+\begin{document}
+
+%\maketitle
+
+
+\section{Introduction}
+\subsection{Motivation}
+
+
+
+
+
+
+\section{Model}
+\subsection{Model}
+
+\frame{
+  \frametitle{Model}
+Time line
+
+\begin{enumerate}
+
+
+\item There is a \alert{fixed}, \alert{finite}, \alert{connected}, \alert{undirected}, and \alert{commonly known} network.
+\item Players of two types--- \textit{R} or \textit{I} ---chosen by nature according to a probability distribution.
+\begin{itemize}
+\item \textit{R}: Rebel; \textit{I}: Inert
+\end{itemize}
+\item Types are then fixed over time.
+\item Players play a stage game--- a collective action ---infinitely repeatedly with common discount factor.
+\end{enumerate}
+
+
+
+}
+
+
+\begin{frame}
+  \frametitle{Model}
+
+What player can/cannot observe
+
+\begin{itemize}
+\item Players can observe own/neighbors' \textcolor{blue}{types} and \textcolor{blue}{actions}, but not others'.
+\item Pay-off is hidden.
+
+\end{itemize}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Model}
+
+  \begin{itemize}
+
+  \item Stage game---\alert{$k$}-threshold game: a \textcolor{blue}{protest} (~[Chwe 2000])
+
+
+
+
+\begin{itemize}
+\item R-type's action set$=\{\textbf{1},\textbf{0}\}$
+\item I-type's action set$=\{\textbf{0}\}$
+\item Pay-offs for R-type:
+\begin{table}[h]
+\begin{tabular}{llll}
+$u_{R}(a_{i},a_{-_i})$ & $=$ & 1 & if $a_{i}=\textbf{1}$ and $\#\{j:a_{j}=\textbf{1}\}\geq {k}$ \\
+$u_{R}(a_{i},a_{-i})$ & $=$ & -1 & if $a_{i}=\textbf{1}$ and $\#\{j:a_{j}=\textbf{1}\}< {k}$ \\
+\\
+$u_{R}(a_{i},a_{-i})$ & $=$ & 0 & if $a_{i}=\textbf{0}$ 
+\end{tabular}
+
+\end{table}
+\end{itemize}
+  
+
+ \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Static ex-post Pareto efficient outcome}
+
+
+
+\begin{table}[h]
+\begin{tabular}{ll}
+Type profile & Static ex-post efficient outcome \\
+\hline
+At least $k$ R-types exist & All R-types play \textbf{1}  \\
+Otherwise &  All R-types play \textbf{0} 
+\end{tabular}
+\end{table}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+  \frametitle{APEX equilibrium}
+
+\textcolor{blue}{APEX} (\textit{approaching ex-post efficient}) equilibrium
+
+\begin{definition}[APEX strategy]
+An equilibrium is APEX $\Leftrightarrow$ 
+\[\text{\alert{$\forall\theta$},  there is a finite time $T^{\theta}$}\] 
+such that the actions in the equilibrium path repeats the static ex-post efficient outcome after $T^{\theta}$. 
+\end{definition}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+%\begin{frame}
+%  \frametitle{Notations}
+%
+%Notations:
+%\begin{itemize}
+%
+%\item $\alert{\theta_{G_i}}\in \Theta_{G_i}$: $i$'s private information about the state. 
+%\item $\alert{h^{m}_{G_i}}\in H^m_{G_i}$: the history of actions observed by $i$ up to period $m$.
+%\item \alert{$\Theta_{G_i}\times H^m_{G_i}$}: $i$'s observation up to time $m$.
+%\pause
+%\item $h^m$: a sequence of players' actions up to period $m$.
+%\item $h$: an infinite sequence of players' actions. 
+%
+%
+%
+%
+% 
+%\end{itemize}
+%
+%\end{frame}
+%
+%
+%
+%
+%\begin{frame}
+%  \frametitle{APEX strategy path}
+%Notations:
+%\begin{itemize}
+%\item $\tau_i:\Theta_{G_i}\times \bigcup^{\infty}_{m=0} H^{m}_{G_i} \rightarrow A_{\theta_i}$, $i$'s strategy.
+%\item $\tau=(\tau_1,...,\tau_i,...,\tau_n)$: a strategy profile. 
+%\item $h^{\tau}_{\theta}$ : a history generated by $\tau$ given $\theta$.
+%\item $\tau$-path: $\{h^{\tau}_{\theta}\}_{\theta\in \Theta}$
+%\end{itemize}
+%
+%\begin{definition}
+%The $\tau$-path is \textbf{approaching ex-post efficient} (\textcolor{blue}{\textit{APEX}}) $\Leftrightarrow$ 
+%\[\text{$\forall\theta$,  there is a finite time $T^{\theta}$}\] 
+%such that the actions after $T^{\theta}$ in $h^{\tau}_{\theta}$ repeats the static ex-post efficient outcome.
+%\end{definition}
+%
+%
+%\end{frame}
+%
+%
+%
+%
+%\begin{frame}
+%  \frametitle{Equilibrium Concept}
+%
+%Notations:
+%\begin{itemize}
+%
+%\item $\beta^{\pi,\tau}_i(\theta|h^{m}_{G_i})$: $i$'s belief for a $\theta$ at period $m$ given $\pi,\tau$.
+%\item $\phi_{G_i}: H^m\rightarrow H^m_{G_i}$: the projection mapping a $h^m$ to $h^m_{G_i}$.
+%\end{itemize}
+%
+%\begin{definition}
+%$h^m_{G_i}$ is \textbf{reached} by $\tau$ iff there is a pair $(\theta,h^m)$ such that $h^m$ is on the $\tau$-path, and $h^m_{G_i}=\phi_{G_i}(h^m)$. 
+%\end{definition}
+%
+%
+%\end{frame}
+%
+%
+%\begin{frame}
+%  \frametitle{Equilibrium Concept}
+%
+%
+%\begin{definition}[weak sequential equilibrium]
+%The pair $(\tau^{*},\beta^{*})$, 
+%\begin{itemize}
+%\item $\tau^{*}$: a strategy
+%\item $\beta^{*}=\{\beta^{*,m}\}_m$: the belief system 
+%\begin{itemize}
+%\item $\beta^{*,m}_i$: $\Theta_{G_i}\times H^{m}_{G_i} \rightarrow \Delta (\Theta\times H^m)$
+%\end{itemize}
+%\end{itemize}
+%
+%, is a weak sequential equilibrium iff
+%\begin{itemize}
+%\item $\beta^{*,m}_i(\theta|h^{m}_{G_i})=\beta^{\pi,\tau^{*}}_i(\theta|h^{m}_{G_i})$ whenever $h^{m}_{G_i}$ is reached by $\tau^{*}$ for all $i$.
+%\item $\tau^{*}$ is sequential rational given $\beta^{*}$.
+%\end{itemize}
+%
+%
+%
+%
+%
+%\end{definition}
+%
+%
+%
+%
+%\end{frame}
+%
+%
+%\begin{frame}
+%  \frametitle{Equilibrium Concept}
+%
+%
+%\begin{definition}[Sequential equilibrium]
+%A sequential equilibrium $(\tau^{*},\beta^{*})$  is a weak  sequential equilibrium and $\beta^{*}$ is fully consistent with $\tau^{*}$[Krep and Wilson].
+%\end{definition}
+%\begin{itemize}
+%\item Fully consistent: 
+%the $\beta^{*}$ is \textbf{``very very similar with''} that belief system induced by a \textbf{``very very little perturbed''} strategies around $\tau^{*}$.
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}
+%  \frametitle{APEX Equilibrium}
+%
+%\begin{itemize}
+%\item Finally, let the ``(weak) APEX equilibrium'' be \textcolor{blue}{the (weak) sequential equilibrium in which the equilibrium path is APEX}.
+%\item Does an APEX equilibrium exist?
+%\end{itemize}
+%
+%\end{frame}
+%
+
+
+\frame{
+  \frametitle{Result 1: APEX for $k=n$}
+
+\begin{theorem}[\alert{$k=n$}]
+
+If $k=n$, then an APEX sequential equilibrium exists whenever discount factor is sufficiently high.
+\end{theorem}
+
+
+}
+
+
+\begin{frame}
+  \frametitle{Definition for APEX for $k<n$}
+
+
+\begin{definition}
+$\theta$ has \textbf{strong connectedness}$\Leftrightarrow$ for every pair of R-types, there is a path consisting of R-types to connect them.
+\end{definition}  
+
+\begin{definition}
+$\pi$ has \textbf{full support on strong connectedness}$\Leftrightarrow$ 
+\[\text{$\pi(\theta)>0$ \textbf{if and only if} $\theta$ has strong connectedness.}\]
+\end{definition}  
+
+%Ex.:
+%\begin{itemize}
+%\item $\pi(\theta)>0$ if $\theta=$
+%\begin{center}
+%\begin{tikzpicture}[scale=1]
+%    % Draw a 7,11 network
+%    % First we draw the vertices
+%    \foreach \pos/\name in {{(1,0)/S_1}, {(2,0)/S_2}, {(3,0)/S_3}}
+%        \node[vertex] (\name) at \pos {$\name$};
+%    % Connect vertices with edges 
+%    \foreach \source/ \dest in {S_1/S_2, S_2/S_3}
+%        \path[edge] (\source) -- (\dest) ;
+%        
+%\end{tikzpicture}
+%%\text{ or }
+%%\begin{tikzpicture}[scale=1]
+%%    % Draw a 7,11 network
+%%    % First we draw the vertices
+%%    \foreach \pos/\name in {{(1,0)/S_1}, {(2,0)/S_2}, {(3,0)/S_3}}
+%%        \node[vertex] (\name) at \pos {$\name$};
+%%    % Connect vertices with edges 
+%%    \foreach \source/ \dest in {S_1/S_2, S_2/S_3}
+%%        \path[edge] (\source) -- (\dest) ;
+%%        
+%%\end{tikzpicture}
+%\end{center}
+%\item $\pi(\theta)=0$ if $\theta=$
+%
+%\begin{center}
+%\begin{tikzpicture}[scale=1]
+%    % Draw a 7,11 network
+%    % First we draw the vertices
+%    \foreach \pos/\name in {{(1,0)/S_1}, {(3,0)/S_3}}
+%        \node[vertex] (\name) at \pos {$\name$};
+%    % Connect vertices with edges 
+%    \foreach \pos/\name in {{(2,0)/B_2}}
+%    \node[unknown vertex] (\name) at \pos {$\name$};
+%    
+%    \foreach \source/ \dest in {S_1/B_2, B_2/S_3}
+%        \path[edge] (\source) -- (\dest) ;
+%        
+%\end{tikzpicture}
+%\end{center}
+%
+%\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\frame{
+  \frametitle{Result 2: APEX for $k<n$}
+
+\begin{theorem}[\alert{$k< n$}]
+If $k<n$, then if network is a \alert{tree}, if prior $\pi$ has \alert{full support on strong connectedness}, then an APEX WPBE {exists} whenever discount factor is sufficiently high.
+\end{theorem}
+
+}
+
+
+
+
+
+\end{document}

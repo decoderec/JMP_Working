@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: jmp_v4.aux
+The style file: abbrvnat.bst
+Database file #1: jmp_ref.bib
+Warning--empty journal in Jackson2008
+You've used 30 entries,
+            2773 wiz_defined-function locations,
+            800 strings with 8730 characters,
+and the built_in function-call counts, 12159 in all, are:
+= -- 1119
+> -- 508
+< -- 28
++ -- 180
+- -- 150
+* -- 904
+:= -- 1848
+add.period$ -- 90
+call.type$ -- 30
+change.case$ -- 138
+chr.to.int$ -- 30
+cite$ -- 61
+duplicate$ -- 595
+empty$ -- 1139
+format.name$ -- 202
+if$ -- 2561
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 28
+newline$ -- 156
+num.names$ -- 120
+pop$ -- 286
+preamble$ -- 1
+purify$ -- 110
+quote$ -- 0
+skip$ -- 434
+stack$ -- 0
+substring$ -- 560
+swap$ -- 43
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 320
+warning$ -- 1
+while$ -- 129
+width$ -- 0
+write$ -- 385
+(There was 1 warning)

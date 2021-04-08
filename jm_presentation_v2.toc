@@ -1,0 +1,12 @@
+\beamer@endinputifotherversion {3.26pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Motivation}{2}{0}{1}
+\beamer@subsectionintoc {1}{2}{Literature Review}{8}{0}{1}
+\beamer@sectionintoc {2}{Model}{9}{0}{2}
+\beamer@subsectionintoc {2}{1}{Static Game}{9}{0}{2}
+\beamer@subsectionintoc {2}{2}{Repeated Game}{12}{0}{2}
+\beamer@sectionintoc {3}{Equilibrium construction}{22}{0}{3}
+\beamer@subsectionintoc {3}{1}{Equilibrium construction}{22}{0}{3}
+\beamer@subsectionintoc {3}{2}{Information Hierarchy}{27}{0}{3}
+\beamer@sectionintoc {4}{Equilibrium path}{32}{0}{4}

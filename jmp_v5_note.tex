@@ -1,0 +1,131 @@
+\documentclass[12pt,letter]{article}
+\usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
+\renewcommand{\baselinestretch}{1.15} 
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{MinionPro}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{natbib}
+\usepackage{color, colortbl}
+\usepackage{appendix}
+\usepackage{amsmath,amsthm}
+
+
+%\usepackage{wasysym}
+%\usepackage{amssymb}
+
+\usetikzlibrary{arrows,shapes}
+
+\definecolor{Gray}{gray}{0.9}
+
+\newtheorem*{result}{Main Result}
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem*{definition}{Definition}
+\newtheorem*{assumption}{Assumption}
+
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzstyle{vertex}=[circle,fill=black!25,minimum size=12pt,inner sep=0pt]
+\tikzstyle{selected vertex} = [vertex, fill=red!24]
+\tikzstyle{edge} = [draw,thick,-]
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
+\tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
+
+
+%\linespread{1.5}
+
+\begin{document}
+%\fontsize{12}{20pt}\selectfont
+
+\title {Note on Coordination in Social Networks}
+
+
+\maketitle
+
+\begin{definition}
+A sequential equilibrium is APEX if and only if for all $\theta$ there is a finite time $T^{\theta}$ such that the tails of actions after $T^{\theta}$ in equilibrium path repeats the ex-post efficient outcome.
+\end{definition}
+
+\begin{assumption}
+Networks are fixed, finite, connected, commonly known, and undirected.
+\end{assumption}
+
+\begin{result}
+In any network without cycles, if $\pi$ has full support on the strong connectedness states, then for $n$-person repeated $k$-Threshold game with parameter $1\leq k \leq n$, there is a $\delta$ such that a (weak) sequential equilibrium which is APEX exists.  
+\end{result}
+
+\paragraph{Step 0.}
+
+Here, $\pi$ is the common prior. Let the $\theta$ be a state of nature. $\theta$ has {Strong connectedness} means that there is a path consisting of Rebels to connect each two Rebels. Then {$\pi$ has full support on strong connectedness states} means that: $\pi(\theta)>0 \Leftrightarrow \theta \text{ has strong connectedness}$. The {off-path belief}: whenever a Rebel detects a deviation, he believes that all other players outside his neighborhood are Inerts. This off-path belief serves as {grim trigger}: if there are less than $k$ Rebels in his neighborhood, he will play \textbf{stay} forever.
+
+
+\paragraph{Step 1.}
+Build {communication protocol}. First, I assign each node $i$ a distinct prime number $x_i$. Then I let Rebels' actions carry the information about the multiplication of nodes' prime numbers, $\prod_{j}x_j$, by playing the sequence $\langle \textbf{stay},...,\textbf{stay},\underbrace{\textbf{revolt},\textbf{stay},...,\textbf{stay}}_{\prod_{j}x_j}\rangle$. Next, I let two phases, {reporting period, $RP$} and {coordination period, $CD$}, occur in turns in the time horizon. \[\underbrace{CD^0}_{0-block}\underbrace{RP^1CD^1}_{1-block}...\underbrace{RP^tCD^t}_{t-block}...\], where some {reporting messages}, $\langle RP^t \rangle$, and some {coordination messages}, $\langle CD^t \rangle$, are played in the $RP$ and $CD$ respectively in $t$-block. In coordination period, whenever a Rebel can tell the relevant information, such Rebel inform his nearby Rebels by sending some coordination messages. Those nearby Rebels then continue to inform their nearby Rebels by sending some coordination messages, etc. When networks are FFCCU, Rebels will commonly known that all Rebels can tell the relevant information if they have received coordination messages after that coordination period.
+
+\paragraph{Step 2.} The $RP^t$ has the structure:
+\[\langle \langle \cdot \rangle \rangle\]
+, where $\langle RP^t \rangle$ has the same length as $\langle \cdot \rangle$
+
+The $CD^t$ in $t=0$ block has the structure
+\[\overbrace{\langle\underbrace{\langle \cdot \rangle }_{\text{$1$ sub-block}}\rangle}^{\text{1st division}} \overbrace{\langle\underbrace{\langle \cdot \rangle }_{\text{$1$ sub-blocks}} \rangle}^{\text{2nd division}} \overbrace{\langle\underbrace{\langle \cdot \rangle \cdot \cdot \cdot \langle \cdot \rangle}_{\text{$n$ sub-blocks}}\rangle}^{\text{3rd division}}\] 
+, while $CD^t$ in $t>0$ blocks has the structure 
+\[\overbrace{\langle\underbrace{\langle \cdot \rangle \cdot \cdot \cdot \langle \cdot \rangle}_{\text{$n$ sub-blocks}}\rangle}^{\text{1st division}} \overbrace{\langle\underbrace{\langle \cdot \rangle \cdot \cdot \cdot \langle \cdot \rangle}_{\text{$t+1$ sub-blocks}} \rangle}^{\text{2nd division}} \overbrace{\langle\underbrace{\langle \cdot \rangle \cdot \cdot \cdot \langle \cdot \rangle}_{\text{$n$ sub-blocks}}\rangle}^{\text{3rd division}}\] 
+, where $n$ is the total number of players. Denote $\langle CD^t_{p,q} \rangle$ as those coordination messages used in $p$ sub-block in $q$ division. $\langle CD^t_{p,q} \rangle$ has the same length as $\langle \cdot \rangle$ in $p$ sub-block in $q$ division.
+
+\paragraph{Step 3.} For $t\geq 1$ blocks, I control the inter-temporal incentives in playing between reporting and coordination messages as follows. First, I assign two coordination messages. One of them is a message in $CD^t_{1,1}$, which can initiate the coordination to \textbf{stay}. The other one is a message in $ CD^t_{1,2} $, which can initiate the coordination to \textbf{revolt}. Both of them will be $\langle \textbf{stay},...,\textbf{stay} \rangle$ and therefore they incur no expected cost. Second, I let the the coordination message to \textbf{revolt} contingent on some reporting messages that incur some expected costs, while the coordination message to \textbf{stay} is not contingent on any reporting message. That is, if a Rebel observes the coordination message to \textbf{revolt} but did not see those reporting messages, he thinks this coordination message is ``fake''. When a Rebel looks forward future coordination to \textbf{revolt}, he may have incentive to ``burn moneys'' to influence Rebels' beliefs forwardly; otherwise, he just plays \textbf{stay}. Next, in the equilibrium path, the Rebels will play ex-post efficient outcome repeatedly right after a block if some Rebels have initiated the coordination in that block. I will give arguments to argue that (with {several Claims in the Appendix} in my paper) only those Rebels who have been able to tell the relevant information 
+\begin{enumerate}
+\item have incentive to initiate the coordination, or
+\item have incentive to letting others to initiate the coordination
+\end{enumerate}
+. This argument is to show that a Rebel other than them will not take advantage to send these free coordination message to initiate the coordination to \textbf{revolt} or to \textbf{stay}. This is because players can not update their belief if all of their neighbors play the same actions afterward. When $\delta$ is high enough, he will not initiate the coordination to impede his own learning process to achieve the ex-post efficient outcome.
+
+\paragraph{Step 4.} Build {Information Hierarchy}. I then characterize Rebels' incentive in burning moneys and control how much money they should burn to sustain an APEX equilibrium. In the equilibrium path, a Rebel iteratively updates his own belief about the states if other Rebels burn moneys, and a Rebel burns moneys only if his current relevant information has not been acquired by other Rebels. In the equilibrium path, a Rebel thus believe that there are more Rebels if and only if his nearby Rebel burn moneys to report their existence. Some specified forms of reporting messages are introduced as the following list. 
+\begin{table}[h]
+
+\begin{center}
+
+\begin{tabular}{l}
+
+$\langle \textbf{s},...,\textbf{s},\underbrace{\textbf{r},\textbf{s},...,\textbf{s}}_{\prod_{j}x_j}\rangle$  \\
+$\langle \textbf{s},...,\textbf{s},{\textbf{s},\textbf{s},...,\textbf{s}}\rangle$	  \\
+$\langle \textbf{s},...,\textbf{s},{\textbf{s},\textbf{s},...,\textbf{r}}\rangle$								
+\end{tabular}
+\end{center}
+\end{table}
+. The off-path belief is to enforce Rebels not to play differently from them.
+
+\paragraph{Step 5.}
+The key step here is to construct a reporting message, ``burn a money'', which incurs the least expected cost in burning moneys, and this message should be considered as a part of equilibrium path. I denote this special money as $\langle 1 \rangle=\langle \textbf{s},...,\textbf{s},{\textbf{s},\textbf{s},...,\textbf{r}}\rangle$. To see its importance, consider the concept of ``pivotal Rebel''. Here, a pivotal Rebel is the Rebel who is sure that he can know the relevant information before he burns money, given other Rebels' truthful reporting. Now suppose playing $\langle 1 \rangle$ is not considered as a part of equilibrium path, and suppose a Rebel find that himself is a pivotal Rebel. He may then find a profitable deviation by burning less moneys, while this deviation can not be detected by at least $k$ Rebels, but some Rebels can detect such deviation. Since those Rebels who detected such deviation will play \textbf{stay} forever by the off-path belief, and this pivotal Rebel can initiate the coordination to \textbf{revolt} by convincing other Rebels to play \textbf{revolt}, then APEX fails. To solve this problem, I introduce message $\langle 1 \rangle$ to let pivotal Rebels identify themselves, while I let coordination messages to \textbf{revolt} or to \textbf{stay} have to be initiated after $\langle 1 \rangle$ has been played.
+
+\paragraph{Step 6.}
+The major difficulties remaining to be solved are the situations where there are multiple pivotal players nearby each other. In such phenomenon, the APEX may fails since a Rebel who plays $\langle 1 \rangle$ does not address ``how many Rebels he has known'' although it does address ``he will known the relevant information (given others' reporting)''. The assumption of acyclic networks is crucial to solve these problems. If the networks are acyclic, I will show that there are only two kinds of pivotal Rebels. One kind is that they have known there are at least $k-1$ Rebels. The other kind is that they will know the true state ( not just the relevant information) given other Rebel's truthful reporting. I call the latter case a free rider problem. If the networks are acyclic, Lemma 3.1 (in my paper) will show that the free rider problems only happen between two nearby pivotal Rebels in a unique block in the equilibrium path. Further, these two nearby Rebels will know that this free rider problem will occur before the game entering into this block. The consequence of Lemma 3.1 is that, before the game entering into this block, since they both know that they will be the Rebels involving in this problem, I can let one of them report the information about the state and let the other one play $\langle 1 \rangle$. 
+
+\paragraph{Step 7.}
+Finally, Lemma 3.3 in my paper shows that, if Rebels follow the equilibrium path, for all $\theta$ there is a finite time $T^{\theta}$ such that the ex-post efficient outcome is repeated after $T^\theta$. Then I keep using the argument in \textbf{Step 3.} and using grim-trigger off-path belief to show that Rebels will not deviate. Then I conclude the \textbf{Main Result}.
+
+\bibliographystyle{abbrvnat}	% (uses file "plain.bst")
+\bibliography{jmp_ref}		% expects file "myrefs.bib"
+
+
+
+
+\end{document}

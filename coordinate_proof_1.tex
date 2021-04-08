@@ -1,0 +1,135 @@
+\documentclass[12pt,letter]{article}
+\usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
+\renewcommand{\baselinestretch}{1.5} 
+\usepackage{latexsym}
+\usepackage{amsmath}
+
+%\usepackage{MinionPro}
+\usepackage{amssymb}
+
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{natbib}
+\usepackage{color, colortbl}
+\usepackage{appendix}
+\usepackage{amsmath,amsthm}
+
+%\usepackage[]{figcaps}
+
+\usepackage{wasysym}
+
+
+\usetikzlibrary{arrows,shapes}
+
+\definecolor{Gray}{gray}{0.9}
+
+\newtheorem{result}{Result}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}{Assumption}[section]
+
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzstyle{vertex}=[circle, draw
+%,fill=black!25
+,minimum size=12pt
+,inner sep=0pt
+]
+\tikzstyle{selected vertex} = [vertex, fill=red!24]
+%\tikzstyle{unknown vertex} = [vertex, fill=black!25]
+\tikzstyle{unknown vertex} = [vertex, fill=white]
+\tikzstyle{edge} = [draw,thick,-]
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
+\tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
+
+
+
+%\linespread{1.5}
+
+\begin{document}
+
+
+
+
+\section{Model}
+\label{sec:model}
+%\subsection{Notations}
+Given a finite set $X$, denote $\#X$ as its cardinality . 
+%The square bracket $[]$ that follows a quantifier $\exists, \forall$ will be read as ``\textit{such that}''. For instance, $\exists a \in A [c\in A, c=a]$ will be read as ``exists $a$ in $A$ such that $c$ in A and $c$ is equal to $a$.'' .
+%\subsection{Model}
+
+
+There is a set of players $N=\{1,2,...,n\}$. They constitute a network $G=(V,E)$ so that the vertices are players ($V=N$) and an edge is a pair of them ($E$ is a subset of the set containing all two-element subsets of $N$). Throughout this paper, $G$ is assumed to be finite, commonly known, fixed, undirected, and connected.\footnote{A path in $G$ from $i$ to $j$ is a finite sequence $(l_1,l_2,...,l_L)$ without repetition so that $l_1=i$, $l_L=j$, and $\{l_q,l_{q+1}\}\in E$ for all $1\leq q<L$. $G$ is fixed if $G$ is not random, and $G$ is undirected if there is no order relation over each edge. $G$ is connected if, for all $i,j\in N$, $i\neq j$, there is a path from $i$ to $j$.}
+For the sake of convenience, $G_i\equiv \{j:\{i,j\}\in E\}$.
+
+Time is discrete with index $t\in\{0,1,...\}$. At $t=0$, the nature chooses a state $\theta\in \Theta=\{R,I\}^n$ once and for all according to a common prior $\pi$. $R$ and $I$ represent as Rebel and Inert respectively. For the sake of convenience, let $[R](\theta)$ be the set of Rebels given $\theta$ and the notion \textit{relevant information} indicate to the information about whether or not $\#[R](\theta)\geq k$.
+
+
+
+\begin{definition}[Strong connectedness]
+Given $G$, a state $\theta$ has strong connectedness if, for every pair of Rebels, there is a path consisting of Rebels to connect them.
+
+\end{definition}  
+
+In the language of graph theory, this definition is equivalent to: ``Given $G$, $\theta$ has strong connectedness if the induced graph by $[R](\theta)$ is connected.''
+
+\begin{definition}[Full support on strong connectedness]
+Given $G$, $\pi$ has full support on strong connectedness if 
+\[\pi(\theta)>0\Leftrightarrow \text{ $\theta$ has strong connectedness }\] 
+\end{definition}  
+
+
+\subsubsection{Information hierarchy}
+\label{sec:info}
+The information hierarchy across Rebels at $t$ in $G$ is a tuple \[(\{G^{t}_i\}_{i\in N}, \{I^{t}_i\}_{i\in N}, R^t,\theta).\]
+$G^{t}_i$ is meant to represent \textit{the extended neighbors} to represent the following. $j\in G^{t}_i$ if $j$ can be reached by $t$ consecutive edges from $i$ such that the endpoints of $t-1$ edges are both Rebels but the endpoints of the remaining one are $j$ and a Rebel; $I^{t}_i$ is interpreted as \textit{the extended Rebel neighbors}---the set of Rebels in $G^t_i$; $R^t$ is interpreted as \textit{the active Rebels}---those Rebels who are \textit{active} in the sense that their extended Rebel neighbors are not a subset their direct neighbors' extended Rebel neighbors. They are defined recursively: 
+
+At $t=0$,
+\[\text{if $\theta_i=I$, $G^{0}_i\equiv \emptyset$, $I^{0}_i\equiv \emptyset$.}\] 
+\[\text{if $\theta_i=R$, $G^{0}_i\equiv \{i\}$, $I^{0}_i\equiv \{i\}$.}\] 
+\[\text{$R^0\equiv [R](\theta)$.}\] 
+
+At $t=1$,
+\[\text{if $\theta_i=I$, $G^{1}_i\equiv \emptyset$, $I^{1}_i\equiv \emptyset$.}\] 
+\[\text{if $\theta_i=R$, $G^{1}_i\equiv G_i$, $I^{0}_i\equiv G_i\cap R^0$.}\] 
+\[\text{$R^1\equiv \{i\in R^0: \nexists j\in G_i \text{ such that }I^1_i\subseteq G^1_j\}$.}\] 
+
+At $t>1$, 
+\[\text{if $\theta_i=I$, $G^{t}_i\equiv \emptyset$, $I^{t}_i\equiv \emptyset$.}\] 
+\[\text{if $\theta_i=R$, $G^{t}_i\equiv \bigcup_{j\in G_i} G^{t-1}_j$, $I^{t}_i\equiv \bigcup_{j\in G_i} I^{t-1}_j$.}\] 
+\[\text{$R^t\equiv \{i\in R^{t-1}: \nexists j\in G_i \text{ such that }I^t_i\subseteq G^t_j\}$.}\]
+
+
+
+For convince, also denote $I^{t+1}_{ij}=I^t_i\cap I^t_j$ if $j\in G_i\cap R^{t}$. It can be shown that $R^t\subset R^{t-1}$ by the following lemma. 
+\begin{lemma}
+\label{lemma_inclusion}
+If the network is acyclic and if the $\theta$ has strong connectedness, then 
+\[R^t\subset R^{t-1}\] for all $t\geq 1$.
+\end{lemma}
+
+
+
+
+
+\end{document}

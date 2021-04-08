@@ -1,0 +1,19 @@
+\begin{thebibliography}{2}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Kreps and Wilson(1982)]{Krep_Wilson1982}
+D.~M. Kreps and R.~Wilson.
+\newblock {Sequential Equilibria}.
+\newblock \emph{Econometrica}, 50\penalty0 (4):\penalty0 863--94, July 1982.
+
+\bibitem[Perea(2002)]{Perea2002}
+A.~Perea.
+\newblock {A note on the one-deviation property in extensive form games}.
+\newblock \emph{Games and Economic Behavior}, 40\penalty0 (2):\penalty0 322 --
+  338, 2002.
+
+\end{thebibliography}

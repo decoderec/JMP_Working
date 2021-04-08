@@ -1,0 +1,305 @@
+%\documentclass[12pt,letter]{article}
+\documentclass[12pt]{article}
+\usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{MinionPro}
+\usepackage{mathptmx}
+
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{natbib}
+\usepackage{color, colortbl}
+\usepackage{appendix}
+\usepackage{etex,etoolbox}
+
+\usepackage{amsmath,amsthm}
+
+\usetikzlibrary{arrows,shapes}
+
+\definecolor{Gray}{gray}{0.9}
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[subsection]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{claim}{Claim}[subsubsection]
+
+\theoremstyle{remark}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%\theoremstyle{claim}
+%\newtheorem*{claim}{Claim}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzstyle{vertex}=[circle,fill=black!25,minimum size=12pt,inner sep=0pt]
+\tikzstyle{selected vertex} = [vertex, fill=red!24]
+\tikzstyle{edge} = [draw,thick,-]
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
+\tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
+
+
+
+%\linespread{1.5}
+
+\begin{document}
+%\fontsize{12}{18pt}\selectfont
+
+
+\section{Information hierarchy}
+\label{sec_information_hierarchy}
+
+We will classify the information hierarchy for each node iteratively. In Theorem ~\ref{lemma_notempty}, we will show that there will be some nodes with certain level of information hierarchy can know the true state. All the result in this chapter is in finite connected undirected network without circle. 
+
+
+\subsection{Notations}
+\begin{itemize}
+\item $\tau_i$: node $i$'s type.
+\item $N_i$: node $i$'s neighbourhood, which includes $i$.
+\item $[H]=\{i|\tau_i=H\}$: the event of the set of $H$-types.
+\end{itemize}
+
+\subsection{Characterize the hierarchy}
+
+\begin{itemize}
+
+\item \textbf{0-block}
+
+\begin{eqnarray}
+N^{-1}_i &\equiv &  i \\
+I^{-1}_i & \equiv & i
+\end{eqnarray}
+
+Define
+\[R^0=[Rebels](\theta)\]
+
+\item \textbf{1-block}
+
+
+
+Denotes
+\begin{eqnarray}
+N^0_i &\equiv &  N_i \\
+I^0_i & \equiv & N_i\cap R^0
+\end{eqnarray}
+
+
+
+Denote the notation $\leq^0_{N_i}$, to say that $i$ is \emph{weakly dominated by its neighbourhood} in 1-block, by
+\begin{equation}\leq^0_{N_i}\equiv \exists  j\in N_i\setminus i [I^0_i\subseteq N^0_j\cap [H]]\end{equation}.  
+
+Let 
+\begin{eqnarray*}
+R^{1} &\equiv &  \{i\in R^0|\nleq^0_{N^0_i}\}
+\end{eqnarray*}
+, be the activating node.
+
+
+
+
+
+
+\item \textbf{$t+1$-block, $t\geq 1$}
+
+\begin{eqnarray}
+N^t_i & \equiv & \bigcup_{k\in I^{t-1}_i}N_k \\
+I^t_i & \equiv & \bigcup_{k\in N_i\cap R^t}I^{t-1}_k
+\end{eqnarray}
+
+
+Then denote the notation $\leq^t_{N_i}$ to say that $i$ is weakly dominated by its neighbourhood in $t+1$-block by
+\begin{equation}\leq^t_{N_i}\equiv \exists j\in N_i\setminus i[I^t_i\subseteq N^t_j\cap [H]]\end{equation}
+
+
+
+Now let
+\begin{eqnarray*}
+R^{t+1} &\equiv &  \{i\in R^t|\nleq^t_{N_i}\}
+\end{eqnarray*}
+
+
+\end{itemize}
+
+\subsection{Properties}
+
+First note that $I^t_i$ and $H^t_i$ can be expressed as
+\begin{equation}
+\label{eqn_info}
+I^{t}_i = \bigcup_{k_0\in N_i\cap R^{t}}\bigcup_{k_1\in N_{k_0}\cap R^{t-1}}...\bigcup_{k_{t-1}\in N_{k_{t-2}}\cap R^{1}}N_{k_{t-1}}\cap R^0
+\end{equation}
+
+and
+\begin{equation}
+\label{eqn_nbr}
+N^t_i = \bigcup_{k_0\in N_i\cap R^{t-1}}\bigcup_{k_1\in N_{k_0}\cap R^{t-2}}...\bigcup_{k_{t-2}\in N_{k_{t-3}}\cap R^{1}}N_{k_{t-2}}
+\end{equation}
+
+
+We then have a more straightforward expression.
+\begin{lemma}
+\label{lemma_I_subset_N}
+$I^t_i\subseteq N^t_i$, $I^t_i=\bigcup_{k\in I^{t-1}_i}N_k\cap [H]$, and $N^t_i=\bigcup_{k\in N^{t-1}_i}N_k$ for all $t\geq 0$
+\end{lemma}
+
+
+
+We then provide the consequences following our definition of $R^t$, if the network is a tree and if the state has strong connectivity\footnote{These properties does not hold generally when the network has circle.}.  
+\begin{lemma}
+\label{lemma1}
+If the network is a tree, then for each $t\geq 1$ block
+\[i\in R^t\Leftrightarrow [i\in R^{t-1}] \wedge [\exists k_1,k_2\in R^{t-1}\cap N_i\setminus i]\]
+\end{lemma}
+
+
+
+
+\begin{lemma}
+\label{lemma_connected}
+If the network is a tree and if the state has strong connectivity, then 
+\begin{enumerate}
+\item If there is a pair of $R^{t}$ nodes then there exists a $R^{t}$-path connecting them.
+\item Moreover, such path is unique.
+\end{enumerate}
+
+
+
+
+\end{lemma}
+
+\begin{lemma}
+\label{lemma_notempty}
+If the network is a tree and if the state has strong connectivity, then 
+\[[R^{t-1}\neq \emptyset] \wedge [R^t\neq \emptyset] \Rightarrow R^{t-1}=\bigcup_{i\in R^t} N_i\cap [H]\]
+\end{lemma}
+
+
+
+The goal of this section is to provide the following theorem, which says that there is a $R^t$-node who knows the true state. 
+\begin{theorem}
+\label{lemma_empty}
+If the network is a tree and if the state has strong connectivity, then 
+\begin{enumerate}
+\item  \[1\leq |R^{t}|\leq 2 \Rightarrow \exists i\in R^t[[H]= I^t_i]\]
+\item \[R^0\neq \emptyset \Rightarrow \exists t\geq 0[\exists i\in R^t[[H]= I^t_i]]\]
+\end{enumerate}
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\appendix
+\section{Proof}
+
+\subsection{Proof for Lemma ~\ref{lemma1}}
+\begin{proof}
+The proof is by induction. We first show that the statement is true for $t=1$. 
+
+\begin{claim}
+\textbf{Base}: $i\in R^1\Leftrightarrow [i\in R^0] \wedge [\exists k_1,k_2\in (R^0\cap N_i\setminus i)]$. 
+\end{claim}
+\begin{proof}
+$\Rightarrow$: Since $i\in R^1$, then $i\in R^0$ and $\forall j\in N_i\setminus i [I^0_i\nsubseteq N^0_j]$ by definition. Since $I^0_i=N_i\cap R^0$ and $i\in N^0_j$, then  $\forall j\in N_i\setminus i [\exists k\in (R^0\cap N_i\setminus i) [k\notin N^0_j]]$. Since the $j\in N_i\setminus i$ is arbitrary,  we then have a pair of $k_1, k_2 \in (R^0\cap N_i\setminus i)$ such that both $k_1\notin N^0_{k_2}$ and $k_2\notin N^0_{k_1}$.
+
+\bigskip
+
+$\Leftarrow$: Pick $k\in \{k_1,k_2\}\subseteq N_i\cap R^0$, and pick an arbitrary $j\in (N_i\setminus \{i,k\})$. Note that $k\notin D^0_j$, otherwise there is a circle from $i$ to $i$ since $i\in N^0_j\subseteq D^0_j$. Hence $[k\in N_i\cap R^0] \wedge [k\notin D^0_j]$, and therefore $[k\in I^0_i] \wedge [k\notin N^0_j]$. Then we have $I^0_i\nsubseteq N^0_j$ for arbitrary $j\in N_i\setminus i$, and thus $i\in R^1$.
+\end{proof}
+
+\textbf{Induction hypothesis}: the statement is true up to $t$ and $t\geq 1$. 
+
+\begin{claim}
+If the hypothesis is true, then \[i\in R^{t+1}\Leftrightarrow [i\in R^{t}] \wedge [\exists k_1,k_2\in R^{t}\cap N_i\setminus i]\]
+\end{claim}
+\begin{proof}
+$\Rightarrow$: since $i\in R^{t+1}$, then $i\in R^t$ and $\forall j\in N_i\setminus i [I^t_i\nsubseteq N^t_j]$ by definition. Recall Equation (~\ref{eqn_info}) and Equation (~\ref{eqn_nbr}), then for every $m\in I^{t-1}_i$, we can find a path connecting $i$ to $m$ (the existence of such path is by the induction hypothesis). If $j\in N_i\setminus i$, then we can find a path connecting $j$ to $m$ by connecting $j$ to $i$, and then connecting $i$ to $m$. Thus, if $m\in I^{t-1}_i$ then $m\in N^t_J$, and hence $I^{t-1}_i\subseteq N^t_{j}$ if $j\in N_i\setminus i$.
+
+Further note that $I^t_i = \bigcup_{k\in N_i\cap R^t}I^{t-1}_k$, then we must have $\forall j\in N_i\setminus i [\exists k\in (R^t\cap N_i\setminus i)[ I^{t-1}_k\nsubseteq N^t_j]]$, since $I^{t-1}_i\subseteq N^t_{j}$. Since the $j\in N_i\setminus i$ is arbitrary,  we then have a pair of $k_1, k_2 \in (R^t\cap N_i\setminus i)$ such that both $k_1\notin N^t_{k_2}$ and $k_2\notin N^t_{k_1}$.
+\bigskip
+
+$\Leftarrow$:
+By the induction hypothesis, we have a chain $k_{1_0},...,k_1,i,k_2,...,k_{2_0}$ with $k_{1_0}\in R^0$,..., $k_1\in R^t$, $i\in R^t$, $k_2\in R^t$,...,and $k_{1_0}\in R^0$. Note that $k_{1_0}\notin D^t_j$ whenever $j\in N_i\setminus i$, otherwise there is a circle from $i$ to $i$ since $\{i,k_2,...,k_{2_0}\}\in N^t_j\subseteq D^t_j$. Hence $[k_{1_0}\in I^{t-1}_{k_1}] \wedge [k_{1_0}\notin D^t_j]$, and therefore $[I^{t-1}_{k_1}\in I^t_i] \wedge [I^{t-1}_{k_1}\notin N^t_j]$. Then we have $I^t_i=\bigcup_{k\in N_i\cap R^{t}}I^{t-1}_k\nsubseteq N^t_j$ for arbitrary $j\in N_i\setminus i$, and thus $i\in R^1$.
+
+\end{proof}
+
+We can then conclude that the statement is true by induction.
+
+\end{proof}
+
+\subsection{Proof for Lemma ~\ref{lemma_connected}}
+\begin{proof}
+\begin{enumerate}
+\item The proof is by induction, and by Lemma ~\ref{lemma1}. Since the state has strong connectivity, all the $R^0$ nodes are connected, and thus we have a $R^0$-path connecting each pair of $R^0$ nodes. Since all pairs of $R^0$ nodes are connected by a $R^0$-path, then for all pairs of $R^1$ nodes must be in some of such paths by Lemma ~\ref{lemma1}, and then connected by a $R^0$-path. But then all the $R^0$-nodes in such path are all $R^1$ nodes by Lemma ~\ref{lemma1} again and by $R^t\subseteq R^{t-1}$. Thus, for all pairs of $R^1$ nodes has a $R^1$-path connecting them. The similar argument holds for $t> 1$, we then get the result.
+\item The uniqueness is by the fact that the network is a tree, and therefore the path connecting all distinguish nodes is unique.   
+\end{enumerate}
+\end{proof}
+
+\subsection{Proof for Lemma ~\ref{lemma_notempty}}
+\begin{proof}
+We have to show that $R^{t-1}\supseteq \bigcup_{i\in R^t} N_i\cap [H]$ and $R^{t-1}\subseteq \bigcup_{i\in R^t} N_i\cap [H]$. 
+\begin{itemize}
+\item $\supseteq $: Since $R^t$ is not empty, we can pick a node $m\in \bigcup_{i\in R^t} N_i\cap [H]$. By Lemma ~\ref{lemma1}, $m\in R^t\cup R^{t-1}=R^{t-1}$, and therefore $m\in R^{t-1}$.
+\item $\subseteq$: Since both $R^{t-1}$ and $R^{t}$ are not empty, we can pick nodes $m_1\in R^{t-1}$ and $m_2\in R^{t}$. Since the state has strong connectivity, there is a $R^{t-1}$ path connecting them by Lemma ~\ref{lemma_connected}. But then the nodes (expect for $m_1,m_2$) in this path are all $R^{t}$ nodes by Lemma ~\ref{lemma1}, and then there is $m^{'}_1\in N_{m_1}\cap R^t$. Since the $m_1\in R^{t-1}$ we picked is arbitrary, therefore it means for all $m\in R^{t-1}$ there is a $m^{'}\in N_{m}\cap R^{t}$, and hence $m\in N_{m^{'}}\cap [H]$ while $m^{'}\in R^t$. We then get the result. 
+\end{itemize}
+
+\end{proof}
+
+\subsection{Proof for Lemma ~\ref{lemma_empty}}
+
+\begin{proof}
+\begin{enumerate}
+\item If $1\leq |R^t| \leq 2$, then by Lemma ~\ref{lemma1} and by Lemma ~\ref{lemma_connected}, we have a spanning tree consisting the nodes in $R^{t-1}$,...,$R^0$. Since the state has strong connectivity, all the $H$-nodes are in this tree. By Lemma ~\ref{lemma_notempty}, we have
+\[R^0=\bigcup_{k_1\in R^1} N_{k_1}\cap [H]=\bigcup_{k_1\in N_{k_2}\cap R^1} \bigcup_{k_2\in N_{k_3}\cap R^2}...\bigcup_{k_{t-1}\in N_{k_t}\cap R^t}N_{k_t}\cap [H]\]
+
+Then by Equation (14), if $i\in R^t$ we have 
+\[I^t_i=\bigcup_{k_0\in N_i\cap R^{t}}\bigcup_{k_1\in N_{k_0}\cap R^{t-1}}...\bigcup_{k_{t-1}\in N_{k_{t-2}}\cap R^{1}}N_{k_{t-1}}\cap R^0\]
+
+Now note that $R^0=[H]$, and compare the above two equations, we got $[H]= I^t_{i}$ if $i\in R^t$.
+
+\item For a given $t$-block, in the case when $R^t\neq \emptyset$ and $R^{t+1}\neq \emptyset$, the proof is a direct application of Lemma ~\ref{lemma_notempty}, and we continue taking the union of nodes' information set. Since the network is finite, the $[H]$ will be a subset of some nodes' information set eventually.
+
+We then only consider the case when $R^t\neq \emptyset$ and $R^{t+1}= \emptyset$. But in such case, it means that there is no $R^{t}$ node which has more than two distinguish $R^{t}$ neighbours by Lemma ~\ref{lemma1}, and then $1\leq |R^t| \leq 2$ since all pairs of $R^t$ nodes are connected by $R^t$-path by Lemma ~\ref{lemma_connected}. The first part of this Lemma ~\ref{lemma_empty} then shows the result. 
+\end{enumerate}
+
+\end{proof}
+
+
+
+\subsection{Proof for Lemma ~\ref{lemma_at_most_two_nodes}}
+\begin{proof}
+Suppose there are three or more $R^t$-nodes in $C$, then pick any three nodes of them, and denote them as $i_1,i_2,i_3$. Let's say $i_2$ is in the $(i_1i_3)$-path, and therefore $i_2\in Tr_{i_1i_2}$ and $i_3\in Tr_{i_2i_3}$. First we show that $i_1\in N_{i_2}$ (or $i_3\in N_{i_2}$). Suppose $i_1\notin N_{i_2}$, since $i_1,i_2\in R^t$, then the $(i_1i_2)$-path is a $R^t$-path by Lemma ~\ref{lemma1}. Let this $(i_1i_2)$-path be $(i_1,j_1,...,j_n,i_2)$. Since $i_1,j_1,...,j_n,i_2\in R^t$, we then have $I^{t-1}_{i_1}\nsubseteq N^{t-1}_{j_1},...,I^{t-1}_{j_n}\nsubseteq N^{t-1}_{i_2}$ and $I^{t-1}_{j_1}\nsubseteq N^{t-1}_{i_1},...,I^{t-1}_{i_2}\nsubseteq N^{t-1}_{j_n}$. Since $I^{t-1}_{i_1}\subseteq N^{t-1}_{i_1},...,I^{t-1}_{i_2}\subseteq N^{t-1}_{i_2}$ by Lemma ~\ref{lemma_I_subset_N}, we further have $\exists k_1\in [H][k_1\in N^{t-1}_{j_1}\setminus I^{t-1}_{i_1}]$,...,$\exists k_n\in [H][k_n\in N^{t-1}_{j_n}\setminus I^{t-1}_{i_2}]$. Since the state has Strong Connectivity, such $k_1,...,k_n$ are connected. But then we have already found $k_1,k_2$ such that $k_1\in N^{t-1}_{j_1}\setminus I^{t-1}_{i_1}$ and $k_2\in N_{k_1}\setminus k_1$. It is a contradiction that $i_1\in C$.
+
+Now, $i_1,i_2,i_3$ will form a $R^t$-path as $(i_1,i_2,i_3)$. With the same argument as the above, we then have $\exists k_1\in [H][k_1\in N^{t-1}_{i_2}\setminus I^{t-1}_{i_1}]$ and $\exists k_2\in [H][k_2\in N^{t-1}_{i_3}\setminus I^{t-1}_{i_2}]$, and thus $i_1$ is not in $C$.
+\end{proof}
+
+\subsection{Proof for Lemma ~\ref{lemma_no_node_outside}}
+\begin{proof}
+Since $i\in R^t$, there is a $j\in R^{t-1}$ and $j\in N_i\setminus i$ by Lemma ~\ref{lemma1}. Given any $j\in R^{t-1}\cap (N_i\setminus i)$, first note that $N^{t-1}_j\subseteq \bigcup_{k\in N^{t-1}_i}N_k$ by $N^{t-1}_j \equiv \bigcup_{k\in I^{t-2}_j}N_k$, and $I^{t-2}_j\subseteq I^{t-1}_i\subseteq N^{t-1}_i$. If there is another node outside $\bigcup_{k\in N^{t-1}_i}N_k$ in $Tr_{ij}$, then there must be another node connected to $N^{t-1}_j$ since the network is connected. It is a contradiction that $i\in C$.
+
+\end{proof}
+
+
+
+
+
+\end{document}

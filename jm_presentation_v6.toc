@@ -1,0 +1,14 @@
+\beamer@endinputifotherversion {3.26pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Motivation}{2}{0}{1}
+\beamer@subsectionintoc {1}{2}{Literature Review}{17}{0}{1}
+\beamer@sectionintoc {2}{Model}{19}{0}{2}
+\beamer@subsectionintoc {2}{1}{Static Game}{19}{0}{2}
+\beamer@subsectionintoc {2}{2}{Repeated Game}{27}{0}{2}
+\beamer@sectionintoc {3}{Equilibrium construction}{50}{0}{3}
+\beamer@subsectionintoc {3}{1}{Equilibrium construction}{50}{0}{3}
+\beamer@sectionintoc {4}{Discussion}{89}{0}{4}
+\beamer@subsectionintoc {4}{1}{Discussion}{89}{0}{4}
+\beamer@sectionintoc {5}{Future Works}{91}{0}{5}
+\beamer@subsectionintoc {5}{1}{Future Works}{91}{0}{5}

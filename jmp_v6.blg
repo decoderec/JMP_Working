@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: jmp_v6.aux
+The style file: abbrvnat.bst
+Database file #1: jmp_ref.bib
+You've used 30 entries,
+            2773 wiz_defined-function locations,
+            799 strings with 8724 characters,
+and the built_in function-call counts, 12506 in all, are:
+= -- 1162
+> -- 519
+< -- 28
++ -- 183
+- -- 153
+* -- 954
+:= -- 1896
+add.period$ -- 90
+call.type$ -- 30
+change.case$ -- 139
+chr.to.int$ -- 30
+cite$ -- 60
+duplicate$ -- 606
+empty$ -- 1165
+format.name$ -- 207
+if$ -- 2632
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 30
+newline$ -- 156
+num.names$ -- 120
+pop$ -- 273
+preamble$ -- 1
+purify$ -- 111
+quote$ -- 0
+skip$ -- 436
+stack$ -- 0
+substring$ -- 635
+swap$ -- 43
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 320
+warning$ -- 0
+while$ -- 135
+width$ -- 0
+write$ -- 389

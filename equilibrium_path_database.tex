@@ -1,0 +1,569 @@
+%\documentclass[12pt,letter]{article}
+\documentclass[12pt]{article}
+\usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{MinionPro}
+\usepackage{mathptmx}
+
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{natbib}
+\usepackage{color, colortbl}
+\usepackage{appendix}
+\usepackage{etex,etoolbox}
+
+\usepackage{amsmath,amsthm}
+
+\usetikzlibrary{arrows,shapes}
+
+\definecolor{Gray}{gray}{0.9}
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[subsection]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{claim}{Claim}[subsubsection]
+
+\theoremstyle{remark}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+%\theoremstyle{claim}
+%\newtheorem*{claim}{Claim}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\tikzstyle{vertex}=[circle,fill=black!25,minimum size=12pt,inner sep=0pt]
+\tikzstyle{selected vertex} = [vertex, fill=red!24]
+\tikzstyle{edge} = [draw,thick,-]
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{selected edge} = [draw,line width=5pt,-,red!50]
+\tikzstyle{ignored edge} = [draw,line width=5pt,-,black!20]
+
+
+
+%\linespread{1.5}
+
+\begin{document}
+%\fontsize{12}{18pt}\selectfont
+
+
+
+
+\paragraph{Notations}
+
+\begin{itemize}
+\item $p_{I^{t-1}_i}$: the multiplication of the prime-indexing of members in $I^{t-1}_i$.
+\item $\langle I^{t-1}_i \rangle$: reporting $p_{I^{t-1}_i}$ in a sub-block as
+\[\langle .,.,.,\underbrace{h,.,.,.}_{p_{I^{t-1}_i}}\rangle\] 
+, where the $.$ means $l$.
+\item $\langle l \rangle$: reporting all $l$s in a sub-block as
+\[\langle .,.,.,\rangle\] 
+, where the $.$ means $l$.
+\item $\langle 2 \rangle$: reporting $2$ in a sub-block as
+\[\langle .,.,.,.,\underbrace{h,.}_{2}\rangle\] 
+\item $\langle 1 \rangle$: reporting $1$ in a sub-block as
+\[\langle .,.,.,.,.,\underbrace{h}_{1}\rangle\] 
+\item $\langle \mathbf{1}_i \rangle$: reporting $i$'s own index in a sub-block as
+\[\langle .,.,.,\underbrace{h,.,.,.}_{p_i}\rangle\]  
+\end{itemize}
+
+
+\subsection{Belief updating}
+
+\paragraph{Notations}
+\begin{itemize}
+\item $\tau_i \in T_i$: $T_i=\{H,L\}$, and $\tau_i$ is $i$'s type.
+\item $\tau=\times_{i}\tau_i$, $T=\times_{i}T_i$.
+\item $h^m_{N_i}$: the history of actions made by $N_i$.
+\item $T_{h^{m}_i}$: the all possible states after $h^m_{N_i}$.
+\end{itemize}
+
+\paragraph{Beliefs}
+
+\begin{enumerate}
+\item For node $i$:
+
+\begin{equation}
+\beta_{i}(\tau |h^{m}_{N_i})=\frac{\beta_{i}(\tau |h^{m-1}_{N_i})\mathbb{I}(\tau \in T_{h^{m-1}_{N_i}})}{\sum_{\tau \in T}\beta_{i}(\tau |h^{m-1}_{N_i})\mathbb{I}(\tau \in T_{h^{m-1}_{N_i}})} \label{eq_eq_belief}
+\end{equation} 
+
+\item \textbf{Assumption (Outside of equilibrium)}
+
+If $\nexists \tau \in T_{h^{m-1}_{N_i}} $, then
+\begin{eqnarray}
+\beta_{i}(|(N\setminus I^0_i)\cap [H]|=0|h^{m^{'}}_{N_i})=1 \text{ , } m^{'}\geq m-1 \label{eq_ignore_past_history}\\
+\beta_{i}(T|h^{m^{'}}_{N_i})=\beta_{i}(T|h^{m^{'}}_{N_i}) \text{ , } m^{'}\geq m-1\label{eq_ignore_history}
+\end{eqnarray}
+
+The Equation ~\ref{eq_ignore_past_history} says that $i$ will believe that all the nodes other than $N_i$ will be $L$-types\footnote{This outside-of-equilibrium belief can be relaxed as \[\beta_{i}(|(Tr_{ij}\setminus j)\cap [H]|=0|h^{m^{'}}_{N_i})=1 \text{ , } m^{'}\geq m-1 \]. I.e. $i$ will consider all the relevant information came from $j$ are wrong, but still consider those information came from the neighbours other than $j$ are still convincing. This relaxation, however, will complicate the construction of outside-of-equilibrium, since $i$ may have reported the relevant information came from $j$ to his neighbours, and therefore he may need to consider the belief formed by his neighbours, his neighbours' neighbours', and so on. We may need another period to let the nodes can ``confirm'' the provided relevant information, and so that the nodes' beliefs can be "adjusted".}. The Equation ~\ref{eq_ignore_history} says that $i$ will ignore the actions of all his neighbours afterwards.
+
+From Equation ~\ref{eq_ignore_past_history} and Equation ~\ref{eq_ignore_history}, this assumption will highly reduce the complication in constructing outside-of-equilibrium. We first provide a simple lemma.
+
+\begin{lemma}
+\label{lemma_outside_eq_strategy}
+If $i$ has detected a deviation, and if $|I^0_i|<s$, then $i$ will play $l$ forever.
+\end{lemma}
+\begin{proof}
+By Equation ~\ref{eq_ignore_past_history} and Equation ~\ref{eq_ignore_history}, and $l$ is the dominate strategy if $|[H]|<s$.
+\end{proof}
+
+\end{enumerate}
+
+
+
+
+\subsubsection{Equilibrium path}
+
+
+
+\paragraph{Notations}
+
+\begin{itemize}
+\item $|RP^t|$: the length of reporting period in $t$-block.
+\item At period $m$, where $0\leq m \leq |RP^t|$, denote 
+\[O^{m,t}_i\subseteq R^{t-1}\cap (N_i\setminus i)\] be the set of $i$'s neighbours who has played $\langle I^{t-1} \rangle$ before $m$ in the reporting period. 
+\item Let
+\[I^{m,t}_i\equiv (\bigcup_{k\in O^{m,t}_i} I^{t-1}_k)\cup I^{t-1}_i\]
+be the updated relevant information gathered by $i$ at period $m$ in the reporting period of $t$-block. Note that $I^{0,t}_i=I^{t-1}_i$ and $I^{|RP^t|,t}_i=I^{t}_i$.
+\item Let
+\[N^{m,t}_i\equiv (\bigcup_{k\in O^{m,t}_i} N^{t-1}_k)\cup N^{t-1}_i\]
+be the updated neighbourhood which contains $I^{m,t}_i$
+\item Let 
+\[Ex_{I^{m,t}_i}\equiv \{l\notin N^{m,t}_i|\exists l^{'}\in I^{m,t}_i\text{ such that there exists a $(l,l^{'})$-path}\}\]
+be all the possible $H$-nodes outside of $N^{m,t}_i$ given $I^{m,t}_i$.
+
+\item Let
+\[Tr_{I^{m,t}_ij}\equiv Tr_{ij}\cap (Ex_{I^{m,t}_i}\cup I^{m,t}_i)\]
+be the set of possible $H$-nodes in the $(ij)$-tree given $I^{m,t}_i$. 
+
+\item Denote the set
+\[C^t=\{i\in R^t:\nexists j\in R^{t-1}\cap \bar{G}_i \text{ such that }\exists l_1,l_2\in Tr_{ij}[[l_1\in N^{t-1}_j\backslash I^{t-1}_i] \wedge [k_2\in \bar{G}_{l_1}]]]\}\]
+, then we can show 
+
+\begin{lemma}
+\label{lemma_at_most_two_nodes}
+If the network is a tree and the state has Strong Connectivity, then 
+\begin{enumerate}
+\item $0\leq \# C \leq 2$.
+\item Moreover, suppose there are two nodes in $C$, then they are the others' neighbour.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+In appendix.
+\end{proof}
+
+\begin{lemma}
+\label{lemma_no_node_outside}
+If the network is a tree and the state has Strong Connectivity, then 
+\[i\in C \Rightarrow \text{there is no node outside of }\bigcup_{k\in N^{t-1}_i}G_k\]
+\end{lemma}
+
+\begin{proof}
+In appendix.
+\end{proof}
+
+
+\item For convenience, we also denote
+\[\langle\textbf{runs [POST-CHECK,1(or 2)]}\rangle\]
+be the strategy such that
+\begin{enumerate}
+\item At $0<m\leq |RP^t|-|\langle 1\text{ or 2} \rangle|$, play
+\[ l \]
+\item At $m= |RP^t|-|\langle 1\text{ or 2} \rangle|+1$, runs \textbf{POST-CHECK}
+\end{enumerate}
+
+
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{Equilibrium path}
+
+
+
+\subparagraph{$i\notin R^{t}$}
+
+
+
+
+\begin{itemize}
+\item \textbf{WHILE LOOP}
+\begin{itemize}
+\item At $m\geq 0$, if $\#Ex_{I^{m,t}_i}\cup I^{m,t}_i< k$, report $\langle \textbf{stay} \rangle$ and then play \textbf{stay} forever.
+\item Otherwise, \textbf{runs POST-CHECK }
+\end{itemize}
+\end{itemize}
+
+\subparagraph{$i\in R^{t}$}
+
+\begin{itemize}
+
+\item \textbf{WHILE LOOP}
+\begin{itemize}
+\item At $m\geq 0$, if $\# Ex_{I^{m,t}_i}\cup I^{m,t}_i< k$, report $\langle \textbf{stay} \rangle$ and then play \textbf{stay} forever.
+\item Otherwise, \textbf{runs MAIN }
+\end{itemize}
+
+
+\item \textbf{MAIN}
+
+At $m\geq 0$, 
+
+\begin{enumerate}
+\item At $m=0$ and if $\# I^{t-1}_i=\# I^{0,t}_i= k-1$, then 
+\textbf{runs POST-CHECK }
+
+
+\item At $m=0$ and if $i\in R^t$ and
+\[\nexists j\in R^{t-1}\bar{G}_i \text{ such that }\exists l_1,l_2\in Tr_{ij}[[l_1\in N^{t-1}_j\backslash I^{t-1}_i] \wedge [l_2\in \bar{G}_{l_1}]]]\]
+, then runs \textbf{CHECK.$0$}. Otherwise, recall \textbf{MAIN}
+\item At $0\leq m \leq |RP^t|-|\langle I^{t-1}_i \rangle|$, play
+\[\textbf{stay}\]
+\item At $m = |RP^t|-|\langle I^{t-1}_i \rangle|+1$, then
+\begin{enumerate}
+\item if $O^{m,t}_i= \emptyset$ 
+, then report
+\[\langle I^{t-1}_i \rangle\]
+\item if $O^{m,t}_i\neq \emptyset$, then \textbf{runs CHECK.k}
+
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+
+
+\item \textbf{CHECK.$0$}
+
+At $m=0$, if $i\in C$, i.e. if $i\in R^t$ and
+\[\nexists j\in R^{t-1}\cap \bar{G}_i \text{ such that }[\exists l_1,l_2\in Tr_{ij}[[l_1\in N^{t-1}_j\setminus I^{t-1}_i] \wedge [l_2\in \bar{G}_{l_1}]]]\]
+, then
+\begin{enumerate}
+\item If $\#C=1$
+, then 
+\textbf{runs POST-CHECK }
+
+\item If $\#C=2$, then denote $i_1,i_2\in C$ such that $I^{t-2}_{i_1}<I^{t-2}_{i_2}$, and then
+\begin{itemize}
+\item if $i=i_1$, then 
+\textbf{runs POST-CHECK }
+\item if $i=i_2$, then report
+\[\langle I^{t-1}_i \rangle\]
+
+\end{itemize}
+\end{enumerate}
+
+
+
+
+\item \textbf{CHECK.$m$}
+
+ At $m>0$, if $O^{m,t}_i\neq \emptyset$, then there are two cases, 
+\begin{enumerate}
+\item Case 1: If $i\in R^t$ and 
+\[\exists j\in  O^m_i \text{ such that }\exists l_1,l_2\in Tr_{I^{m,t}_ij}[[l_1\in I^{t-1}_j\backslash I^{t-1}_i] \wedge [l_2\in \bar{G}_{l_1}]]]\]
+, then report 
+\[\langle I^{t-1}_i \rangle\]
+\item Case 2: If $i\in R^t$ and 
+\[\not\exists j\in  O^m_i \text{ such that }\exists l_1,l_2\in Tr_{I^{m,t}_ij}[[l_1\in I^{t-1}_j\backslash I^{t-1}_i] \wedge [l_2\in \bar{G}_{l_1}]]]\]
+
+\begin{enumerate}
+\item Case 2.1: If $i\in R^t$ and 
+\[\not\exists j\in R^{t-1}\cap (G_i\backslash  O^{m,t}_i) \text{ such that }[\exists l_1,l_2\in Tr_{I^{m,t}_ij}[[l_1\in N^{t-1}_j\backslash I^{t-1}_i] \wedge [l_2\in \bar{G}_{l_2}]]]\]
+\[\textbf{Note: this case is the case when $i\in C$, thus recall Check.0}\]
+
+\item Case 2.2: If 
+\[\exists j\in R^{t-1}\cap (G_i\backslash  O^{m,t}_i) \text{ such that }[\exists l_1,l_2\in Tr_{I^{m,t}_ij}[[l_1\in N^{t-1}_j\backslash I^{t-1}_i] \wedge [l_2\in \bar{G}_{l_2}]]]\]
+
+\begin{itemize}
+\item if $\# I^{m,t}_i= k-1$
+, then 
+\textbf{runs POST-CHECK }
+
+\item if $\# I^{m,t}_i< k-1$
+, then report 
+\[\langle I^{t-1}_i \rangle\]
+\end{itemize}
+
+
+
+
+
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+
+
+\item \textbf{CHECK.k}
+
+At $m\geq 1$, 
+\begin{enumerate}
+
+
+\item $O^{m,t}_i\neq \emptyset$, and
+ \[\# I^{m,t}_i\geq k\]
+, then 
+\textbf{runs POST-CHECK }
+
+\item $O^{m,t}_i\neq \emptyset$, and 
+\[ \#I^{m,t}_i< k\]
+, then \textbf{runs CHECK.$m$}
+\end{enumerate}
+
+
+\item \textbf{POST-CHECK}
+
+\begin{enumerate}
+
+
+\item At $m=|RP^t|$, then
+\begin{enumerate}
+\item If $i\in R^t$ and if $|I^{m,t}_i|\geq k-1$, then play
+\textbf{revolt}
+
+\item if $i\notin R^t$, then play
+\textbf{stay}
+
+
+\end{enumerate}
+\end{enumerate}
+
+
+\end{itemize}
+
+
+
+\subsubsection{Equilibrium path}
+\paragraph{Notations}
+\begin{itemize}
+\item Let 
+\[Ex_{I^{t}_i}\equiv \{k\notin I^{t}_i|\exists k^{'}\in I^{t}_i\setminus I^{t-1}\text{ such that there exists a $(k,k)$-path}\}\]
+be all the possible $H$-nodes outside of $N^{t}_i$ given $I^{t}_i$.
+
+\item Let
+\[Tr_{I^{t}_ij}\equiv Tr_{ij}\cap (Ex_{I^{t}_i}\cup I^{t}_i)\]
+be the set of possible $H$-nodes in the $(ij)$-tree given $I^{m,t}_i$. 
+\end{itemize}
+
+
+
+
+\paragraph{Equilibrium path}
+
+
+\begin{itemize}
+
+
+
+
+
+\item \textbf{1st Division} 
+
+
+In 1st division, for $t\geq 0$ block and for $1\leq m \leq n$ sub-block,
+\begin{itemize}
+
+\item If $i$ has played $\langle 1 \rangle$, then play
+\[\langle \mathbf{1}_i \rangle\]
+
+\item If $\# Ex_{I^{t}_i}\cup I^{t}_i<k$, then \[\langle\textbf{play $l$ forever}\rangle\]
+
+\item If $\# Ex_{I^{t}_i}\cup I^{t}_i\geq k$, and there are some $j\in \bar{G}_i$ have played $\langle \textbf{stay} \rangle $, then play
+\[\left\{
+\begin{array}{l r l}      
+    \langle \mathbf{1}_i \rangle \text{ and then runs \textbf{COORDINATION}} 	& \text{if } &\# I^{0}_i\geq k \\
+    \langle\textbf{play $l$ forever}\rangle														&\text{if } 		& \text{otherwise}
+\end{array}\right.
+\]
+\item If $\# Ex_{I^{t}_i}\cup I^{t}_i \geq k$, and there is no $j\in \bar{G}_i$ has played $\langle \textbf{stay} \rangle $, then play
+\[\langle \mathbf{1}_i \rangle\]
+
+\end{itemize}
+
+
+
+
+\item \textbf{2nd Division} 
+
+If there is no $j\in G_i$ such that $j$ has played $\langle \textbf{stay} \rangle$ in the \textbf{1st Division} , then run the following automata. Otherwise, $\langle\textbf{play $l$ forever}\rangle		$ 
+
+\begin{itemize}
+\item $i\notin R^t $
+\begin{itemize}
+\item In the $1$-sub-block: play
+\[\langle \textbf{stay} \rangle \]
+
+
+\item In the $2\leq m\leq t+1$ sub-blocks: 
+
+\begin{enumerate}
+
+\item If $i\in R^{t^{'}}$ for some $t^{'}\geq 0$ and if there is a $j\in R^{t^{'}+1}\cap \bar{G}_i$ has played 
+\begin{enumerate}
+\item $\langle \textbf{stay} \rangle $ in $m=1$ sub-block
+\item or $\langle \mathbf{1}_j \rangle$ in $m\geq 2$ sub-blocks
+\end{enumerate}
+, then play 
+\[\langle \mathbf{1}_i \rangle\] in $m+1$ sub-block.
+
+\item Otherwise, play
+\[\langle \textbf{stay} \rangle\] in current sub-block
+\end{enumerate}
+
+\end{itemize}
+
+\item $i\in R^t$
+
+\begin{itemize}
+\item In the $1$-sub-block:
+\begin{enumerate}
+\item If $i$ has played $\langle 1 \rangle$, then play
+\[\langle \textbf{stay} \rangle \]
+
+\item If $i$ has not played $\langle 1 \rangle$ and if there is a $j\in \bar{G}_i$ has played $\langle 1 \rangle$, then play
+\[\langle \textbf{stay} \rangle \]
+
+\item If $i$ has not played $\langle 1 \rangle$ and if there is no $j\in \bar{G}_i$ has played $\langle 1 \rangle$, then
+\begin{itemize}
+\item If $\# I^{|RP^t|,t}_i\geq k$, then play
+\[\langle \textbf{stay} \rangle \]
+\item If $\# I^{|RP^t|,t}_i< k$, then play
+\[\langle \mathbf{1}_i  \rangle \]
+\end{itemize}
+
+\end{enumerate}
+
+\item In the $m\geq 2$-sub-block: 
+
+\begin{enumerate}
+
+\item If $i\in R^{t^{'}}$ for some $t^{'}\geq 0$ and if there is a $j\in R^{t^{'}}\cap \bar{G}_i$ has played 
+\begin{enumerate}
+\item $\langle \textbf{stay} \rangle$ in $m=1$ sub-block, or
+\item $\langle \mathbf{1}_j \rangle$ in $m\geq 2$ sub-blocks
+\end{enumerate}
+, then play 
+\[\langle \mathbf{1}_i \rangle\] in $m+1$ sub-block.
+\item Otherwise, play
+\[\langle \textbf{stay} \rangle\] in current sub-block.
+\end{enumerate}
+
+\end{itemize}
+
+\end{itemize}
+
+
+
+\item \textbf{3rd Division} 
+
+\begin{enumerate}
+\item \textbf{INITIATING} 
+
+If $i$ has observed $j\in N_i\setminus i$ has played,
+\begin{enumerate}
+\item $\langle \textbf{stay} \rangle$ in $1$-sub-block in pre-coordination period or
+\item $\langle \mathbf{1}_j \rangle$ in $m\geq 2$ sub-blocks in pre-coordination period or
+\item $\langle h \rangle$ in the \textbf{3rd Division} 
+\end{enumerate}
+, then play
+\[\langle \textbf{play $h$ forever} \rangle\]
+\item \textbf{NOT INITIATING} 
+
+Otherwise, play 
+\textbf{stay} 
+in current period.
+\end{enumerate}
+\end{itemize}
+
+
+
+
+
+
+\subsubsection{Belief in the equilibrium}
+\begin{itemize}
+\item If the history $h^{m^{'}}_{N_i}$ is to let $i$ play 
+\[\langle \textbf{play $h$ forever} \rangle\]
+, then $i$'s belief is as
+\begin{eqnarray}
+\beta_{i}(|[H]|\geq s|h^{m^{'}}_{N_i})=1 \text{ for all $m^{'}\geq m+1$} \label{eq_belief_success_1}\\
+\beta_{i}(T|h^{m^{'}}_{N_i})=\beta_{j}(T|h^{m^{'}}_{N_i}) \text{ for all $m^{'}\geq m+1$} \label{eq_belief_success_2}
+\end{eqnarray}
+
+\item If the history $h^{m^{'}}_{N_i}$ is to let $i$ play 
+\[\langle \textbf{play $l$ forever} \rangle\]
+, then $i$'s belief is as
+\begin{eqnarray}
+\beta_{i}(|[H]|\geq s|h^{m^{'}}_{N_i})=0 \text{ for all $m^{'}\geq m+1$} \label{eq_belief_fail_1}\\
+\beta_{i}(T|h^{m^{'}}_{N_i})=\beta_{j}(T|h^{m^{'}}_{N_i}) \text{ for all $m^{'}\geq m+1$} \label{eq_belief_fail_2}
+\end{eqnarray}
+
+\item Otherwise, form the belief as Equation ~\ref{eq_eq_belief}.
+\end{itemize}
+
+\subsubsection{Outside of equilibrium}
+\begin{itemize}
+
+\item Deviation by $j\in N_i\setminus i$ and detection by $i$:
+
+For convenience, we call the sequences as ``$\langle \text{coordination messages} \rangle$'' if the sequences satisfy
+\begin{enumerate}
+\item $\langle \text{coordination message} \rangle-1$: $\langle l \rangle$ in $1$-sub-block in pre-coordination period
+\item $\langle \text{coordination message} \rangle-2$: or $\langle \mathbf{1}_j \rangle$ in $m\geq 2$ sub-blocks in pre-coordination period
+\item $\langle \text{coordination messags} \rangle-3$: or $\langle h \rangle$ in the post-coordination period
+\end{enumerate}
+
+First note that $i$ can distinguish $j$'s information hierarchy by observing if $j$ has reported $\langle l \rangle$ in the reporting period. We then organize the situations where $i$ can detect $j$'s deviation
+\begin{enumerate}
+\item If $j$'s information hierarchy is strictly lower than $i$\footnote{ More specifically, $j$ played $\langle l \rangle$ in reporting period.}, but $j$ play $\langle \text{coordination message} \rangle-2$ or  $\langle \text{coordination message} \rangle-3$ before $i$.
+\item If $i$ has reported $\langle \text{coordination messages} \rangle$, but $j$ did not follow to play $\langle \text{coordination messages} \rangle$.
+\item $j\in R^t$ played $\langle \text{coordination messages} \rangle$, but it is impossible to find the source to let $j$ play that in the equilibrium path\footnote{More specifically, the possibility of $\exists k\in Tr_{I^t_ij}[|I^t_k|\geq s]$ is zero.}.
+\item If $j$'s reporting is other than $\{\langle l \rangle, \langle \mathbf{1}_j \rangle\}$ in failure-checking period or pre-coordination period.
+\item $|Ex_{I^{t}_i}\cup I^{t}_i|<s$, but $j$ report $\langle \mathbf{1}_j \rangle$ in failure-checking period.
+\item $|Ex_{I^{t}_i}\cup I^{t}_i|\geq s$, but $j$ report $\langle l \rangle$ in failure-checking period.
+\item In the case of \textbf{[outside of equilibrium]}
+\end{enumerate}
+
+\item The outside of equilibrium belief for $i$ is as Equation ~\ref{eq_ignore_history} and Equation ~\ref{eq_ignore_past_history}. The strategy for $i$ is then
+\[\left\{
+\begin{array}{l r l}      
+    \text{ runs \textbf{COORDINATION}} & \text{if } &|I^{0}_i|\geq s \\
+    \langle l \rangle \textbf{ and then $\langle$ play $l$ forever $\rangle$} &\text{if } & \text{otherwise}
+\end{array}\right.
+\]
+
+\end{itemize}
+
+
+
+
+
+
+
+\end{document}

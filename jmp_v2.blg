@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: jmp_v2.aux
+The style file: abbrvnat.bst
+Database file #1: jmp_ref.bib
+Warning--empty journal in Amitai
+Warning--empty year in Amitai
+Warning--empty year in Amitai
+Warning--empty journal in Jackson2008
+You've used 33 entries,
+            2773 wiz_defined-function locations,
+            820 strings with 9147 characters,
+and the built_in function-call counts, 12944 in all, are:
+= -- 1180
+> -- 538
+< -- 31
++ -- 192
+- -- 159
+* -- 935
+:= -- 1971
+add.period$ -- 97
+call.type$ -- 33
+change.case$ -- 149
+chr.to.int$ -- 33
+cite$ -- 70
+duplicate$ -- 644
+empty$ -- 1224
+format.name$ -- 214
+if$ -- 2722
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 30
+newline$ -- 169
+num.names$ -- 132
+pop$ -- 331
+preamble$ -- 1
+purify$ -- 119
+quote$ -- 0
+skip$ -- 472
+stack$ -- 0
+substring$ -- 546
+swap$ -- 44
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 348
+warning$ -- 4
+while$ -- 138
+width$ -- 0
+write$ -- 415
+(There were 4 warnings)
